@@ -1,0 +1,66 @@
+
+
+\chapter{SCHEDULE}\label{schedule}
+\graphicspath{{images/}}
+
+% \begin{figure}[H]
+% \centering
+% \begin{ganttchart}[
+%     hgrid,
+%     vgrid,
+%     time slot format=is month,
+%     bar height=0.6,
+%     bar label font=\small\bfseries,
+%     x unit=0.65cm,
+%     y unit chart=0.9cm,
+%     milestone label font=\small\bfseries,
+%     milestone height=0.3
+% ]{1}{12} % <-- Aquí defines el rango de meses directamente
+
+% % Títulos
+% \gantttitle{Project Timeline for PRANK (12 Months)}{12} \\
+% \gantttitlelist{1,...,12}{1} \\
+
+% % Tareas
+% \ganttbar{Planning and Research}{1}{1} \\
+% \ganttbar{Mechanical Design}{2}{3} \\
+% \ganttbar{Electronics and Integration}{3}{4} \\
+% \ganttbar{Control System Development}{5}{6} \\
+% \ganttbar{VR Game Development}{6}{7} \\
+% \ganttbar{System Integration}{8}{9} \\
+% \ganttbar{Validation and Testing}{9}{10} \\
+% \ganttbar{Final Adjustments and Documentation}{11}{12}
+
+% \end{ganttchart}
+% \caption{Gantt Chart of Project Tasks for PRANK}
+% \label{fig:gantt}
+% \end{figure}
+
+
+\begin{ganttchart}[
+    hgrid,
+    vgrid,
+    bar height=0.6,
+    bar label font=\small\bfseries,
+    x unit=0.8cm,
+    y unit chart=0.9cm,
+    milestone label font=\small\bfseries,
+    milestone height=0.3,
+    bar/.append style={fill=red!50}
+     ]{1}{12}
+\gantttitle{Project Timeline for PRANK}{12} \\
+\gantttitlelist{1,...,12}{1} \\
+\ganttbar{Planning and Research}{1}{2} \\
+\ganttbar{Mechanical Design}{2}{3} \\
+\ganttbar{Electronics and Integration}{3}{4} \\
+\ganttbar{Control System Development}{5}{6} \\
+\ganttbar{VR Game Development}{6}{7} \\
+\ganttbar{System Integration}{8}{9} \\
+\ganttbar{Validation and Testing}{9}{10} \\
+\ganttbar{Documentation}{1}{12}
+% \ganttlinkedbar{Task 2}{3}{7} \ganttnewline
+% \ganttmilestone{Milestone}{7} \ganttnewline
+% \ganttbar{Final Task}{8}{12}
+% \ganttlink{elem2}{elem3}
+% \ganttlink{elem3}{elem4}
+\end{ganttchart}

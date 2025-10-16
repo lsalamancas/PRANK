@@ -1,0 +1,126 @@
+\documentclass[11pt, twoside, hidelinks, letterpaper,openany]{book} 
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[margin = 3cm, vmargin=2.5cm,includefoot]{geometry} 
+\usepackage{wrapfig}
+\usepackage{pgfgantt} % grant diagrams
+\usepackage{float} %images
+\usepackage{amsmath} %Greek letters 
+\usepackage{siunitx} %scientific notation
+\usepackage{enumitem} %descriptive list
+\usepackage{caption} % for figure
+\usepackage{subcaption}%for sub figure
+\usepackage{titlesec} %title style
+\usepackage{fancyhdr} % Page style
+\usepackage{lipsum} %random \lipsum text
+\usepackage{ragged2e} %Alignment and  justification
+\usepackage{pdflscape} %sheet orientation
+\usepackage{booktabs, multicol, multirow, longtable, colortbl, xcolor, tabularray} %Tables
+\definecolor{Gray}{gray}{0.85}
+\usepackage[table]{xcolor}
+\newcolumntype{s}{>{\columncolor{Gray}} p{0.1\textwidth}}
+\usepackage{array}
+\usepackage{csquotes} 
+\usepackage{url}
+\usepackage[bottom]{footmisc} %Images bellow footer
+\usepackage{pdfpages}
+\usepackage{attachfile2}
+
+%-----------------------------------------------------------------------
+% images
+\usepackage{graphicx}
+%\usepackage{subfig}
+\usepackage{epstopdf}
+\usepackage[lighttt]{lmodern}
+\usepackage{listings}
+\DeclareGraphicsExtensions{.svg, .png,.pdf, } %image search order
+
+%-----------------------------------------------------------------------
+% Page format
+\pagestyle{fancy} %style of Page
+\fancyhf{} %clean header and footer
+\cfoot{\thepage} %footer at right
+\renewcommand{\headrulewidth}{0pt} 
+\renewcommand{\footrulewidth}{0pt} 
+
+%-----------------------------------------------------------------------
+%Bibliography
+\usepackage[
+    backend=biber,
+    block=space,
+    dashed=false,
+    uniquelist=false,
+    mincitenames=1,
+    maxcitenames=3,
+    style=ieee]{biblatex} 
+    %https://da.sharelatex.com/learn/Biblatex_bibliography_styles
+\addbibresource{references.bib} %bib file
+\NewBibliographyString{teststring}
+\NewBibliographyString{andothers}
+\DefineBibliographyStrings{english}{
+  teststring = {Test string},
+  andothers = {et\addabbrvspace al\adddot}
+}
+\usepackage{hyperref} 
+
+\AtEveryBibitem{
+\ifentrytype{misc}
+    {}
+    {\clearfield{url}} 
+}
+% ----------------------------------------------------------------------
+
+\graphicspath{{images/}}
+
+
+\titleformat{\section}
+{\centering\bfseries}  
+{\thesection}  
+{1em} 
+{}  
+
+\titleformat{\subsubsection}
+{\bfseries}
+{\thesubsubsection}
+{1em}
+{}
+
+\setcounter{secnumdepth}{3} %Sections depth
+\setcounter{tocdepth}{3} %Sections depth in table of contents
+
+
+
+%-----------------------------------------------------------------------
+
+
+\begin{document}
+
+\frontmatter
+\include{titlepage}
+\setcounter{page}{1}
+\thispagestyle{fancy}
+
+\include{Chapters/proposal_sumary}
+\include{Chapters/abstrac}
+\tableofcontents
+\listoffigures
+\listoftables
+\addtocontents{toc}{\protect\thispagestyle{empty}} 
+\let\cleardoublepage\clearpage %Delete footer after index
+
+
+\mainmatter
+\include{Chapters/problem_statement}
+\include{Chapters/project_justification}
+\include{Chapters/state_art}
+\include{Chapters/objectives}
+\include{Chapters/delimitation_scope}
+\include{Chapters/hypothesis}
+\include{Chapters/theorical_framework}
+\include{Chapters/methods}
+\include{Chapters/schedule}
+\include{Chapters/project_resources}
+\printbibliography
+\include{Chapters/annexes}
+\end{document}

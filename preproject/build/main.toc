@@ -1,0 +1,17 @@
+\babel@toc {english}{}\relax 
+\contentsline {section}{\hbox to\@tempdima {\hfil }Acknowledgments}{i}{section*.2}%
+\contentsline {section}{\hbox to\@tempdima {\hfil }Abstract}{ii}{section*.5}%
+\thispagestyle {empty}
+\contentsline {chapter}{\numberline {1}PROJECT JUSTIFICATION}{1}{chapter.1}%
+\contentsline {chapter}{\numberline {2}STATE OF ART}{2}{chapter.2}%
+\contentsline {chapter}{\numberline {3}OBJECTIVES}{3}{chapter.3}%
+\contentsline {section}{\numberline {3.1}General}{3}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Specifics}{3}{section.3.2}%
+\contentsline {chapter}{\numberline {4}DELIMITATION AND SCOPE}{4}{chapter.4}%
+\contentsline {chapter}{\numberline {5}HYPOTHESIS}{5}{chapter.5}%
+\contentsline {chapter}{\numberline {6}THEROTICAL FRAMEWORK}{6}{chapter.6}%
+\contentsline {section}{\numberline {6.1}theoretical framework}{6}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Human gait}{6}{section.6.2}%
+\contentsline {chapter}{\numberline {7}MATERIALS AND METHODS}{7}{chapter.7}%
+\contentsline {chapter}{\numberline {8}SCHEDULE}{8}{chapter.8}%
+\contentsline {chapter}{\numberline {9}PROJECT RESOURCES}{9}{chapter.9}%

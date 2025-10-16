@@ -1,0 +1,24 @@
+{
+  "latex-workshop.latex.tools": [
+    {
+      "name": "latexmk (build)",
+      "command": "latexmk",
+      "args": [
+        "-pdf",
+        "-outdir=build",
+        "%DOC%"
+      ]
+    }
+  ],
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "latexmk build",
+      "tools": ["latexmk (build)"]
+    }
+  ],
+  "latex-workshop.latex.autoBuild.run": "onFileChange",
+  "latex-workshop.latex.clean.fileTypes": [
+    "*.aux", "*.bbl", "*.blg", "*.fls", "*.log", "*.fdb_latexmk", "*.toc", "*.out", "*.bcf", "*.run.xml"
+  ],
+  "latex-workshop.view.pdf.viewer": "tab"
+}
