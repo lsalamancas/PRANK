@@ -1,0 +1,494 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global/global}
+    \entry{Dong2021}{article}{}{}
+      \name{author}{7}{}{%
+        {{hash=487dac77e8883ad0f259fcddabc98293}{%
+           family={Dong},
+           familyi={D\bibinitperiod},
+           given={Mingjie},
+           giveni={M\bibinitperiod}}}%
+        {{hash=86bc8365ba527136464afb5496c8c143}{%
+           family={Zhou},
+           familyi={Z\bibinitperiod},
+           given={Yu},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=0548d797e1c40a48d6df8f5f6dc57c57}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Jianfeng},
+           giveni={J\bibinitperiod}}}%
+        {{hash=6a6bf90fa3c637cb7463cedcc5aa3b69}{%
+           family={Rong},
+           familyi={R\bibinitperiod},
+           given={Xi},
+           giveni={X\bibinitperiod}}}%
+        {{hash=f78d5966d41a9377afa41217eb78930a}{%
+           family={Fan},
+           familyi={F\bibinitperiod},
+           given={Wenpei},
+           giveni={W\bibinitperiod}}}%
+        {{hash=098ee824cb71d76c697a6246701eb72e}{%
+           family={Zhou},
+           familyi={Z\bibinitperiod},
+           given={Xiaodong},
+           giveni={X\bibinitperiod}}}%
+        {{hash=e6eb06735425229646d47860f49b44d4}{%
+           family={Kong},
+           familyi={K\bibinitperiod},
+           given={Yuan},
+           giveni={Y\bibinitperiod}}}%
+      }
+      \strng{namehash}{7c0d3c24ba0973645b6f67236af99666}
+      \strng{fullhash}{b08833879c71ed3298b790f31e7a687e}
+      \strng{fullhashraw}{b08833879c71ed3298b790f31e7a687e}
+      \strng{bibnamehash}{7c0d3c24ba0973645b6f67236af99666}
+      \strng{authorbibnamehash}{7c0d3c24ba0973645b6f67236af99666}
+      \strng{authornamehash}{7c0d3c24ba0973645b6f67236af99666}
+      \strng{authorfullhash}{b08833879c71ed3298b790f31e7a687e}
+      \strng{authorfullhashraw}{b08833879c71ed3298b790f31e7a687e}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The ankle joint complex (AJC) is of fundamental importance for balance, support, and propulsion. However, it is particularly susceptible to musculoskeletal and neurological injuries, especially neurological injuries such as drop foot following stroke. An important factor in ankle dysfunction is damage to the central nervous system (CNS). Correspondingly, the fundamental goal of rehabilitation training is to stimulate the reorganization and compensation of the CNS, and to promote the recovery of the motor system’s motor perception function. Therefore, an increasing number of ankle rehabilitation robots have been developed to provide long-term accurate and uniform rehabilitation training of the AJC, among which the parallel ankle rehabilitation robot (PARR) is the most studied. The aim of this study is to provide a systematic review of the state of the art in PARR technology, with consideration of the mechanism configurations, actuator types with different trajectory tracking control techniques, and rehabilitation training methods, thus facilitating the development of new and improved PARRs as a next step towards obtaining clinical proof of their rehabilitation benefits.}
+      \field{issn}{1743-0003}
+      \field{issue}{1}
+      \field{journaltitle}{Journal of NeuroEngineering and Rehabilitation}
+      \field{title}{State of the art in parallel ankle rehabilitation robot: a systematic review}
+      \field{volume}{18}
+      \field{year}{2021}
+      \field{pages}{52}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1186/s12984-021-00845-z
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1186/s12984-021-00845-z
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1186/s12984-021-00845-z
+      \endverb
+    \endentry
+    \entry{Jamwal2009}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=1fbac556708dca42620d568f077a0c64}{%
+           family={Jamwal},
+           familyi={J\bibinitperiod},
+           given={Prashant\bibnamedelima Kumar},
+           giveni={P\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+        {{hash=27b86f137fe422f95a94d8916a67d53a}{%
+           family={Xie},
+           familyi={X\bibinitperiod},
+           given={Shengquan},
+           giveni={S\bibinitperiod}}}%
+        {{hash=35769449857ac365aa9d4c08c6b96ed5}{%
+           family={Aw},
+           familyi={A\bibinitperiod},
+           given={Kean\bibnamedelima C},
+           giveni={K\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \strng{namehash}{1a985e1f4b671131c8cea75f12f3abe1}
+      \strng{fullhash}{1a985e1f4b671131c8cea75f12f3abe1}
+      \strng{fullhashraw}{1a985e1f4b671131c8cea75f12f3abe1}
+      \strng{bibnamehash}{1a985e1f4b671131c8cea75f12f3abe1}
+      \strng{authorbibnamehash}{1a985e1f4b671131c8cea75f12f3abe1}
+      \strng{authornamehash}{1a985e1f4b671131c8cea75f12f3abe1}
+      \strng{authorfullhash}{1a985e1f4b671131c8cea75f12f3abe1}
+      \strng{authorfullhashraw}{1a985e1f4b671131c8cea75f12f3abe1}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Rehabilitation robotics is an evolving area of active research and recently novel mechanisms have been proposed to reinstate complex human movements. Parallel robots are of particular interest to researchers since they are rigid and can provide enough load capacity for human joint movements. This paper proposes a soft parallel robot (SPR) for ankle joint rehabilitation. Kinematic workspace analysis is carried out and the singularity criterion of the SPR’s Jacobian matrix is used to define the feasible workspace. A global conditioning number (GCN) is defined using the Jacobian matrix as a performance index for the evaluation of the robot design. An optimization problem is formulated to minimize the GCN using modified genetic algorithm (GA). Results from simple GA and modified GA are compared and discussed. As a result of the optimization, an optimal robot design is obtained which has a near unity GCN with almost uniform distribution in the entire feasible workspace of the robot.}
+      \field{issn}{0921-8890}
+      \field{issue}{10}
+      \field{journaltitle}{Robotics and Autonomous Systems}
+      \field{title}{Kinematic design optimization of a parallel ankle rehabilitation robot using modified genetic algorithm}
+      \field{volume}{57}
+      \field{year}{2009}
+      \field{pages}{1018\bibrangedash 1027}
+      \range{pages}{10}
+      \verb{doi}
+      \verb https://doi.org/10.1016/j.robot.2009.07.017
+      \endverb
+      \verb{urlraw}
+      \verb https://www.sciencedirect.com/science/article/pii/S0921889009001080
+      \endverb
+      \verb{url}
+      \verb https://www.sciencedirect.com/science/article/pii/S0921889009001080
+      \endverb
+      \keyw{Ankle rehabilitation,Design optimization,Modified genetic algorithm,Soft parallel robot,Workspace analysis}
+    \endentry
+    \entry{Jamwal2015}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=0ad233f8743b78aa1d85a9d310248008}{%
+           family={Jamwal},
+           familyi={J\bibinitperiod},
+           given={P\bibnamedelima K},
+           giveni={P\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+        {{hash=4c4036fbaaafc05c3159273d5f0a30cc}{%
+           family={Hussain},
+           familyi={H\bibinitperiod},
+           given={S},
+           giveni={S\bibinitperiod}}}%
+        {{hash=6751504981d02e2b50cfdf9f0be3c3d4}{%
+           family={Xie},
+           familyi={X\bibinitperiod},
+           given={S\bibnamedelima Q},
+           giveni={S\bibinitperiod\bibinitdelim Q\bibinitperiod}}}%
+      }
+      \strng{namehash}{dd0203c2e0727dc3b80be3b8ee0a6c96}
+      \strng{fullhash}{dd0203c2e0727dc3b80be3b8ee0a6c96}
+      \strng{fullhashraw}{dd0203c2e0727dc3b80be3b8ee0a6c96}
+      \strng{bibnamehash}{dd0203c2e0727dc3b80be3b8ee0a6c96}
+      \strng{authorbibnamehash}{dd0203c2e0727dc3b80be3b8ee0a6c96}
+      \strng{authornamehash}{dd0203c2e0727dc3b80be3b8ee0a6c96}
+      \strng{authorfullhash}{dd0203c2e0727dc3b80be3b8ee0a6c96}
+      \strng{authorfullhashraw}{dd0203c2e0727dc3b80be3b8ee0a6c96}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1558-3783}
+      \field{issue}{4}
+      \field{journaltitle}{IEEE Transactions on Automation Science and Engineering}
+      \field{title}{Three-Stage Design Analysis and Multicriteria Optimization of a Parallel Ankle Rehabilitation Robot Using Genetic Algorithm}
+      \field{volume}{12}
+      \field{year}{2015}
+      \field{pages}{1433\bibrangedash 1446}
+      \range{pages}{14}
+      \verb{doi}
+      \verb 10.1109/TASE.2014.2331241
+      \endverb
+    \endentry
+    \entry{Jamwal2016}{article}{}{}
+      \name{author}{4}{}{%
+        {{hash=0ad233f8743b78aa1d85a9d310248008}{%
+           family={Jamwal},
+           familyi={J\bibinitperiod},
+           given={P\bibnamedelima K},
+           giveni={P\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+        {{hash=4c4036fbaaafc05c3159273d5f0a30cc}{%
+           family={Hussain},
+           familyi={H\bibinitperiod},
+           given={S},
+           giveni={S\bibinitperiod}}}%
+        {{hash=e887a83279a7211e7f8ef91bc2730dba}{%
+           family={Ghayesh},
+           familyi={G\bibinitperiod},
+           given={M\bibnamedelima H},
+           giveni={M\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{hash=84af174202dab4ce10a59dfdc95139cb}{%
+           family={Rogozina},
+           familyi={R\bibinitperiod},
+           given={S\bibnamedelima V},
+           giveni={S\bibinitperiod\bibinitdelim V\bibinitperiod}}}%
+      }
+      \strng{namehash}{217c4285490b1767bed36afbc09df5da}
+      \strng{fullhash}{ad7142ef3bf12629f290e4ee239bbc90}
+      \strng{fullhashraw}{ad7142ef3bf12629f290e4ee239bbc90}
+      \strng{bibnamehash}{ad7142ef3bf12629f290e4ee239bbc90}
+      \strng{authorbibnamehash}{ad7142ef3bf12629f290e4ee239bbc90}
+      \strng{authornamehash}{217c4285490b1767bed36afbc09df5da}
+      \strng{authorfullhash}{ad7142ef3bf12629f290e4ee239bbc90}
+      \strng{authorfullhashraw}{ad7142ef3bf12629f290e4ee239bbc90}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1557-9948}
+      \field{issue}{6}
+      \field{journaltitle}{IEEE Transactions on Industrial Electronics}
+      \field{title}{Impedance Control of an Intrinsically Compliant Parallel Ankle Rehabilitation Robot}
+      \field{volume}{63}
+      \field{year}{2016}
+      \field{pages}{3638\bibrangedash 3647}
+      \range{pages}{10}
+      \verb{doi}
+      \verb 10.1109/TIE.2016.2521600
+      \endverb
+    \endentry
+    \entry{Li2020}{article}{}{}
+      \name{author}{4}{}{%
+        {{hash=0548d797e1c40a48d6df8f5f6dc57c57}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Jianfeng},
+           giveni={J\bibinitperiod}}}%
+        {{hash=f78d5966d41a9377afa41217eb78930a}{%
+           family={Fan},
+           familyi={F\bibinitperiod},
+           given={Wenpei},
+           giveni={W\bibinitperiod}}}%
+        {{hash=487dac77e8883ad0f259fcddabc98293}{%
+           family={Dong},
+           familyi={D\bibinitperiod},
+           given={Mingjie},
+           giveni={M\bibinitperiod}}}%
+        {{hash=6a6bf90fa3c637cb7463cedcc5aa3b69}{%
+           family={Rong},
+           familyi={R\bibinitperiod},
+           given={Xi},
+           giveni={X\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Emerald Publishing Limited}%
+      }
+      \strng{namehash}{22e424b75d25336e15a82e08634d1e7f}
+      \strng{fullhash}{e0e126f85fc529f1326c6f4adad3a214}
+      \strng{fullhashraw}{e0e126f85fc529f1326c6f4adad3a214}
+      \strng{bibnamehash}{e0e126f85fc529f1326c6f4adad3a214}
+      \strng{authorbibnamehash}{e0e126f85fc529f1326c6f4adad3a214}
+      \strng{authornamehash}{22e424b75d25336e15a82e08634d1e7f}
+      \strng{authorfullhash}{e0e126f85fc529f1326c6f4adad3a214}
+      \strng{authorfullhashraw}{e0e126f85fc529f1326c6f4adad3a214}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Purpose The purpose of this paper is to implement a passive compliance training strategy for our newly designed 2-UPS/RRR parallel ankle rehabilitation robot (PARR) to enhance its rehabilitation training safety. Design/methodology/approach First, a kinematic analysis of the PARR is introduced, and the mechanism ensures that the rotation centre of the ankle joint complex (AJC) coincides with robot’s rotation centre. Then, a passive compliance training strategy based on admittance control is described in detail and is implemented on our PARR. Findings Experiments involving healthy subjects were conducted, and the performance of trajectory tracking was quantitatively evaluated, with the results showing excellent compliance and trajectory tracking accuracy, which can ensure that a secondary injury to the AJC during passive rehabilitation training is avoided. The influence of different admittance parameters was also simulated and analysed, which can contribute to the development of adaptive parameter adjustment research. Originality/value The paper can be used to improve the effectiveness of ankle rehabilitation, to alleviate manual therapy problems in terms of labour intensiveness, precision and subjectivity and to ensure safety and comfort during rehabilitation sessions.}
+      \field{issn}{0143-991X}
+      \field{issue}{5}
+      \field{journaltitle}{Industrial Robot: the international journal of robotics research and application}
+      \field{month}{1}
+      \field{title}{Implementation of passive compliance training on a parallel ankle rehabilitation robot to enhance safety}
+      \field{volume}{47}
+      \field{year}{2020}
+      \field{pages}{747\bibrangedash 755}
+      \range{pages}{9}
+      \verb{doi}
+      \verb 10.1108/IR-02-2020-0040
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1108/IR-02-2020-0040
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1108/IR-02-2020-0040
+      \endverb
+    \endentry
+    \entry{Zhang2018}{article}{}{}
+      \name{author}{7}{}{%
+        {{hash=922b74338e14a4c81b03a7487c18522b}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={M},
+           giveni={M\bibinitperiod}}}%
+        {{hash=6751504981d02e2b50cfdf9f0be3c3d4}{%
+           family={Xie},
+           familyi={X\bibinitperiod},
+           given={S\bibnamedelima Q},
+           giveni={S\bibinitperiod\bibinitdelim Q\bibinitperiod}}}%
+        {{hash=c9a3728dcc2397d1bab78a791b51779b}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={X},
+           giveni={X\bibinitperiod}}}%
+        {{hash=8628895f6e2475e1c8162e02b2e0857e}{%
+           family={Zhu},
+           familyi={Z\bibinitperiod},
+           given={G},
+           giveni={G\bibinitperiod}}}%
+        {{hash=c39ed55f2ae5d55df831c48cd7fc91a1}{%
+           family={Meng},
+           familyi={M\bibinitperiod},
+           given={W},
+           giveni={W\bibinitperiod}}}%
+        {{hash=bf1afb45a50313a87b61c9f7a08f8989}{%
+           family={Huang},
+           familyi={H\bibinitperiod},
+           given={X},
+           giveni={X\bibinitperiod}}}%
+        {{hash=2340386d2b2d9ff70abbbee6a2190db9}{%
+           family={Veale},
+           familyi={V\bibinitperiod},
+           given={A\bibnamedelima J},
+           giveni={A\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \strng{namehash}{0ac61aa61d59b1cc2166a7777538626d}
+      \strng{fullhash}{e01ea80fa053076300964809b82ea81f}
+      \strng{fullhashraw}{e01ea80fa053076300964809b82ea81f}
+      \strng{bibnamehash}{0ac61aa61d59b1cc2166a7777538626d}
+      \strng{authorbibnamehash}{0ac61aa61d59b1cc2166a7777538626d}
+      \strng{authornamehash}{0ac61aa61d59b1cc2166a7777538626d}
+      \strng{authorfullhash}{e01ea80fa053076300964809b82ea81f}
+      \strng{authorfullhashraw}{e01ea80fa053076300964809b82ea81f}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1557-9948}
+      \field{issue}{2}
+      \field{journaltitle}{IEEE Transactions on Industrial Electronics}
+      \field{title}{Adaptive Patient-Cooperative Control of a Compliant Ankle Rehabilitation Robot (CARR) With Enhanced Training Safety}
+      \field{volume}{65}
+      \field{year}{2018}
+      \field{pages}{1398\bibrangedash 1407}
+      \range{pages}{10}
+      \verb{doi}
+      \verb 10.1109/TIE.2017.2733425
+      \endverb
+    \endentry
+    \entry{Wang2015}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=e5325e63ebfcc7e55e6f93209420de16}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Congzhe},
+           giveni={C\bibinitperiod}}}%
+        {{hash=c42123f5f79abec3bd1fad4a36764a9b}{%
+           family={Fang},
+           familyi={F\bibinitperiod},
+           given={Yuefa},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=3a9d67501ea85d43b265fde76fbe089a}{%
+           family={Guo},
+           familyi={G\bibinitperiod},
+           given={Sheng},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{caa893ad5ea1aa7be9965090ef225d5c}
+      \strng{fullhash}{caa893ad5ea1aa7be9965090ef225d5c}
+      \strng{fullhashraw}{caa893ad5ea1aa7be9965090ef225d5c}
+      \strng{bibnamehash}{caa893ad5ea1aa7be9965090ef225d5c}
+      \strng{authorbibnamehash}{caa893ad5ea1aa7be9965090ef225d5c}
+      \strng{authornamehash}{caa893ad5ea1aa7be9965090ef225d5c}
+      \strng{authorfullhash}{caa893ad5ea1aa7be9965090ef225d5c}
+      \strng{authorfullhashraw}{caa893ad5ea1aa7be9965090ef225d5c}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Dimensional synthesis is one of the most difficult issues in the field of parallel robots with actuation redundancy. To deal with the optimal design of a redundantly actuated parallel robot used for ankle rehabilitation, a methodology of dimensional synthesis based on multi-objective optimization is presented. First, the dimensional synthesis of the redundant parallel robot is formulated as a nonlinear constrained multi-objective optimization problem. Then four objective functions, separately reflecting occupied space, input/output transmission and torque performances, and multi-criteria constraints, such as dimension, interference and kinematics, are defined. In consideration of the passive exercise of plantar/dorsiflexion requiring large output moment, a torque index is proposed. To cope with the actuation redundancy of the parallel robot, a new output transmission index is defined as well. The multi-objective optimization problem is solved by using a modified Differential Evolution(DE) algorithm, which is characterized by new selection and mutation strategies. Meanwhile, a special penalty method is presented to tackle the multi-criteria constraints. Finally, numerical experiments for different optimization algorithms are implemented. The computation results show that the proposed indices of output transmission and torque, and constraint handling are effective for the redundant parallel robot; the modified DE algorithm is superior to the other tested algorithms, in terms of the ability of global search and the number of non-dominated solutions. The proposed methodology of multi-objective optimization can be also applied to the dimensional synthesis of other redundantly actuated parallel robots only with rotational movements.}
+      \field{issn}{2192-8258}
+      \field{issue}{4}
+      \field{journaltitle}{Chinese Journal of Mechanical Engineering}
+      \field{title}{Multi-objective optimization of a parallel ankle rehabilitation robot using modified differential evolution algorithm}
+      \field{volume}{28}
+      \field{year}{2015}
+      \field{pages}{702\bibrangedash 715}
+      \range{pages}{14}
+      \verb{doi}
+      \verb 10.3901/CJME.2015.0416.062
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.3901/CJME.2015.0416.062
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.3901/CJME.2015.0416.062
+      \endverb
+    \endentry
+    \entry{Tsoi2009}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=cee5928ad6f549e151dcd794160b8e50}{%
+           family={Tsoi},
+           familyi={T\bibinitperiod},
+           given={Y\bibnamedelima H},
+           giveni={Y\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{hash=6751504981d02e2b50cfdf9f0be3c3d4}{%
+           family={Xie},
+           familyi={X\bibinitperiod},
+           given={S\bibnamedelima Q},
+           giveni={S\bibinitperiod\bibinitdelim Q\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Inderscience Publishers}%
+      }
+      \strng{namehash}{49ba35c68fb43fdf733ee0eaf6d1f872}
+      \strng{fullhash}{49ba35c68fb43fdf733ee0eaf6d1f872}
+      \strng{fullhashraw}{49ba35c68fb43fdf733ee0eaf6d1f872}
+      \strng{bibnamehash}{49ba35c68fb43fdf733ee0eaf6d1f872}
+      \strng{authorbibnamehash}{49ba35c68fb43fdf733ee0eaf6d1f872}
+      \strng{authornamehash}{49ba35c68fb43fdf733ee0eaf6d1f872}
+      \strng{authorfullhash}{49ba35c68fb43fdf733ee0eaf6d1f872}
+      \strng{authorfullhashraw}{49ba35c68fb43fdf733ee0eaf6d1f872}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The use of robots in rehabilitation, particularly for physical therapy has the potential to bring about various benefits including reduction of physical workload of physiotherapists and improved repeatability. A three degree of freedom parallel robot is proposed in this paper to accommodate range of motion (ROM) and muscle strengthening exercises for ankle rehabilitation. Singularity analysis of the design revealed that a redundantly actuated robot is required to avoid singularity in the workspace. Kinematic parameters of the robot were selected so that the available workspace could closely match the available ankle ROM. An impedance control scheme has been utilised to allow control of both force and motion to ensure safety of the patient. The redundant actuation degree of freedom is exploited to regulate the vertical reaction force at the ankle.}
+      \field{issn}{1740-8865}
+      \field{issue}{1-4}
+      \field{journaltitle}{International Journal of Intelligent Systems Technologies and Applications}
+      \field{month}{12}
+      \field{note}{doi: 10.1504/IJISTA.2010.030193}
+      \field{title}{Design and control of a parallel robot for ankle rehabilitation}
+      \field{volume}{8}
+      \field{year}{2009}
+      \field{pages}{100\bibrangedash 113}
+      \range{pages}{14}
+      \verb{doi}
+      \verb 10.1504/IJISTA.2010.030193
+      \endverb
+      \verb{urlraw}
+      \verb https://www.inderscienceonline.com/doi/abs/10.1504/IJISTA.2010.030193
+      \endverb
+      \verb{url}
+      \verb https://www.inderscienceonline.com/doi/abs/10.1504/IJISTA.2010.030193
+      \endverb
+    \endentry
+    \entry{ShahNazar2022}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=6d9414d919851d1abb196d8a657c405f}{%
+           family={Nazar},
+           familyi={N\bibinitperiod},
+           given={Peiman\bibnamedelima Shah},
+           giveni={P\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=21957821502e80e19ef6ce61fa67596d}{%
+           family={Pott},
+           familyi={P\bibinitperiod},
+           given={Peter\bibnamedelima P},
+           giveni={P\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+      }
+      \strng{namehash}{3577462400490e79dad5522877b7c054}
+      \strng{fullhash}{3577462400490e79dad5522877b7c054}
+      \strng{fullhashraw}{3577462400490e79dad5522877b7c054}
+      \strng{bibnamehash}{3577462400490e79dad5522877b7c054}
+      \strng{authorbibnamehash}{3577462400490e79dad5522877b7c054}
+      \strng{authornamehash}{3577462400490e79dad5522877b7c054}
+      \strng{authorfullhash}{3577462400490e79dad5522877b7c054}
+      \strng{authorfullhashraw}{3577462400490e79dad5522877b7c054}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issue}{2}
+      \field{title}{Ankle Rehabilitation Robotic Systems for domestic use – a systematic review}
+      \field{volume}{8}
+      \field{year}{2022}
+      \field{pages}{65\bibrangedash 68}
+      \range{pages}{4}
+      \verb{doi}
+      \verb doi:10.1515/cdbme-2022-1018
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1515/cdbme-2022-1018
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1515/cdbme-2022-1018
+      \endverb
+    \endentry
+  \enddatalist
+  \missing{Baker2013}
+  \missing{Medved2021}
+\endrefsection
+\endinput
+
