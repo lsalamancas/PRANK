@@ -1,4 +1,19 @@
-PRANK/preproject/build/*
+*.aux
+*.log
+*.toc
+*.out
+*.lof
+*.lot
+*.bbl
+*.bcf
+*.blg
+*.run.xml
+*.fdb_latexmk
+*.fls
+*.atfi
+*SAVE-ERROR
+~$*.xlsx
+PRANK/preproject/build/**
 !PRANK/preproject/build/
 !PRANK/preproject/build/main.pdf
 
