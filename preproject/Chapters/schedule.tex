@@ -3,41 +3,28 @@
 \chapter{SCHEDULE}\label{schedule}
 \graphicspath{{images/}}
 
-% \begin{figure}[H]
-% \centering
-% \begin{ganttchart}[
-%     hgrid,
-%     vgrid,
-%     time slot format=is month,
-%     bar height=0.6,
-%     bar label font=\small\bfseries,
-%     x unit=0.65cm,
-%     y unit chart=0.9cm,
-%     milestone label font=\small\bfseries,
-%     milestone height=0.3
-% ]{1}{12} % <-- Aquí defines el rango de meses directamente
 
-% % Títulos
-% \gantttitle{Project Timeline for PRANK (12 Months)}{12} \\
-% \gantttitlelist{1,...,12}{1} \\
+The development of the PRANK ankle rehabilitation robot is structured into a series of well-defined phases, each with specific objectives and deliverables. The project schedule was designed to ensure logical progression, allow for parallel development where feasible, and provide sufficient time for integration and testing.
 
-% % Tareas
-% \ganttbar{Planning and Research}{1}{1} \\
-% \ganttbar{Mechanical Design}{2}{3} \\
-% \ganttbar{Electronics and Integration}{3}{4} \\
-% \ganttbar{Control System Development}{5}{6} \\
-% \ganttbar{VR Game Development}{6}{7} \\
-% \ganttbar{System Integration}{8}{9} \\
-% \ganttbar{Validation and Testing}{9}{10} \\
-% \ganttbar{Final Adjustments and Documentation}{11}{12}
+The timeline spans 12 months and is illustrated in the Gantt chart below. The schedule includes the following key phases:
 
-% \end{ganttchart}
-% \caption{Gantt Chart of Project Tasks for PRANK}
-% \label{fig:gantt}
-% \end{figure}
+\begin{itemize}
+    \item \textbf{Planning and Research (Months 1--2):} Initial exploration of rehabilitation needs, literature review, and definition of system requirements.
+    \item \textbf{Mechanical Design (Months 2--3):} CAD modeling, selection of actuators and sensors, and preparation for prototyping.
+    \item \textbf{Electronics and Integration (Months 3--4):} Design and assembly of the embedded system, including motor drivers, signal conditioning, and sensor integration.
+    \item \textbf{Control System Development (Months 5--6):} Implementation of nonlinear control strategies tailored to ankle biomechanics, with simulation and hardware-in-the-loop testing.
+    \item \textbf{VR Game Development (Months 3--7):} In parallel with hardware development, a virtual reality game is designed to provide engaging rehabilitation tasks and real-time feedback.
+    \item \textbf{System Integration (Months 8--9):} Merging of mechanical, electronic, and software components into a unified prototype.
+    \item \textbf{Validation and Testing (Months 9--10):} Functional testing, user trials, and performance evaluation.
+    \item \textbf{Documentation (Months 1--12):} Continuous documentation of design decisions, test results, and final thesis document.
+\end{itemize}
 
+Milestones such as \textit{Prototype Ready} are strategically placed to mark critical transitions and ensure alignment between subsystems. The modular structure of the schedule allows for iterative refinement and parallel task execution, particularly in the software and control domains.
 
-\begin{ganttchart}[
+This schedule serves as both a planning tool and a progress-tracking mechanism, ensuring that the project remains on track and aligned with its rehabilitation goals.
+
+\begin{figure}
+    \begin{ganttchart}[
     hgrid,
     vgrid,
     bar height=0.6,
@@ -47,20 +34,35 @@
     milestone label font=\small\bfseries,
     milestone height=0.3,
     bar/.append style={fill=red!50}
-     ]{1}{12}
-\gantttitle{Project Timeline for PRANK}{12} \\
-\gantttitlelist{1,...,12}{1} \\
-\ganttbar{Planning and Research}{1}{2} \\
-\ganttbar{Mechanical Design}{2}{3} \\
-\ganttbar{Electronics and Integration}{3}{4} \\
-\ganttbar{Control System Development}{5}{6} \\
-\ganttbar{VR Game Development}{6}{7} \\
-\ganttbar{System Integration}{8}{9} \\
-\ganttbar{Validation and Testing}{9}{10} \\
-\ganttbar{Documentation}{1}{12}
-% \ganttlinkedbar{Task 2}{3}{7} \ganttnewline
-% \ganttmilestone{Milestone}{7} \ganttnewline
-% \ganttbar{Final Task}{8}{12}
-% \ganttlink{elem2}{elem3}
-% \ganttlink{elem3}{elem4}
-\end{ganttchart}
+    ]{1}{12}
+    \gantttitle{Project Timeline for PRANK}{12} \\
+    \gantttitlelist{1,...,12}{1} \\
+    
+
+    \ganttgroup{Design Phase}{1}{4} \\
+    \ganttbar[name=plan]{Planning and Research}{1}{2} \\
+    \ganttbar[name=mech]{Mechanical Design}{2}{3} \\
+    \ganttbar[name=elec]{Electronics and Integration}{3}{4} \\
+
+    \ganttgroup{Development Phase}{5}{9} \\
+    \ganttbar[name=ctrl]{Control System Development}{5}{6} \\
+    \ganttbar[name=vr]{VR Game Development}{3}{7} \\
+    \ganttbar[name=integ]{System Integration}{8}{9} \\
+
+    \ganttbar[name=test]{Validation and Testing}{9}{10} \\
+    \ganttmilestone[name=proto]{Prototype Ready}{10} \\
+    \ganttbar{Documentation}{1}{12} \\
+
+    % Dependencias
+    \ganttlink{plan}{mech}
+    \ganttlink{mech}{elec}
+    \ganttlink{elec}{ctrl}
+    \ganttlink{ctrl}{integ}
+    \ganttlink{vr}{integ}
+    \ganttlink{integ}{test}
+    \ganttlink{test}{proto}
+    \end{ganttchart}
+    \caption{Gantt chart showing the 12-month schedule for the PRANK ankle rehabilitation robot project.}
+    \label{fig:gantt-prank}
+    
+\end{figure}
