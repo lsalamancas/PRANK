@@ -1,83 +1,37 @@
 \chapter{STATE OF ART}\label{state_art}
 \graphicspath{{images/}}
 
-% Ankle rehabilitation is essential for restoring mobility and balance in patients affected by neurological or musculoskeletal disorders, such as stroke, cerebral palsy, or foot drop. Robotic systems have emerged as powerful tools to deliver consistent, adaptive, and measurable therapy. Among these, \textbf{parallel robots} offer unique advantages in terms of stiffness, load capacity, and multi-degree-of-freedom control, making them particularly suitable for ankle rehabilitation.
-
-% \section{Evolution and Classification}
-
-% Dong et al \cite{Dong2021} conducted a comprehensive review of parallel ankle rehabilitation robots (PARRs), classifying them by mechanical architecture, actuation methods, and control strategies. Designs such as 2-UPS/RRR and 3-RRS mechanisms have been explored for their ability to replicate complex ankle movements including dorsiflexion, plantarflexion, inversion, and eversion.
-
-% Jamwal et al.~\cite{Jamwal2009,Jamwal2015,Jamwal2016} contributed significantly to the design optimization of PARRs using genetic algorithms and impedance control frameworks. Their work emphasizes workspace analysis, singularity avoidance, and compliant actuation—often achieved through pneumatic muscle actuators (PMAs).
-
-% \section{Control Strategies and Patient Interaction}
-
-% Advanced control strategies such as \textit{adaptive impedance control} and \textit{patient-cooperative control} have been developed to enhance safety and engagement during therapy. These approaches allow the robot to respond dynamically to patient effort, promoting active participation and neuroplastic recovery.
-
-% Li et al.~\cite{Li2020} introduced passive compliance training to mitigate risks during early rehabilitation stages. Similarly, Zhang et al.~\cite{Zhang2018} proposed a compliant ankle rehabilitation robot (CARR) with enhanced safety features.
-
-% \section{Design Optimization and Actuation Redundancy}
-
-% Multi-objective optimization techniques, including differential evolution and fuzzy inference, have been applied to improve kinematic performance and reduce mechanical complexity. Redundant actuation is often employed to avoid singularities and expand the feasible workspace, as demonstrated by Wang et al.~\cite{Wang2015} and Tsoi et al.~\cite{Tsoi2009}.
-
-% Recent designs also incorporate series elastic actuators (SEAs) and cable-driven mechanisms to improve gait symmetry and reduce joint stress.
-
-% \section{Integration of EMG and Machine Learning}
-
-% Emerging systems integrate electromyographic (EMG) signals and deep learning models to estimate user intent and personalize therapy. These approaches enable real-time trajectory adaptation and enhance the responsiveness of the robot to voluntary muscle activity.
-
-% \section{Clinical Validation and Home-Based Applications}
-
-% Several studies have validated the efficacy of PARRs in clinical settings, showing improvements in range of motion, muscle strength, and gait symmetry. Shah Nazar and Pott~\cite{ShahNazar2022} emphasized the need for domestic usability, proposing ARRS designs that incorporate virtual and augmented reality for increased patient motivation.
-
-% Meta-analyses comparing functional electrical stimulation (FES) and ankle-foot orthoses (AFOs) suggest that robotic systems can match or exceed traditional methods in therapeutic outcomes.
-
-% \section{Research Gaps and Future Directions}
-
-% Despite significant progress, several challenges remain:
-% \begin{itemize}
-%     \item Compactness and portability for home use.
-%     \item Real-time adaptation to patient variability.
-%     \item Cost-effective manufacturing for broader accessibility.
-%     \item Standardized clinical protocols for robot-assisted therapy.
-% \end{itemize}
-
-% Future work should focus on modular, low-cost designs with integrated biosignal feedback and cloud-based data analytics. The fusion of biomechanics, control theory, and human-centered design will be key to advancing ankle rehabilitation robotics.
-
-
-
-\section{State of the Art in Parallel Ankle Rehabilitation Robotics}
-
 Ankle rehabilitation is essential for restoring mobility and balance in patients affected by neurological or musculoskeletal disorders, such as stroke, cerebral palsy, or foot drop.
 Robotic systems have emerged as powerful tools to deliver consistent, adaptive, and measurable therapy. Among these, \textbf{parallel robots} offer unique advantages in terms of stiffness, 
 load capacity, and multi-degree-of-freedom control, making them particularly suitable for ankle rehabilitation.
 
-\subsection{Mechanical Architectures and Kinematic Design}
+% Mechanical Design Considerations
 
 Parallel mechanisms such as 2-UPS/RRR, 3-RRS, and cable-driven structures have been widely explored for ankle rehabilitation due to their compactness and ability to replicate complex 
 joint movements~\cite{Jamwal2009,Jamwal2015,Jamwal2016,Wang2015,Zhang2018,Zhang2019}. Optimization techniques including genetic algorithms and differential evolution have been applied to 
 improve workspace, avoid singularities, and enhance isotropy~\cite{Tsoi2009,Li2020Mechanical, ShahNazar2022}.
 
-\subsection{Actuation and Compliance Strategies}
+%\section{Actuation and Compliance Strategies}
 
 Actuation methods vary from pneumatic muscle actuators (PMAs)~\cite{Jamwal2015} to series elastic actuators (SEAs) and cable-driven systems~\cite{Zhang2018, ceccarelli2023portable}.
 Compliance is critical for safety and adaptability, especially in early rehabilitation stages. Passive and active compliance strategies have been proposed to reduce joint stress and accommodate patient variability~\cite{Li2020passive, singh2025design}.
 
-\subsection{Control Algorithms and Patient Interaction}
+%%\section{Control Algorithms and Patient Interaction}
 
 Advanced control strategies such as adaptive impedance control, fuzzy logic, and patient-cooperative control have been developed to enhance engagement and safety~\cite{liu2020design,Jamwal2016,Zhang2018}. 
 EMG-based intent recognition and deep learning models are increasingly integrated to personalize therapy and enable real-time trajectory adaptation~\cite{zhang2021emg,  liu2022deeplearning}.
 
-\subsection{Clinical Validation and Functional Outcomes}
+%%\section{Clinical Validation and Functional Outcomes}
 
 Clinical studies have demonstrated improvements in range of motion, gait symmetry, and muscle activation using robotic systems~\cite{Dong2021, ceccarelli2023portable,ShahNazar2022}.
 Comparative analyses with traditional methods such as ankle-foot orthoses (AFOs) and functional electrical stimulation (FES) show that robotic therapy can match or exceed conventional outcomes~\cite{Miao2018, liu2021clinical}.
 
-\subsection{Design for Home-Based and Modular Use}
+%%\section{Design for Home-Based and Modular Use}
 
 Recent efforts focus on portability and modularity to enable home-based rehabilitation~\cite{ceccarelli2023portable,ShahNazar2022}. Reconfigurable robots allow adaptation to different patient profiles and therapy stages~\cite{meng2023multi,singh2025design }. 
 Integration with virtual reality and remote monitoring platforms is also being explored to improve motivation and continuity of care~\cite{zhang2021vr, liu2022deeplearning}.
 
-\subsection{Biomechanical Foundations and Emerging Technologies}
+%%\section{Biomechanical Foundations and Emerging Technologies}
 
 A comprehensive understanding of ankle biomechanics is essential for designing effective rehabilitation robots. Classical studies have established the role of the ankle-foot complex in propulsion, balance, and gait symmetry~\cite{Morris1977, Lin2006, Zelik2018}. These insights inform the kinematic and dynamic requirements of robotic systems, particularly in replicating dorsiflexion and plantarflexion patterns.
 
@@ -88,7 +42,7 @@ Virtual reality and telerehabilitation are gaining traction as complementary too
 Comparative studies between robotic therapy, ankle-foot orthoses (AFOs), and functional electrical stimulation (FES) suggest that robot-assisted interventions can achieve equal or superior outcomes in gait restoration and muscle activation~\cite{Stevens2015, Alnajjar2021}. These findings support the integration of robotic systems into mainstream clinical protocols.
 
 
-\subsection{Challenges and Future Directions}
+\section{Challenges and Future Directions}
 
 Despite progress, challenges remain:
 \begin{itemize}
@@ -98,4 +52,4 @@ Despite progress, challenges remain:
     \item Integrating biosignal feedback and cloud-based analytics.
 \end{itemize}
 
-Future work should focus on scalable architectures, hybrid actuation, and intelligent control systems that fuse biomechanics, machine learning, and human-centered design.
+Future work should fsocus on scalable architectures, hybrid actuation, and intelligent control systems that fuse biomechanics, machine learning, and human-centered design.
