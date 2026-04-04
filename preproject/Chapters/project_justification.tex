@@ -1,8 +1,61 @@
-\chapter{PROJECT JUSTIFICATION} \label{results}
+% !TEX root = ../main.tex
+\chapter{PROJECT JUSTIFICATION}\label{project_justification}
 \graphicspath{{images/}}
 
-Gait is a fundamental aspect of human independence and well-being. Within the gait kinetics, the ankle joint plays a pivotal role in absorbing impact forces during heel strike and generating propulsion during toe-off. When the ankle's function is impaired—due to conditions such as stroke, orthopedic trauma, or neurodegenerative disease—patients face significant limitations in mobility, balance, and daily autonomy.
+Gait is a fundamental aspect of human independence and well-being. Within the gait kinetics, the ankle joint plays a pivotal role in absorbing impact 
+forces during heel strike and generating propulsion during toe-off. When the ankle's function is impaired—due to conditions such as stroke, orthopedic 
+trauma, or neurodegenerative disease—patients face significant limitations in mobility, balance, and daily autonomy.
 
-Rehabilitation is essential for restoring ankle functionality, yet conventional methods often lack the consistency, objectivity, and sustained engagement required for optimal recovery. Furthermore, existing robotic devices for gait rehabilitation typically do not include mechanisms specifically designed for targeted ankle strength recovery. In this context, robotic rehabilitation systems offer the advantages of repeatability, precise measurement, and the ability to adapt therapy to an individual’s progress. Additionally, serious games and virtual reality environments have shown considerable promise in enhancing motivation and participation—key factors that directly influence rehabilitation outcomes.
+Stroke remains one of the leading causes of death and disability worldwide, with approximately 15 million new cases reported each year \cite{WSO2025}. 
+The World Stroke Organization emphasizes that this burden continues to rise, particularly in low- and middle-income countries, where access to prevention 
+and treatment is limited. In Colombia, stroke accounts for approximately 120,000 cases and 30,000 deaths annually \cite{Recavar2026}, representing a 
+significant public health challenge that demands effective and accessible rehabilitation strategies.
 
-This project addresses these needs through the development of PRANK (Parallel Robot for ANKle rehabilitation), a parallel robotic platform actuated by an RRR configuration and controlled through admittance strategies. It aims to offer a safe, adaptive, and engaging therapeutic environment. By integrating a serious game and a real-time feedback loop that adjusts difficulty based on force and range of motion (ROM), the system seeks to promote user-centered recovery while providing measurable, high-fidelity data. Additionally, validating PRANK’s ROM measurement capabilities against an optoelectronic motion capture system will support its use as a reliable biomechanical assessment tool in future clinical settings.
+One of the most debilitating consequences of stroke and other neurological conditions is foot drop—a symptom rather than a disease in itself, arising 
+from multiple underlying pathologies. The most common cause is injury or compression of the peroneal nerve, often linked to trauma, fractures, or prolonged 
+external pressure. Lumbar radiculopathy, particularly involving the L5 nerve root, is another frequent source, typically due to herniated discs or spinal 
+degeneration. Neurological disorders such as stroke, multiple sclerosis, cerebral palsy, and amyotrophic lateral sclerosis can impair motor pathways and 
+lead to foot drop. Muscle-related conditions, including muscular dystrophy and inflammatory myopathies, may also weaken the dorsiflexor muscles. Additionally,
+ systemic diseases like diabetes mellitus contribute through peripheral neuropathy, while tumors, cysts, or autoimmune disorders can cause nerve compression or 
+ inflammation. Overall, foot drop reflects a diverse set of neurological, muscular, and systemic pathologies that require careful diagnostic evaluation 
+ \cite{PeronealNerveInjury, LumbarRadiculopathy, NeurologicalCauses, MuscleDisorders, SystemicCauses}. Table~\ref{tab:footdrop_stats} summarizes the epidemiological 
+ burden of its primary causes at both the global and national levels, illustrating the scale of the problem and the gaps in local data that motivate targeted intervention.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{0.28\textwidth}|p{0.35\textwidth}|p{0.28\textwidth}|}
+\hline
+\rowcolor{Gray}
+\textbf{Cause} & \textbf{Global Data} & \textbf{Colombia Data} \\
+\hline
+Stroke (ACV) & 15M cases annually; 5M disabled; 5M deaths & ~120,000 cases/year; ~30,000 deaths \\
+\hline
+Diabetes-related neuropathy & 537M adults with diabetes; 30--50\% neuropathy & 8--9\% adult prevalence; neuropathy common \\
+\hline
+Peroneal nerve injury & Up to 15\% of tibia/knee fractures & Reported in trauma hospitals; no national stats \\
+\hline
+Neurological disorders (MS, ALS, CP) & MS: 2.8M cases; ALS: 1--2/100,000 incidence & Limited data; hundreds of cases in centers \\
+\hline
+Muscular disorders (dystrophy, myopathies) & Rare; documented globally in thousands & Very limited data; rare case reports \\
+\hline
+\end{tabular}
+\caption{Global and Colombian Statistics Related to Foot Drop \cite{Recavar2026,WSO2025,ClevelandClinic2025,MayoClinic2025,IDF2025}}
+\label{tab:footdrop_stats}
+\end{table}
+
+Foot drop affects approximately 20\% of hemiplegic stroke survivors \cite{Stewart2008, Kottink2004}, making it one of the most prevalent gait impairments in the post-stroke population.
+Extrapolating from Colombia's estimated 120,000 annual stroke cases \cite{Recavar2026}, this proportion implies up to \textbf{24,000 new foot drop cases per year} from stroke alone — a figure that does not account for cases arising from diabetes, nerve injury, or neurodegenerative disorders.
+At the global level, the cumulative burden across all aetiologies is substantially larger, yet epidemiological data specific to foot drop remain fragmented and largely absent from low- and middle-income country registries, underscoring the need for accessible, evidence-based rehabilitation technologies in these settings.
+
+Given the scale and diversity of conditions that cause foot drop, effective rehabilitation of the ankle joint is a critical clinical need. However, 
+conventional methods often lack the consistency, objectivity, and sustained engagement required for optimal recovery. Furthermore, existing robotic 
+devices for gait rehabilitation typically do not include mechanisms specifically designed for targeted ankle strength recovery. In this context, 
+robotic rehabilitation systems offer the advantages of repeatability, precise measurement, and the ability to adapt therapy to an individual’s 
+progress. Additionally, mixed reality and serious game interfaces have shown considerable promise in enhancing motivation
+and participation — key factors that directly influence rehabilitation outcomes \cite{Truijen2022}.
+
+This project addresses these needs through the development of PRANK (Parallel Robot for ANKle rehabilitation), a parallel robotic platform actuated by an RRR
+configuration and controlled through admittance strategies. It aims to offer a safe, adaptive, and engaging therapeutic environment. By integrating a mixed
+reality serious game and a real-time feedback loop that adjusts difficulty based on force and range of motion (ROM), the system seeks to promote user-centred recovery while
+providing measurable, high-fidelity data. To further enhance motor learning and patient engagement, PRANK incorporates \textbf{multimodal biofeedback}: visual screen alerts signal performance thresholds and game events, spatial audio cues reinforce correct movement patterns, and vibrotactile feedback provides immediate haptic confirmation of target achievement. This combination of sensory channels has been shown to accelerate motor relearning in neurological rehabilitation \cite{Truijen2022}. Additionally, validating PRANK’s ROM measurement capabilities against an optoelectronic motion capture system will
+support its use as a reliable biomechanical assessment tool in future clinical settings.

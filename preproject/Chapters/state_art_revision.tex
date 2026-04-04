@@ -1,0 +1,245 @@
+% !TEX root = ../main.tex
+\chapter{STATE OF THE ART REVIEW}
+
+This chapter reviews the relevant literature underpinning the development of PRANK, a parallel ankle rehabilitation robot with admittance control and a virtual-reality (VR) serious game interface. The review is organized into six thematic sections: ankle biomechanics and foot drop; parallel robot design for ankle rehabilitation; control strategies; clinical outcomes and validation; virtual reality and serious games; and EMG and sensing.
+
+% ============================================================
+\section{Ankle Biomechanics and Foot Drop}
+% Papers on ankle biomechanics, foot drop causes, gait analysis
+% ============================================================
+
+The ankle joint complex (AJC) is composed of the tibiotalar (talocrural), talocalcaneal (subtalar), and transverse-tarsal joints, collectively enabling three rotational degrees of freedom (DoF): dorsiflexion/plantarflexion, inversion/eversion, and adduction/abduction %\cite{Brockett2016}.
+Brockett and Chapman %\cite{Brockett2016} provide a detailed account of the bony anatomy and ligamentous structures of the AJC, emphasising how the conical trochlea of the talus and the oblique rotation axis make the joint more complex than a simple hinge.
+Normal ranges of motion span approximately $20$--$30^{\circ}$ dorsiflexion, $40$--$50^{\circ}$ plantarflexion, up to $40^{\circ}$ inversion, and $15^{\circ}$ eversion \cite{Tsoi2009}, values that directly constrain the design workspace of PRANK.
+Understanding this anatomy is essential for aligning the robot's rotation centre with the biological ankle centre, a key design requirement that prevents secondary injury during robot-assisted therapy.
+
+Morris described the biomechanical role of the foot and ankle in normal gait as early as 1977, showing that the ankle acts as a shock absorber, a rigid propulsive lever, and a mechanism for absorbing limb rotation during stance %\cite{Morris1977}.
+The foot functions as both a flexible shock absorber at heel contact and a rigid lever at push-off, and disruption of either phase causes compensatory gait deviations.
+In the context of PRANK, this foundation establishes the target movement profiles (sinusoidal dorsiflexion/plantarflexion cycles) that the robot must reproduce during passive and active rehabilitation training.
+
+Foot drop is the inability to perform adequate dorsiflexion during the swing phase of gait, commonly resulting from upper motor neurone lesions such as stroke, multiple sclerosis, or spinal cord injury above T12~%\cite{Graham2010}.
+Graham reviewed its causes, noting that approximately 20\% of stroke survivors present with persistent foot drop, which leads to compensatory gait patterns (circumduction, hip-hitching) that increase energy expenditure and fall risk.
+Conventional management includes ankle-foot orthoses (AFOs) and functional electrical stimulation (FES); however, these approaches are primarily orthotic rather than rehabilitative, motivating the development of active robotic systems such as PRANK.
+
+Lin et al.\ studied 68 post-stroke patients and found that dorsiflexor muscle strength was the single most important predictor of gait velocity (R$^2 = 0.30$) and temporal symmetry (R$^2 = 0.36$), while dynamic plantarflexor spasticity was the dominant determinant of spatial gait asymmetry %\cite{Lin2006}.
+These quantitative relationships justify targeting dorsiflexion strength restoration as the primary therapeutic goal of PRANK's exercise protocol.
+The GAITRite walkway used for gait assessment in that study also informs the clinical evaluation methods applicable to PRANK validation trials.
+
+Kitatani et al.\ investigated ankle muscle co-activation during gait in hemiplegic stroke patients, demonstrating that elevated co-activation index in the single-support phase was negatively correlated with dorsiflexion angle, plantarflexion moment, and ankle power generation %\cite{Kitatani2016}.
+The findings suggest that excessive muscle co-contraction is a compensatory response to paretic instability, and that training interventions which reduce co-activation while restoring normal kinematics are needed.
+PRANK's admittance control framework, which allows voluntary ankle motion to modify the prescribed trajectory, is designed precisely to reduce co-contraction through patient-cooperative engagement.
+
+MacWilliams et al.\ provided a normative kinematic and kinetic database for adolescent gait using a nine-segment foot model, demonstrating that single rigid-link models significantly overestimate ankle joint powers %\cite{MacWilliams2003}.
+The multi-segment model revealed distinct contributions from the talonavicular, metatarsophalangeal, and ankle joints, information relevant for specifying accurate trajectory profiles in PRANK's serious game feedback.
+Establishing normalised reference data for each joint is essential for assessing the degree of impairment and tracking rehabilitation progress over time.
+
+Malakoutikhah et al.\ evaluated finite-element assumptions in computational foot models, showing that element type, material properties, and boundary conditions all critically affect predicted stress distributions %\cite{Malakoutikhah2022}.
+They found that using isotropic solid elements for ligaments introduces unrealistic bending moments and that neglecting Achilles tendon forces alters nearly all kinetic and kinematic outputs.
+Although PRANK operates in the task space rather than the tissue level, these modelling insights inform safe torque limits and motivate the incorporation of a six-axis load cell at the robot-foot interface to avoid ligament overload.
+
+Fenfang et al.\ developed a computational biomechanical model of the human ankle based on a biaxial kinematic description of the hindfoot, representing ligaments and muscle-tendon units as tension-only force elements %\cite{fenfang2014}.
+The state-space model enabled simulation of interaction forces and sensitivity analysis, identifying ligament rest-length as the parameter most influential on joint loading.
+Such a model can serve as a virtual environment for tuning PRANK's admittance parameters before clinical deployment and for generating safe reference trajectories in the serious game.
+
+% ============================================================
+\section{Parallel Robot Design for Ankle Rehabilitation}
+% Papers on parallel robot mechanisms, kinematics, workspace
+% ============================================================
+
+Jamwal et al.\ proposed one of the earliest soft parallel robots (SPR) for ankle rehabilitation, driven by four pneumatic air muscles acting as cable links \cite{Jamwal2009}.
+Workspace analysis based on Jacobian singularity criteria and a global conditioning number (GCN) was performed, and a modified genetic algorithm (GA) was used to minimise the GCN across the feasible workspace, achieving near-unity isotropy.
+The resulting design provides three rotational DoF, is wearable and lightweight, and served as the foundation for a series of progressively refined prototypes that are directly relevant to PRANK's design lineage.
+
+In a companion paper, Jamwal et al.\ addressed the forward kinematics (FK) problem of the same SPR by proposing a modified fuzzy inference system (FIS) optimised with a modified GA \cite{Jamwal2009}.
+The FIS was shown to outperform Newton--Raphson iteration and other artificial intelligence approaches in both computation time and accuracy, making it suitable for real-time closed-loop control.
+Accurate and fast FK mapping is a prerequisite for PRANK's task-space admittance controller, where the footplate orientation must be reliably estimated from actuator states.
+
+The three-stage design analysis and multicriteria optimisation framework of Jamwal et al.\ \cite{Jamwal2015} decomposed parallel ankle robot design into kinematic, actuation, and structural stages, identifying six competing objectives including conditioning number, workspace isotropy, cable tension, and structural compliance.
+Non-dominated sorting genetic algorithm II (NSGA-II) was applied to simultaneously optimise all objectives, and a fuzzy ranking method was used to select a final design from the Pareto front.
+This systematic methodology provides a reusable template for the dimensional synthesis of PRANK and other redundantly actuated parallel ankle robots.
+
+Jamwal and Hussain further refined the optimisation approach %\cite{JamwalTSMC2016} by replacing NSGA-II with a fuzzy-dominated sorting evolutionary algorithm that provides better discrimination among Pareto solutions and a clearer termination criterion.
+The proposed method was benchmarked against NSGA-II on the ankle robot design problem and found to deliver improved design solutions in terms of the six performance indices.
+The relevance to PRANK lies in both the specific design parameter recommendations and the transferable multi-objective framework applicable to future PRANK variants.
+
+Tsoi and Xie designed a three-DoF redundantly actuated parallel robot for ankle rehabilitation and performed singularity analysis to determine that redundant actuation is required to avoid singular configurations within the ankle range of motion \cite{Tsoi2009}.
+An impedance controller was implemented to regulate both force and position, and the redundant degree of freedom was exploited to control the vertical reaction force at the ankle.
+This early integration of impedance control on a parallel ankle platform foreshadows PRANK's admittance control architecture and validates the importance of redundant actuation for safe rehabilitation.
+
+Wang et al.\ presented kinematic design and simulation of a parallel ankle rehabilitation robot, analysing ankle structure and damage mechanisms to derive design requirements %\cite{Wang2012}.
+Kinematic simulation showed that the robot could achieve dorsiflexion $0$--$30^{\circ}$, plantarflexion $0$--$50^{\circ}$, inversion/eversion up to $40^{\circ}$, and adduction/abduction up to $30^{\circ}$ under three-input actuation, covering the full clinical ROM.
+These simulation results serve as reference specifications against which PRANK's workspace can be benchmarked.
+
+Wang et al.\ (Beijing Jiaotong University) addressed the dimensional synthesis of a redundantly actuated 3-DoF parallel ankle robot using a modified differential evolution algorithm with four objective functions reflecting occupied space, transmission performance, torque capability, and multi-criteria constraints \cite{Wang2015}.
+A new output transmission index was defined specifically for redundant actuation, and the modified DE algorithm was shown to outperform competing algorithms in global search capability and number of non-dominated solutions.
+The torque index introduced in this work is directly applicable to specifying actuator sizing for PRANK's pneumatic muscle configuration.
+
+Miao et al.\ conducted a comprehensive review of platform-based ankle rehabilitation robots from 1980 to 2016, classifying devices by mechanism type (serial vs parallel), DoF, end-effector type, and actuation \cite{Miao2018}.
+They concluded that an ideal ankle robot should align its rotation centre with the AJC, provide appropriate workspace and actuation torque, and offer reconfigurability; parallel mechanisms were identified as the most promising architecture.
+This review positions PRANK within the broader taxonomy of platform-based devices and highlights aligned rotation centre as a critical design requirement.
+
+Li et al.\ (Beijing University of Technology) performed a systematic review of 65 articles covering 16 unique parallel ankle rehabilitation robots (PARRs), analysing mechanism configurations, actuator types, trajectory tracking control, and rehabilitation training methods \cite{Li2020Mechanical}.
+They found that rotation-centre alignment, three-DoF coverage, and compliance control with variable parameters are the most pressing open research challenges, and that clinical trials remain scarce.
+PRANK directly addresses these gaps by combining a mechanically aligned rotation centre, admittance-based compliance control, and a VR serious game intended to support future clinical evaluation.
+
+Alvarez-Perez et al.\ reviewed robot-assisted ankle rehabilitation across the full literature from 1950 to 2018, classifying both exoskeleton and platform-based architectures %\cite{Perez2019}.
+They highlighted that most wearable robots do not allow adduction/abduction motion, that very few devices have been commercialised, and that user perception and aesthetics are rarely considered at the design stage.
+PRANK's platform-based, three-DoF design addresses the first limitation, and its VR game interface is intended to improve patient engagement and perception of the rehabilitation experience.
+
+Abarca and Elias conducted a 2012--2023 systematic review of parallel robots for rehabilitation, assistance, and humanoid applications across five joints (neck, shoulder, wrist, hip, ankle), reviewing 93 papers including 30 on the ankle \cite{ShahNazar2022}.
+The review confirmed that parallel ankle robots have advanced significantly in kinematic structure, workspace assessment, and control, but that technology readiness levels (TRLs) remain predominantly at prototype stage and clinical evidence is limited.
+This context motivates the clinical validation component of PRANK and underscores the need for rigorous human-subjects testing.
+
+Zuo et al.\ designed and experimentally validated a 3-RRS parallel ankle rehabilitation robot in which all three revolute-revolute-spherical chains rotate around a common spherical centre %\cite{Zou2022}.
+Kinematics were solved using screw theory and spherical analytic methods, and a circular composite trajectory was planned and verified by multibody simulation; maximum trajectory error was $2.5$~mm and motor angular error was within $2^{\circ}$.
+The compact, singularity-free workspace achieved by the 3-RRS topology is a design alternative worth considering for future PRANK iterations targeting home-use portability.
+
+Du et al.\ presented an alternative 3-RRS spherical parallel mechanism for ankle rehabilitation, solving forward position analysis via variation and iteration methods and obtaining eight inverse kinematics solutions %\cite{Du2017}.
+The mechanism was shown to accommodate most patients through a $50$~mm adjustable expansion device and to match the three-DoF clinical ROM of the human ankle.
+The approach of using a purely spherical mechanism with a fixed rotation centre, as opposed to a cable-driven SPR, highlights a trade-off between compliance and positional accuracy relevant to PRANK.
+
+Li et al.\ (2020, Industrial Robot) designed a 2-UPS/RRR PARR (weight: 15.9~kg) in which the rotation centre was mechanically constrained to coincide with the AJC centre, and implemented a passive compliance training strategy based on admittance control \cite{Li2020passive}.
+Experiments with healthy subjects demonstrated excellent trajectory tracking accuracy and compliance, and sensitivity analysis of admittance parameters was performed to guide adaptive parameter adjustment.
+This work is among the closest analogues to PRANK: it uses the same admittance control paradigm on an electrically driven PARR with an aligned rotation centre, and its results provide benchmarks for PRANK's tracking performance evaluation.
+
+Zuo et al.\ (jmr-19-1259) reported the mechanical design and performance analysis of a novel PARR with a non-redundant actuation scheme, defining three kinematic performance indices (motion isotropy, force transfer ratio, force isotropic radius) and a dynamic uniformity index derived from the Newton--Euler formulation %\cite{Zuo2020}.
+Workspace and dynamic performance were jointly optimised, and the prototype was experimentally validated.
+The structured performance index framework introduced in this paper complements PRANK's design evaluation by providing metrics beyond the traditional conditioning number.
+
+% ============================================================
+\section{Control Strategies}
+% Papers on admittance, impedance, adaptive control for ankle robots
+% ============================================================
+
+Jamwal et al.\ developed an impedance control framework for an intrinsically compliant parallel ankle robot driven by pneumatic muscle actuators (PMAs), evaluating four training modes: position control, zero-impedance control, and two non-zero impedance levels \cite{Jamwal2016}.
+Experiments with ten neurologically intact subjects showed that increasing robotic compliance led to greater active participation, a key neuroplasticity-promoting principle.
+This study establishes the scientific rationale for PRANK's admittance control: modulating the robot's mechanical impedance based on patient effort to encourage voluntary motor contribution.
+
+Jamwal et al.\ subsequently extended the impedance control scheme to an adaptive version that modifies the robot's target impedance in real time based on the patient's active torque contribution %\cite{Jamwal2017}.
+Stroke patients were enrolled in experiments, and the adaptive controller was shown to reduce robotic assistance as patient participation increased and to increase assistance when participation decreased.
+The adaptive mechanism is directly transferable to PRANK as a patient-cooperative training paradigm, and the clinical validation on stroke patients provides methodological guidance for PRANK's future trials.
+
+Zhang et al.\ proposed an adaptive patient-cooperative control strategy for the compliant ankle rehabilitation robot (CARR), combining a joint-space position controller with a high-level admittance controller in task space \cite{Zhang2018}.
+Three modes (passive, fixed-parameter admittance, variable-parameter admittance) were evaluated; the variable-parameter admittance controller adaptively modified the predefined trajectory based on real-time ankle measurements, achieving a maximum normalised root mean square deviation (NRMSD) less than 5.4\%.
+This is the closest published control architecture to PRANK's design: the CARR uses Festo fluidic muscles, four PMA actuators in parallel above the end effector, and a six-axis load cell -- all features shared with PRANK.
+
+Zhang et al.\ further advanced the CARR control with a cascade controller combining task-space posture control with joint-space force distribution, ensuring all four PMs remain in tension throughout the workspace \cite{Zhang2019}.
+A high-level trajectory adaptation algorithm directed by movement intention was also implemented and validated on an injured human ankle, achieving NRMSD below 2.3\%.
+The joint-space force distribution strategy addresses a known limitation of task-space-only admittance control and represents a refinement applicable to PRANK's pneumatic muscle actuation.
+
+Li et al.\ (2020, Cognitive Computation and Systems) described passive and active control strategies for the 2-UPS/RRR PARR: passive training uses trajectory tracking while active training uses torque thresholds to detect motion intention and drive the platform at constant speed in the intended direction %\cite{Li2020CCS}.
+Experiments with healthy subjects confirmed small trajectory tracking errors in passive mode and smooth, responsive intent-directed motion in active mode.
+The torque-threshold intent detection method is a simpler alternative to full admittance control and provides PRANK's developers with a baseline comparison strategy.
+
+Wang et al.\ (Beijing Jiaotong University) applied multi-objective optimisation to the dimensional synthesis of the redundantly actuated parallel robot and confirmed that the modified DE algorithm yields designs with superior torque and transmission performance \cite{Wang2015}.
+The paper also introduced a redundant-actuation torque index that accounts for the force interactions among parallel actuators, an issue equally relevant to PRANK's four-PMA configuration.
+The optimised design parameters reported provide numerical anchors for benchmarking PRANK's kinematic and structural performance.
+
+% ============================================================
+\section{Clinical Outcomes and Validation}
+% Papers on clinical trials, optoelectronic validation, outcomes
+% ============================================================
+
+Laufer et al.\ evaluated the short-term and one-year effects of the NESS L300 FES neuroprosthesis on gait in 16 individuals with chronic hemiparesis, measuring 10~m walk velocity, six-minute walk speed, and stride-time variability %\cite{Laufer2009}.
+Mean 10~m walk velocity improved from 0.67~m/s at baseline to 1.06~m/s at one year, and a carry-over effect of 23.8\% in gait velocity without the device was observed.
+These longitudinal outcome data define clinically relevant improvement targets for PRANK and demonstrate that consistent, long-term use of an ankle assistive device can produce neuroplastic therapeutic benefits.
+
+Prenton et al.\ conducted a meta-analysis of eight randomised controlled trials (n = 464) comparing FES and AFO for foot drop, finding equivalent improvement in walking speed for both devices (p = 0.46--0.54) %\cite{Prenton2018}.
+The analysis identified a lack of evidence on whether device-induced improvements translate to everyday settings and called for future studies measuring muscle activity and gait kinematics in detail.
+This benchmark is directly applicable to PRANK: the robot must demonstrate gait improvements at least equivalent to current orthotics in a future RCT, and PRANK's sensor suite is designed to capture the kinematic and kinetic data the meta-analysis identified as missing.
+
+Bonnyaud et al.\ evaluated effects of a 20-minute Lokomat gait training session with positive/negative kinematic constraints on 15 hemiparetic stroke patients, using 3D gait analysis to measure kinematic, kinetic, and spatiotemporal parameters %\cite{Bonnyaud2014}.
+Peak knee flexion and several gait parameters improved significantly on the paretic limb immediately after training, with effects persisting for at least 20~minutes, suggesting rapid motor learning from constrained robotic training.
+This result motivates including gait kinematics assessment (via optoelectronic systems or inertial measurement units) in PRANK's clinical evaluation protocol.
+
+The case report by Kobravi et al.\ demonstrated functional improvement in a chronic stroke patient with foot drop after 16 sessions of hybrid FES-robotic training over four months %\cite{Kobravi2020}.
+The patient's Functional Ambulation Category and Fugl-Meyer Lower Extremity scores improved, and the hybrid system was found to engage cognitive participation by letting the patient trigger dorsiflexion and plantarflexion onset voluntarily.
+This case illustrates the potential of adding cognitive engagement to robotic ankle therapy -- a principle embodied in PRANK's VR serious game, where the patient actively controls a virtual avatar with their ankle.
+
+% ============================================================
+\section{Virtual Reality and Serious Games}
+% Papers on VR, serious games in rehabilitation
+% ============================================================
+
+Nataraj et al.\ investigated the effects of hand dominance on performance and perceptions during virtual reach-to-grasp tasks, finding a significant positive relationship between reaching path length (performance) and intentional binding (implicit sense of agency) for the dominant hand %\cite{Nataraj2022}.
+Unique control mode effects on both performance and binding were identified depending on handedness, suggesting that VR rehabilitation interfaces should be personalised to limb dominance to maximise therapeutic engagement.
+This finding directly informs PRANK's serious game design: the game's visual feedback and difficulty progression should adapt to the affected side and the patient's individual movement profile to sustain motivation and implicit agency.
+
+Li et al.\ (Cognitive Computation and Systems) mentioned that VR scenes are commonly used in active ankle rehabilitation to enable patients to track virtual targets under visual or auditory commands, reporting that combined tactile and visual feedback improves ankle strength, flexibility, and balance %\cite{Li2020CCS}.
+The observation that VR-guided active training produces superior outcomes to passive trajectory-following reinforces PRANK's design decision to integrate a serious game as the primary active training mode.
+Future work should quantify engagement metrics (task completion rate, voluntary effort index) within the VR environment as secondary clinical outcomes.
+
+% ============================================================
+\section{EMG and Sensing}
+% Papers on EMG-based control, sensing strategies
+% ============================================================
+
+Zaffir et al.\ compared four neural network models (ANFIS, MLP, LSTM, and a combined model) for estimating dorsiflexion from a minimised set of two sEMG channels, finding that LSTM yielded the highest accuracy and that adding the average rate of change of EMG as an input feature consistently improved estimation accuracy \cite{zhang2021emg}.
+The study demonstrated that time-series networks are best suited when sensor count is limited, and that even simple MLP architectures can approach LSTM accuracy with the right feature engineering.
+For PRANK, these results suggest that intent detection from tibialis anterior and gastrocnemius sEMG is feasible with a minimal sensor footprint, enabling a low-cost active control mode that could complement the admittance controller.
+
+Kitatani et al.\ used surface EMG during 3D motion analysis in hemiplegic patients to quantify co-activation at the ankle in three gait phases, linking the co-activation index during single support to decreased dorsiflexion angle, plantarflexion moment, and COP velocity %\cite{kitatani2016}.
+The results indicate that EMG-based co-activation monitoring during PRANK therapy sessions could serve as a real-time biomarker of paretic instability and guide adaptive impedance modulation.
+Integrating sEMG feedback into PRANK's control loop would allow the admittance parameters to be tightened when co-activation is high (unstable patient) and relaxed when co-activation normalises (improving patient).
+
+% ============================================================
+\section{Recommended New Papers (2022--2025)}
+% These papers were identified via database search and are NOT yet in references.bib.
+% Suggested BibTeX keys are provided for each entry.
+% ============================================================
+
+The following papers were identified through systematic searches of IEEE Xplore, ScienceDirect, Springer, Frontiers, and MDPI covering the period 2022--2025.
+They represent the most recent advances directly relevant to PRANK and are recommended for inclusion in the final state-of-the-art chapter.
+
+\subsection*{Parallel Robot Design and Admittance Control}
+
+\textbf{Suggested key: cdpr2024ankle} \\
+\textit{Development of a novel cable-driven parallel robot for full-cycle ankle rehabilitation.} \\
+ScienceDirect, Mechatronics, 2024. DOI: \url{https://doi.org/10.1016/j.mechatronics.2024.103173} \\
+Proposes a cable-driven parallel robot (CDPR) with position and admittance control for full-cycle ankle rehabilitation, enabling large-angle, multi-DOF coupled training. Admittance control is used for active rehabilitation phases where patient-generated interaction forces adjust terminal position in real time. Directly comparable to PRANK's admittance architecture and broader ROM targets.
+
+\textbf{Suggested key: review2025ankleRobots} \\
+\textit{Advancements in State-of-the-Art Ankle Rehabilitation Robotic Devices: A Review of Design, Actuation and Control Strategies.} \\
+MDPI Machines, 13(5):429, 2025. DOI: \url{https://doi.org/10.3390/machines13050429} \\
+Comprehensive review covering design, actuation, and control strategies for ankle rehabilitation robots up to 2025, with structured comparison of parallel vs.\ serial vs.\ exoskeleton topologies. Useful as a benchmark to position PRANK within the current landscape of commercial and research devices.
+
+\subsection*{Virtual Reality and Serious Games}
+
+\textbf{Suggested key: seriousGameReview2024} \\
+\textit{A scoping review on serious games as rehabilitation technologies for ankle rehabilitation: game genres, game accessibility, and game usability.} \\
+Universal Access in the Information Society, Springer, 2024. DOI: \url{https://doi.org/10.1007/s10209-024-01173-4} \\
+Systematically maps game genres and usability principles for ankle-specific serious games, identifying key design variables (feedback modality, difficulty scaling, accessibility) that influence therapeutic adherence. Provides an evidence base for PRANK's game design decisions, particularly adaptive difficulty based on ROM and force.
+
+\textbf{Suggested key: arSerious2024} \\
+\textit{Enhancing Robotic-Assisted Lower Limb Rehabilitation Using Augmented Reality and Serious Gaming.} \\
+MDPI Applied Sciences, 14(24):12029, 2024. DOI: \url{https://doi.org/10.3390/app142412029} \\
+Integrates augmented reality and serious gaming with a parallel lower-limb robot (LegUp), demonstrating improved engagement and ROM outcomes compared to standard physiotherapy. Supports PRANK's integration of a VR serious game as a primary active training mode and motivational scaffold.
+
+\subsection*{Foot Drop and Exoskeleton Devices}
+
+\textbf{Suggested key: amble2025} \\
+\textit{Adaptive control ankle robotics training durably improves gait biomechanics in chronic hemiparetic stroke and footdrop.} \\
+Journal of NeuroEngineering and Rehabilitation, 2025. DOI: \url{https://doi.org/10.1186/s12984-025-01834-2} \\
+Reports a 9-week clinical study with the AMBLE ankle exoskeleton using adaptive impedance control, demonstrating durable improvements in toe clearance and dorsiflexion angular velocity in chronic stroke patients. Key reference for the clinical validation design of PRANK: similar population, outcome metrics, and control paradigm.
+
+\textbf{Suggested key: softDropfoot2024} \\
+\textit{Soft ankle exoskeleton to counteract dropfoot and excessive inversion.} \\
+Frontiers in Neurorobotics, 2024. DOI: \url{https://doi.org/10.3389/fnbot.2024.1372763} \\
+Presents a soft wearable exoskeleton targeting both dropfoot and excessive inversion during the swing phase, addressing two coupled pathological gait patterns simultaneously. Useful contrast to PRANK's platform-based approach: highlights the complementary roles of wearable (ambulatory) and platform (clinic) devices.
+
+\textbf{Suggested key: reconfigAnkle2023} \\
+\textit{A multi-degree-of-freedom reconfigurable ankle rehabilitation robot with adjustable workspace for post-stroke lower limb ankle rehabilitation.} \\
+Frontiers in Bioengineering and Biotechnology, 2023. DOI: \url{https://doi.org/10.3389/fbioe.2023.1323645} \\
+Introduces a reconfigurable parallel ankle robot whose workspace is mechanically adjustable to match patient-specific ROM, reporting clinical improvements in gait symmetry and muscle activation in post-stroke patients. Directly comparable to PRANK in topology and target population; provides a clinical benchmark for workspace adequacy.
+
+\subsection*{ROM Validation and Motion Capture}
+
+\textbf{Suggested key: markerless2026} \\
+\textit{Accuracy and Reliability of Markerless Human Pose Estimation for Upper Limb Kinematic Analysis Across Full and Partial ROM Tasks.} \\
+MDPI Applied Sciences, 16(3):1202, 2026. DOI: \url{https://doi.org/10.3390/app16031202} \\
+Validates a markerless pose estimation system against an optoelectronic reference (ICC $>$ 0.91 for elbow, $>$ 0.94 for shoulder), establishing a methodological template for PRANK's H3 validation study. The ICC and RMSE reporting protocol used is directly applicable to ankle ROM comparison experiments.
+
+\textbf{Suggested key: opencap2024} \\
+\textit{Validation of OpenCap: A low-cost markerless motion capture system for lower-extremity kinematics during return-to-sport tasks.} \\
+Journal of Biomechanics, 2024. DOI: \url{https://doi.org/10.1016/j.jbiomech.2024.112022} \\
+Validates OpenCap (smartphone-based markerless system) against marker-based optoelectronic capture for lower-limb kinematics, reporting RMSE of 2.0--10.2\textdegree{} across joint angles. Provides context for PRANK's expected RMSE target ($<5^{\circ}$) in H3 and demonstrates that cost-effective alternatives to gold-standard systems are clinically viable.

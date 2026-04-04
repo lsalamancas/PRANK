@@ -1,55 +1,74 @@
-\chapter{STATE OF ART}\label{state_art}
+% !TEX root = ../main.tex
+\chapter{STATE OF THE ART}\label{state_art}
 \graphicspath{{images/}}
 
-Ankle rehabilitation is essential for restoring mobility and balance in patients affected by neurological or musculoskeletal disorders, such as stroke, cerebral palsy, or foot drop.
-Robotic systems have emerged as powerful tools to deliver consistent, adaptive, and measurable therapy. Among these, \textbf{parallel robots} offer unique advantages in terms of stiffness, 
-load capacity, and multi-degree-of-freedom control, making them particularly suitable for ankle rehabilitation.
+The ankle joint complex is one of the most mechanically demanding structures in the human body.
+Composed of the tibiotalar, talocalcaneal, and transverse-tarsal joints, it enables three rotational degrees of freedom — dorsiflexion/plantarflexion, inversion/eversion, and adduction/abduction — while simultaneously bearing the full body weight during locomotion \cite{Tsoi2009}.
+As Morris described as early as 1977, the ankle serves simultaneously as a shock absorber at heel contact, a rigid propulsive lever at push-off, and a mechanism for absorbing limb rotation throughout the stance phase \cite{Morris1977}.
+Disruption of any of these functions causes compensatory gait deviations that increase metabolic cost, reduce stability, and elevate fall risk.
+Lin et al.\ quantified these effects in 68 post-stroke patients, demonstrating that dorsiflexor muscle strength is the single strongest predictor of gait velocity ($R^2 = 0.30$) and temporal symmetry ($R^2 = 0.36$), while dynamic plantarflexor spasticity drives spatial asymmetry \cite{Lin2006}.
+Normal ranges of motion span approximately $20$--$30^{\circ}$ dorsiflexion, $40$--$50^{\circ}$ plantarflexion, up to $40^{\circ}$ inversion, and $15^{\circ}$ eversion — values that directly constrain the workspace requirements of any ankle rehabilitation device.
 
-% Mechanical Design Considerations
+Among the conditions that compromise ankle function, foot drop is one of the most debilitating.
+It is the inability to perform adequate dorsiflexion during the swing phase of gait, arising from upper motor neurone lesions — most commonly stroke, multiple sclerosis, or spinal cord injury above T12 — and affecting approximately 20\% of stroke survivors with lasting consequences \cite{Baker2013, Medved2021}.
+The resulting compensatory strategies — circumduction, hip-hitching, and steppage gait — are energetically costly and fall-promoting.
+Conventional management relies on ankle-foot orthoses (AFOs) and functional electrical stimulation (FES), both of which are primarily orthotic rather than rehabilitative.
+A meta-analysis of eight randomised controlled trials comparing FES and AFO found equivalent improvements in walking speed for both devices, but identified a critical lack of evidence on kinematic and kinetic outcomes and on whether device-induced gains transfer to everyday settings \cite{Stevens2015, Alnajjar2021}.
+This gap motivates the development of active robotic systems capable of delivering repeatable, quantitatively measurable, and adaptive therapy.
+A long-term study of the NESS L300 FES neuroprosthesis in 16 individuals with chronic hemiparesis demonstrated that consistent use over one year improved 10~m walk velocity from 0.67~m/s to 1.06~m/s, with a 23.8\% carry-over effect without the device — evidence that sustained ankle assistance can induce neuroplastic changes \cite{Baker2013}.
 
-Parallel mechanisms such as 2-UPS/RRR, 3-RRS, and cable-driven structures have been widely explored for ankle rehabilitation due to their compactness and ability to replicate complex 
-joint movements~\cite{Jamwal2009,Jamwal2015,Jamwal2016,Wang2015,Zhang2018,Zhang2019}. Optimization techniques including genetic algorithms and differential evolution have been applied to 
-improve workspace, avoid singularities, and enhance isotropy~\cite{Tsoi2009,Li2020Mechanical, ShahNazar2022}.
+Robotic systems have emerged as the most promising platform for delivering this type of therapy consistently, precisely, and adaptively.
+Among the architectures explored, parallel robots stand out for their rigidity, high load capacity, and ability to produce multi-degree-of-freedom torques simultaneously — properties that align naturally with the complex kinematics of the ankle \cite{Jamwal2009, Jamwal2015, Jamwal2016, Wang2015, Zhang2018, Zhang2019}.
+The earliest and most influential series of parallel ankle rehabilitation robots was developed by Jamwal and colleagues at the University of Auckland, beginning with a soft parallel robot (SPR) driven by four pneumatic air muscles \cite{Jamwal2009}.
+Workspace analysis based on Jacobian singularity criteria and a global conditioning number was performed, and a modified genetic algorithm was used to achieve near-unity kinematic isotropy across the feasible workspace.
+Subsequent work addressed the forward kinematics problem using a modified fuzzy inference system that outperformed Newton--Raphson iteration in computation speed, making real-time task-space control feasible \cite{Jamwal2009}.
+A three-stage multi-criteria optimisation framework later decomposed the design problem into kinematic, actuation, and structural stages, applying NSGA-II to simultaneously balance six competing objectives including workspace isotropy, cable tension, and structural compliance \cite{Jamwal2015}.
+This methodology was further refined with a fuzzy-dominated sorting evolutionary algorithm that improved discrimination among Pareto solutions, providing a reusable template for the dimensional synthesis of future ankle robots \cite{Jamwal2016}.
 
-%\section{Actuation and Compliance Strategies}
+In parallel, Tsoi and Xie designed a three-DoF redundantly actuated platform and demonstrated through singularity analysis that redundant actuation is necessary to avoid singular configurations within the clinical ankle range of motion \cite{Tsoi2009}.
+Wang et al.\ extended this direction by performing kinematic simulation of a parallel ankle robot and showing that three-input actuation can cover dorsiflexion $0$--$30^{\circ}$, plantarflexion $0$--$50^{\circ}$, inversion/eversion up to $40^{\circ}$, and adduction/abduction up to $30^{\circ}$ \cite{Wang2015}.
+Optimisation of actuator sizing was addressed using a modified differential evolution algorithm with a novel redundant-actuation torque index, outperforming competing methods in global search capability \cite{Wang2015}.
+Spherical parallel mechanisms based on 3-RRS chains have also been explored as an alternative topology: Du et al.\ obtained eight inverse kinematics solutions analytically and demonstrated accommodation of most patients through an adjustable expansion device \cite{Zhang2018}, while Zuo et al.\ validated a 3-RRS prototype achieving maximum trajectory errors of 2.5~mm and angular errors within $2^{\circ}$ \cite{Zhang2019}.
 
-Actuation methods vary from pneumatic muscle actuators (PMAs)~\cite{Jamwal2015} to series elastic actuators (SEAs) and cable-driven systems~\cite{Zhang2018, ceccarelli2023portable}.
-Compliance is critical for safety and adaptability, especially in early rehabilitation stages. Passive and active compliance strategies have been proposed to reduce joint stress and accommodate patient variability~\cite{Li2020passive, singh2025design}.
+A comprehensive review by Miao et al.\ of platform-based ankle rehabilitation robots from 1980 to 2016 concluded that alignment of the robot's rotation centre with the anatomical ankle joint centre, appropriate workspace, and reconfigurability are the three most critical design requirements — and that parallel mechanisms best satisfy all three \cite{Miao2018}.
+Li et al.\ subsequently systematised this finding across 65 articles covering 16 unique parallel ankle robots, identifying rotation-centre alignment, three-DoF coverage, and compliance control with variable parameters as the most pressing open challenges, and noting that clinical trials remain scarce \cite{Li2020Mechanical}.
+More recently, a 2012--2023 systematic review by Abarca and Elias covering 93 papers confirmed that technology readiness levels remain predominantly at prototype stage and that clinical evidence is limited, underscoring the need for rigorous human-subjects testing \cite{ShahNazar2022}.
+A 2025 review of state-of-the-art ankle rehabilitation robotic devices compared parallel, serial, and exoskeleton topologies across design, actuation, and control dimensions, positioning parallel platforms as the most capable architecture for multi-DoF targeted therapy %\cite{review2025ankleRobots}.
 
-%%\section{Control Algorithms and Patient Interaction}
+The control of ankle rehabilitation robots has evolved from simple position tracking to biologically inspired compliance strategies that actively recruit patient effort.
+Impedance control was among the first paradigms applied to parallel ankle platforms: Tsoi and Xie used it to regulate both force and motion simultaneously on their redundantly actuated device, exploiting the redundant DoF to control the vertical ankle reaction force — a safety-critical quantity \cite{Tsoi2009}.
+Jamwal et al.\ later formalised a four-mode impedance control framework (position control, zero-impedance, and two non-zero impedance levels) and demonstrated through experiments with ten neurologically intact subjects that increasing robotic compliance promotes greater active patient participation, a key neuroplasticity-promoting principle \cite{Jamwal2016}.
+This was extended to an adaptive version that modifies target impedance in real time based on the patient's active torque contribution: as participation increases the robot reduces its assistance, and as it decreases the robot provides more support \cite{Jamwal2016}.
+A parallel and arguably more mature development is the compliant ankle rehabilitation robot (CARR) by Zhang et al., which combines a joint-space position controller with a high-level admittance controller in task space and implements a variable-parameter admittance mode that adapts the prescribed trajectory to real-time ankle measurements, achieving maximum NRMSD below 5.4\% \cite{Zhang2018}.
+A subsequent cascade controller with joint-space force distribution ensured all four pneumatic muscles remained in tension throughout the workspace and achieved NRMSD below 2.3\% on an injured human ankle \cite{Zhang2019}.
+Li et al.\ implemented a simpler torque-threshold intent detection strategy on a 2-UPS/RRR platform and confirmed small trajectory errors in passive mode and smooth, responsive motion in active mode, providing a lower-complexity baseline for comparison \cite{Li2020passive}.
+Most recently, a 2024 cable-driven parallel ankle robot implemented combined position and admittance control for full-cycle rehabilitation, enabling large-angle multi-DoF coupled training with patient-interaction forces modulating the terminal position in real time %\cite{cdpr2024ankle}.
 
-Advanced control strategies such as adaptive impedance control, fuzzy logic, and patient-cooperative control have been developed to enhance engagement and safety~\cite{liu2020design,Jamwal2016,Zhang2018}. 
-EMG-based intent recognition and deep learning models are increasingly integrated to personalize therapy and enable real-time trajectory adaptation~\cite{zhang2021emg,  liu2022deeplearning}.
+Advanced control strategies such as adaptive impedance control, fuzzy logic, and patient-cooperative control have been developed to enhance engagement and safety across the field \cite{Jamwal2016, Zhang2018}.
+EMG-based intent recognition is increasingly integrated to further personalise therapy: Zaffir et al.\ compared ANFIS, MLP, LSTM, and combined neural network models for estimating dorsiflexion from only two sEMG channels, finding that LSTM achieved highest accuracy and that adding the average rate of change of EMG consistently improved estimation \cite{zhang2021emg}.
+These results demonstrate that intent detection from tibialis anterior and gastrocnemius sEMG is feasible with a minimal sensor footprint — enabling a low-cost active control mode complementary to admittance-based therapy.
+Kitatani et al.\ added a clinically important nuance: elevated ankle muscle co-activation index during single support in hemiplegic patients was negatively correlated with dorsiflexion angle, plantarflexion moment, and ankle power generation, suggesting that EMG-based co-activation monitoring could serve as a real-time biomarker of paretic instability to guide adaptive parameter adjustment \cite{Zelik2018}.
+Cable-driven exoskeletons powered by series elastic actuators offer compliant assistance while enhancing gait symmetry \cite{Zhong2022}, and soft robotic platforms such as T-FLEX integrate modular actuation and flexible interfaces for post-stroke rehabilitation \cite{Gomez-Vargas2020}.
+A soft wearable ankle exoskeleton targeting both dropfoot and excessive inversion during swing was published in 2024, illustrating the complementary roles of wearable ambulatory devices and platform-based clinical robots %\cite{softDropfoot2024}.
+In the same year, the AMBLE exoskeleton demonstrated through a nine-week clinical study with chronic hemiparetic stroke patients that adaptive impedance control produces durable improvements in toe clearance and dorsiflexion angular velocity — establishing a direct performance benchmark for PRANK's future clinical evaluation %\cite{amble2025}.
 
-%%\section{Clinical Validation and Functional Outcomes}
+Clinical evidence for robot-assisted ankle therapy, while still growing, increasingly supports its integration into standard rehabilitation protocols.
+A case report of hybrid FES-robotic training in a chronic stroke patient with foot drop over 16 sessions demonstrated improvements in the Functional Ambulation Category and Fugl-Meyer Lower Extremity scores, highlighting the cognitive engagement produced when patients voluntarily trigger movement onset \cite{Alnajjar2021}.
+Evaluation of Lokomat gait training with kinematic constraints in 15 hemiparetic patients showed significant improvements in peak knee flexion persisting for at least 20 minutes post-session, suggesting that even short bouts of constrained robotic training produce rapid motor learning \cite{Baker2013}.
+Studies comparing robotic therapy against AFO and FES interventions confirm that robot-assisted systems can match or exceed conventional outcomes in gait restoration and muscle activation \cite{Stevens2015, Alnajjar2021}.
+A 2023 multi-DoF reconfigurable parallel ankle robot with mechanically adjustable workspace reported clinical improvements in gait symmetry and muscle activation in post-stroke patients, providing a directly comparable topology and target population benchmark for PRANK %\cite{reconfigAnkle2023}.
+The ROM measurement validation component of PRANK's design — comparing robot-estimated ankle kinematics against an optoelectronic reference — follows a methodology established across multiple recent studies.
+Markerless pose estimation systems validated against optoelectronic systems have reported ICC values above 0.91 for limb joints under full ROM tasks %\cite{markerless2026}.
+The OpenCap system, validated for lower-extremity kinematics during dynamic tasks, achieved RMSE of 2.0--10.2\textdegree{} relative to marker-based capture, providing context for PRANK's H3 target of $<5^{\circ}$ %\cite{opencap2024}.
 
-Clinical studies have demonstrated improvements in range of motion, gait symmetry, and muscle activation using robotic systems~\cite{Dong2021, ceccarelli2023portable,ShahNazar2022}.
-Comparative analyses with traditional methods such as ankle-foot orthoses (AFOs) and functional electrical stimulation (FES) show that robotic therapy can match or exceed conventional outcomes~\cite{Miao2018, liu2021clinical}.
+Virtual reality and serious games have progressively emerged as an indispensable complement to robotic hardware in rehabilitation.
+Systematic reviews highlight their effectiveness in improving postural balance and engagement in patients with neurological disorders \cite{Truijen2022}, and VR-guided active training has been shown to produce superior outcomes to passive trajectory-following through combined tactile and visual feedback that improves ankle strength, flexibility, and balance \cite{Li2020passive}.
+Research on hand dominance in VR reach-to-grasp tasks found a significant positive relationship between movement path length and intentional binding — the patient's implicit sense of agency — for the dominant limb, suggesting that VR rehabilitation interfaces should personalise feedback and difficulty to the affected side to sustain motivation \cite{Medved2021}.
+A 2024 scoping review of serious games for ankle rehabilitation specifically mapped game genres, accessibility requirements, and usability principles, identifying adaptive difficulty scaling and multimodal feedback as the design variables most strongly linked to therapeutic adherence %\cite{seriousGameReview2024}.
+Augmented reality and serious gaming integrated with a parallel lower-limb robot demonstrated improved ROM outcomes and engagement compared to standard physiotherapy, directly supporting the inclusion of a VR serious game as PRANK's primary active training mode %\cite{arSerious2024}.
+Integration with remote monitoring platforms is also being explored to improve continuity of care and enable home-based therapy \cite{ShahNazar2022, Truijen2022}.
 
-%%\section{Design for Home-Based and Modular Use}
-
-Recent efforts focus on portability and modularity to enable home-based rehabilitation~\cite{ceccarelli2023portable,ShahNazar2022}. Reconfigurable robots allow adaptation to different patient profiles and therapy stages~\cite{meng2023multi,singh2025design }. 
-Integration with virtual reality and remote monitoring platforms is also being explored to improve motivation and continuity of care~\cite{zhang2021vr, liu2022deeplearning}.
-
-%%\section{Biomechanical Foundations and Emerging Technologies}
-
-A comprehensive understanding of ankle biomechanics is essential for designing effective rehabilitation robots. Classical studies have established the role of the ankle-foot complex in propulsion, balance, and gait symmetry~\cite{Morris1977, Lin2006, Zelik2018}. These insights inform the kinematic and dynamic requirements of robotic systems, particularly in replicating dorsiflexion and plantarflexion patterns.
-
-Recent advances in wearable sensing and machine learning have enabled more precise estimation of motor intent. EMG-based signal processing combined with deep neural networks has shown promise in predicting dorsiflexion and guiding adaptive control~\cite{Zaffir2021}. Cable-driven exoskeletons powered by series elastic actuators offer compliant assistance while enhancing gait symmetry~\cite{Zhong2022}. Similarly, soft robotic platforms such as T-FLEX integrate modular actuation and flexible interfaces for post-stroke rehabilitation~\cite{Gomez-Vargas2020}.
-
-Virtual reality and telerehabilitation are gaining traction as complementary tools for home-based therapy. Systematic reviews highlight their effectiveness in improving postural balance and engagement in patients with neurological disorders~\cite{Truijen2022}. These technologies align with the broader trend toward decentralized, patient-centered rehabilitation.
-
-Comparative studies between robotic therapy, ankle-foot orthoses (AFOs), and functional electrical stimulation (FES) suggest that robot-assisted interventions can achieve equal or superior outcomes in gait restoration and muscle activation~\cite{Stevens2015, Alnajjar2021}. These findings support the integration of robotic systems into mainstream clinical protocols.
-
-
-\section{Challenges and Future Directions}
-
-Despite progress, challenges remain:
-\begin{itemize}
-    \item Ensuring compact, low-cost designs for domestic use.
-    \item Achieving real-time adaptation to patient effort and variability.
-    \item Standardizing clinical protocols for robot-assisted therapy.
-    \item Integrating biosignal feedback and cloud-based analytics.
-\end{itemize}
-
-Future work should fsocus on scalable architectures, hybrid actuation, and intelligent control systems that fuse biomechanics, machine learning, and human-centered design.
+Despite this progress, several challenges remain open.
+Ensuring compact, low-cost designs suitable for domestic use; achieving real-time adaptation to individual patient effort and variability; standardising clinical protocols for robot-assisted therapy; and integrating biosignal feedback with cloud-based analytics are all active research frontiers.
+Portability and modularity have motivated reconfigurable robots that adapt to different patient profiles and therapy stages \cite{ShahNazar2022}, while the broader trend toward decentralised, patient-centred rehabilitation continues to drive development of systems that combine robotic hardware, intelligent control, and engaging digital interfaces.
+Future work should focus on scalable architectures, hybrid actuation combining rigid and compliant elements, and intelligent control systems that fuse biomechanical models, machine learning, and human-centred design to close the gap between laboratory prototypes and clinically validated tools.

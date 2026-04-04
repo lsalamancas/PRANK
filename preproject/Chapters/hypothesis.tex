@@ -1,5 +1,11 @@
-\chapter{HYPOTHESIS}\label{HYPOTHESIS}
+% !TEX root = ../main.tex
+\chapter{HYPOTHESIS}\label{hypothesis}
 
-The developed parallel ankle rehabilitation robot, featuring an adaptive admittance-based control algorithm and integrated with a serious virtual reality game, will accurately estimate the ankle’s range of motion (ROM). 
-The system will support variable resistance modes tailored to the user’s motor capacity and rehabilitation stage. ROM measurements obtained from the robot will show high correlation and minimal deviation compared 
-to those captured by a validated optoelectronic motion capture system, demonstrating the feasibility of reliable kinematic assessment through onboard sensors and software.
+\textbf{H1 — Mechanical Design:}\label{H1}
+The PRANK parallel robotic structure will achieve a functional workspace covering at least $\pm25^{\circ}$ of dorsiflexion/plantarflexion, $\pm15^{\circ}$ of inversion/eversion, and $\pm10^{\circ}$ of internal/external rotation — values established as the minimum therapeutic range of motion required for ankle rehabilitation \cite{Brockett2016, Tsoi2009}.
+
+\textbf{H2 — Control System:}\label{H2}
+The admittance-based control system will demonstrate stable and responsive behaviour across passive, assistive, and resistive rehabilitation modes, with a settling time under 500\,ms and a force tracking error below 15\% of the commanded torque, ensuring safe and adaptive interaction with the patient throughout therapy \cite{Zhang2018, Li2020passive}.
+
+\textbf{H3 — ROM Validation:}\label{H3}
+Ankle ROM measurements obtained from the PRANK robot will show a Pearson correlation coefficient above 0.95 and a root mean square error below $5^{\circ}$ compared to those captured by a validated optoelectronic motion capture system, demonstrating the feasibility of the system as a reliable biomechanical assessment tool in an ankle rehabilitation context.

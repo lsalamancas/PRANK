@@ -1,27 +1,30 @@
-\chapter{THEROTICAL FRAMEWORK}\label{introduction}
+% !TEX root = ../main.tex
+\chapter{THEORETICAL FRAMEWORK}\label{theoretical_framework}
 \graphicspath{{images/}}
 
-% Importance of ankle in the gait and all the diseases that causes footdrop or similars, and the solutions for this desease.
+\section{Human Gait}
 
-\section{Human gait}
+Human gait is one of the most important tasks of daily life, as it allows people to maintain independence and live with autonomy, mobility, and dignity.
+Impairments in gait due to neurological or musculoskeletal conditions can significantly affect quality of life, making rehabilitation a critical component of recovery and functional reintegration.
 
-Human gait is one of the most important tasks of daily life, as it allows people to maintain independence and live with autonomy, mobility, and dignity. Impairments in gait due to neurological or musculoskeletal conditions can significantly affect quality of life, making rehabilitation a critical component of recovery and functional reintegration.
+The gait analysis is carried out on the basis of the gait cycle, which can be taken as a representation of a person's walking patterns; comparison of several cycles indicates the variability of the pattern \cite{Baker2013}.
+The gait cycle is normalized from 0\% to 100\% because each individual pattern has different absolute timing, making direct cycle-length comparisons non-objective \cite{Medved2021}.
+It can be described with spatial and temporal parameters.
 
-The gait analysis is carried out on the basis of the gait cycle, that can be taken as representation of person's walking patterns, and comparison of several cycles indicates the variability of the pattern \cite{Baker2013}. The gait cycle is normalized from 0\% to 100\%, because each pattern have different timing, so is not objective realize a comparison between them \cite{Medved2021}, it can be described with spatial and temporal parameters. 
 \subsection{Spatial parameters}
 
-The main spatial parameters are shown in figure \ref{step_stride} and described bellow:
+The main spatial parameters are shown in Figure~\ref{step_stride} and described below:
 
 \begin{itemize}
-    \item Step: the movement of the one foot in front of the other.
-    \item Stride: step of one foot followed by another step for the other. 
-    \item Foot contact: it is considered as the beginning of the gait cycle, in healthy people it is referred to as \textit{heel strike}.  
-    \item Step length: distance traveled for one foot in front of the same part of the other foot.
-    \item Stride length: distance between two consecutive gait cycles.
-    \item Step width: mediolateral separation of the feet, also known as stride width.
+    \item \textbf{Step:} the movement of one foot in front of the other.
+    \item \textbf{Stride:} a step of one foot followed by a step of the other foot; one complete gait cycle.
+    \item \textbf{Foot contact:} the beginning of the gait cycle, referred to as \textit{heel strike} in healthy individuals.
+    \item \textbf{Step length:} distance traveled by one foot in front of the same reference point of the other foot.
+    \item \textbf{Stride length:} distance between two consecutive heel strikes of the same foot.
+    \item \textbf{Step width:} mediolateral separation of the feet, also known as stride width.
 \end{itemize}
 
-\begin{figure}
+\begin{figure}[h]
     \centering
     \includegraphics[width=1\textwidth]{step_stride.png}
     \caption[Gait spatial parameters]{Gait spatial parameters. Source: edited by author from \cite{Baker2013}.}
@@ -29,72 +32,246 @@ The main spatial parameters are shown in figure \ref{step_stride} and described 
 \end{figure}
 
 \subsection{Temporal parameters}
-Temporal parameters are listed bellow:
+
+Temporal parameters are listed below:
 
 \begin{itemize}
-    \item Stride time: duration of gait cycle (time between two foot strikes). 
-    \item Cadence: it is a more commonly term used to specify the duration of the cycle in indirect way. And is described by: 
+    \item \textbf{Stride time:} duration of one gait cycle (time between two consecutive foot strikes of the same foot).
+    \item \textbf{Cadence:} a commonly used indirect measure of cycle frequency, expressed as:
     \begin{equation}
-        \frac{\#cycles}{time\hspace{1mm}interval}
+        \text{Cadence} = \frac{\text{number of cycles}}{\text{time interval}}
     \end{equation}
-    \item Walking speed: distance traveled in a given time in meters/second, if cadence is in steps per minute and stride length is in meters the calculation is given by:
+    \item \textbf{Walking speed:} distance traveled per unit time in m/s. If cadence is in steps per minute and stride length is in meters:
     \begin{equation}
-        \frac{cadence*stride\hspace{1mm}length}{120}
+        v = \frac{\text{cadence} \times \text{stride length}}{120}
     \end{equation}
 \end{itemize}
 
-Gait is globally divided into two phases, \textit{stance} and \textit{swing}. The first occur when foot is in contact with the ground, on the other hand, the swing occur when it is not. The stance phase ends when foot off (toe off); the same point at which the swing begins, as illustrated in the figure \ref{gait_phases}, 
+Gait is globally divided into two phases: \textit{stance} and \textit{swing}.
+Stance occurs when the foot is in contact with the ground; swing occurs when it is not.
+The stance phase ends at toe-off, which is simultaneously the onset of swing, as illustrated in Figure~\ref{gait_phases}.
 
-\begin{figure}
+\begin{figure}[h]
     \centering
     \includegraphics[width=1\textwidth]{gait_phases.png}
     \caption[One side gait phases]{One side gait phases. Source: edited by author from \cite{Baker2013}.}
     \label{gait_phases}
 \end{figure}
 
-The scheme can include the events of both legs, and is divided into first double support (both feet in contact with ground), single support, second double support and swing, as is shown in figure \ref{gait_phases_ds}. Single support and swing are long phases, so a subdivision is a good choice: \textit{early}, \textit{middle} and \textit{late} as can be seen in the figure \cite{Baker2013, schneck2002biomechanics}.
+Including both legs, the gait cycle is divided into first double support (both feet in contact), single support, second double support, and swing, as shown in Figure~\ref{gait_phases_ds}.
+Single support and swing are long phases, so each is further subdivided into \textit{early}, \textit{middle}, and \textit{late} sub-phases \cite{Baker2013, schneck2002biomechanics}.
 
 \begin{figure}[b]
     \centering
     \includegraphics[width=1\textwidth]{gait_phases_ds.png}
-    \caption[Both sides gait phases ]{Both sides gait phases. Source: edited by author from \cite{Baker2013}.}
+    \caption[Both sides gait phases]{Both sides gait phases. Source: edited by author from \cite{Baker2013}.}
     \label{gait_phases_ds}
 \end{figure}
 
-Any impairment in the ankle joint manifests as alterations in gait parameters, disrupting the cyclical and repetitive nature of walking. 
-This leads to increased energy expenditure and triggers compensatory mechanisms in other muscle groups to maintain locomotion, often resulting
-in instability and a heightened risk of falling.
+Any impairment in the ankle joint manifests as alterations in gait parameters, disrupting the cyclical and repetitive nature of walking.
+This leads to increased energy expenditure and triggers compensatory mechanisms in other muscle groups, often resulting in instability and a heightened risk of falling.
 
-The PRANK ankle rehabilitation robot is grounded in biomechanical, neurophysiological, and human-machine interaction principles 
-that guide its design and control strategy. Below outlines the theoretical foundations that justify the system's architecture, 
-control approach, and therapeutic goals.
+% ------------------------------------------------------------------
+\section{Anatomy of the Ankle Joint Complex}
+% ------------------------------------------------------------------
 
-\section{Biomechanical Modeling of the Ankle}
-The human ankle plays a critical role in gait, contributing to propulsion, balance, and shock absorption. 
-It operates in coordination with the knee and hip as part of the lower limb kinematic chain. 
-Biomechanical models often simplify the ankle as a single-degree-of-freedom joint, focusing on dorsiflexion and plantarflexion, 
-while more advanced models incorporate multi-axis dynamics and impedance variations across gait phases \cite{opensim2024}. 
-These models are essential for simulating joint behavior and designing control strategies that replicate natural movement.
+The ankle joint complex (AJC) is not a simple hinge joint but a mechanically sophisticated structure composed of three articulations working in concert: the \textbf{tibiotalar (talocrural) joint}, the \textbf{talocalcaneal (subtalar) joint}, and the \textbf{transverse-tarsal (talocalcaneonavicular) joint} \cite{Brockett2016}.
+Together, these joints enable three rotational degrees of freedom that are essential for locomotion.
 
+%anatomy of the ankle joint complex
+
+\subsection{Tibiotalar (Talocrural) Joint}
+
+The talocrural joint is formed by the distal tibia, the distal fibula, and the trochlea of the talus.
+The medial and lateral malleoli form a mortise that constrains the talus and confers primary stability.
+Although the joint functions predominantly as a hinge, the conical geometry of the trochlea surface and the oblique orientation of its rotation axis introduce a coupled axial rotation component during dorsiflexion and plantarflexion, making it biomechanically more complex than a pure hinge \cite{Brockett2016}.
+The talus is widest anteriorly, so the joint is most congruent and stable in dorsiflexion — a clinically important asymmetry.
+
+Stability is provided by three ligament groups \cite{Brockett2016, Winter2009}:
+\begin{itemize}
+    \item \textbf{Lateral collateral ligament complex:} anterior talofibular ligament (ATFL), calcaneofibular ligament (CFL), and posterior talofibular ligament (PTFL). The ATFL is the most frequently injured ligament in ankle sprains.
+    \item \textbf{Medial collateral (deltoid) ligament:} a broad, triangular ligament complex that resists eversion and provides medial stability.
+    \item \textbf{Tibiofibular syndesmosis:} anterior and posterior tibiofibular ligaments plus the interosseous membrane, maintaining the integrity of the mortise under dynamic loading.
+\end{itemize}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.85\textwidth]{ankle_ligaments.png}
+    \caption{Ligament anatomy of the ankle joint complex. Source: author.}
+    \label{fig:ankle_ligaments}
+\end{figure}
+
+\subsection{Subtalar (Talocalcaneal) Joint}
+
+The subtalar joint is formed by three facets between the talus and calcaneus — posterior, middle, and anterior — and functions as a triplanar, uniaxial joint \cite{Brockett2016}.
+Its oblique rotation axis (inclined approximately $42^{\circ}$ from horizontal and $16^{\circ}$ from the sagittal plane) means that motion at this joint is inherently triplanar: dorsiflexion–abduction–eversion in one direction and plantarflexion–adduction–inversion in the other.
+This coupling is fundamental to gait: the subtalar joint unlocks during swing to allow shock absorption, and locks during push-off to convert the foot into a rigid lever \cite{Brockett2016}.
+The interosseous talocalcaneal ligament is its primary restraint, complemented by the CFL (the only ligament bridging both the talocrural and subtalar joints) and surrounding tendons.
+
+\subsection{Muscles and Tendons}
+
+The principal muscle groups acting on the ankle are \cite{Winter2009, Brockett2016}:
+\begin{itemize}
+    \item \textbf{Dorsiflexors:} tibialis anterior (primary), extensor digitorum longus, extensor hallucis longus. These muscles prevent foot drop during swing and control forefoot landing at heel strike.
+    \item \textbf{Plantarflexors:} gastrocnemius and soleus (triceps surae, acting via the Achilles tendon), tibialis posterior, peroneus longus and brevis. The triceps surae generates the propulsive push-off force.
+    \item \textbf{Invertors / Evertors:} tibialis posterior (inversion), peroneus longus and brevis (eversion), which contribute to frontal-plane stability and foot posture.
+\end{itemize}
+
+The Achilles tendon, transmitting triceps surae forces to the calcaneus, is the largest and strongest tendon in the body.
+Its role in energy storage and return during the stance-to-swing transition makes it a key structure for walking efficiency \cite{Shamaei2013, Hansen2004}.
+
+% ------------------------------------------------------------------
+\section{Kinematics and Kinetics of the Ankle in Gait}
+% ------------------------------------------------------------------
+
+\subsection{Range of Motion}
+
+The clinical and biomechanical literature reports the following reference ranges for the AJC \cite{Brockett2016, Tsoi2009, Winter2009}:
+
+\begin{table}[h]
+\centering
+\caption{Reference ranges of motion of the ankle joint complex}
+\label{tab:ankle_rom}
+\begin{tabular}{|p{0.35\textwidth}|p{0.25\textwidth}|p{0.25\textwidth}|}
+\hline
+\textbf{Movement} & \textbf{Full passive ROM} & \textbf{Required for gait} \\
+\hline
+Dorsiflexion & $10^{\circ}$--$20^{\circ}$ & $\approx 15^{\circ}$ \\
+\hline
+Plantarflexion & $40^{\circ}$--$55^{\circ}$ & $\approx 20^{\circ}$ \\
+\hline
+Inversion & $20^{\circ}$--$35^{\circ}$ & $\approx 5^{\circ}$--$10^{\circ}   $ \\
+\hline
+Eversion & $10^{\circ}$--$15^{\circ}$ & $\approx 5^{\circ}$ \\
+\hline
+Internal / External rotation & $\pm 5^{\circ}$--$15^{\circ}$ & Coupled to subtalar motion \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{ankle_angles.png}
+    \caption{Reference planes and angular degrees of freedom of the ankle joint complex. Source: author.}
+    \label{fig:ankle_angles}
+\end{figure}
+
+During normal walking, the total sagittal-plane excursion is approximately $30^{\circ}$ (from $\sim5^{\circ}$ dorsiflexion at heel strike to $\sim20^{\circ}$ plantarflexion at toe-off).
+Stair climbing demands up to $37^{\circ}$ dorsiflexion and $56^{\circ}$ plantarflexion, illustrating the need for wider workspace in rehabilitation devices targeting functional activities beyond level-ground walking.
+These values directly constrain the workspace requirements of PRANK: the robot must cover at least $\pm25^{\circ}$ dorsiflexion/plantarflexion, $\pm15^{\circ}$ inversion/eversion, and $\pm10^{\circ}$ internal/external rotation to enable comprehensive ankle rehabilitation.
+
+\subsection{Ankle Kinematics During the Gait Cycle}
+
+The ankle follows a characteristic kinematic pattern across the gait cycle \cite{Winter2009, Brockett2016}:
+
+\begin{itemize}
+    \item \textbf{Heel strike (0\%):} The foot lands in slight plantarflexion ($\sim5^{\circ}$); tibialis anterior activates eccentrically to lower the forefoot and control impact.
+    \item \textbf{Loading response (0--12\%):} Controlled plantarflexion to $\sim5^{\circ}$ as the foot flattens to the ground.
+    \item \textbf{Mid-stance (12--50\%):} Progressive dorsiflexion as the tibia advances over the fixed foot, reaching peak dorsiflexion of $\sim10^{\circ}$--$15^{\circ}$.
+    \item \textbf{Terminal stance and pre-swing (50--62\%):} Rapid plantarflexion to $\sim20^{\circ}$, with the gastrocnemius–soleus generating the propulsive push-off burst.
+    \item \textbf{Swing (62--100\%):} Dorsiflexion returns to neutral to clear the ground; failure to achieve this is the defining feature of \textit{foot drop}.
+\end{itemize}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{kinematics_kinetics_ankle.png}
+    \caption{Ankle joint kinematics and kinetics during the gait cycle: angular displacement, moment, and power profiles. Source: author.}
+    \label{fig:kinematics_kinetics_ankle}
+\end{figure}
+
+\subsection{Ankle Kinetics and Power}
+
+The kinetics of the ankle during gait are dominated by two events \cite{Winter2009, Hansen2004}:
+
+\begin{itemize}
+    \item \textbf{H1 — controlled plantarflexion (loading response):} a small energy-absorption event as the tibialis anterior decelerates forefoot drop.
+    \item \textbf{A2 — push-off power burst (pre-swing):} the largest energy-generation event in normal gait. Peak plantarflexion torque reaches \textbf{1.4--1.6~Nm/kg} of body mass, and peak ankle power reaches \textbf{2.5--4.0~W/kg} at approximately 55--60\% of the gait cycle \cite{Winter2009, Shamaei2013}.
+\end{itemize}
+
+For a 70~kg adult this corresponds to approximately 98--112~Nm peak torque and 175--280~W peak power at push-off — the highest power output of any lower-limb joint during walking.
+These values are the primary mechanical specifications for PRANK: the robot's actuators and structural frame must sustain these loads during resistive and assistive training without compromising safety.
+Table~\ref{tab:ankle_kinetics} summarises the key kinetic parameters:
+
+\begin{table}[h!]
+\centering
+\caption{Normative ankle kinetic parameters during level-ground walking (70~kg reference subject)}
+\label{tab:ankle_kinetics}
+\begin{tabular}{|p{0.38\textwidth}|p{0.22\textwidth}|p{0.22\textwidth}|}
+\hline
+\textbf{Parameter} & \textbf{Normalised} & \textbf{Absolute (70~kg)} \\
+\hline
+Peak plantarflexion torque (push-off) & 1.4--1.6~Nm/kg & 98--112~Nm \\
+\hline
+Peak ankle power (push-off, A2) & 2.5--4.0~W/kg & 175--280~W \\
+\hline
+Peak dorsiflexion torque (swing) & $<$0.2~Nm/kg & $<$14~Nm \\
+\hline
+Peak angular velocity (push-off) & $\sim$4.3~rad/s & --- \\
+\hline
+\end{tabular}
+\end{table}
+
+% ------------------------------------------------------------------
+\section{Biomechanical Modelling of the Ankle}
+% ------------------------------------------------------------------
+
+Biomechanical models of the ankle range from simplified single-axis representations to high-fidelity multi-segment finite element models \cite{opensim2024, Malakoutikhah2022}.
+For robot control purposes, the most relevant level of abstraction is the \textbf{rigid-body task-space model}: the ankle is represented as a spherical joint with three rotational degrees of freedom, and the interaction between the robot's footplate and the patient's foot is described by a wrench (force and torque vector) applied at a defined reference point.
+
+A key insight from the biomechanics literature is that the ankle's mechanical behavior is not constant: its \textbf{quasi-stiffness} — the slope of the torque-angle curve — varies from $\sim2$~Nm/$^{\circ}$ during controlled plantarflexion (loading response) to $\sim8$~Nm/$^{\circ}$ during push-off \cite{Shamaei2013}.
+This nonlinear, phase-dependent impedance means that fixed-gain position controllers are insufficient for safe human–robot interaction: a controller that is stiff enough to guide passive ROM training would resist voluntary patient effort in active training modes.
+This is the fundamental motivation for \textbf{admittance control}.
+
+\subsection{Admittance Control and Its Connection to Ankle Biomechanics}
+
+Admittance control is a human–robot interaction paradigm in which the robot accepts force or torque inputs from the patient and responds by modifying its motion output \cite{Li2020passive, Zhang2018}.
+The admittance relationship maps a measured interaction wrench $\mathbf{F}$ (6-dimensional force/torque vector) to a commanded velocity or position deviation $\dot{\mathbf{x}}$ through a virtual mechanical impedance:
+
+\begin{equation}
+    M_d\,\ddot{\mathbf{x}} + B_d\,\dot{\mathbf{x}} + K_d\,\mathbf{x} = \mathbf{F}
+    \label{eq:admittance}
+\end{equation}
+
+where $M_d$, $B_d$, and $K_d$ are the desired virtual inertia, damping, and stiffness matrices, respectively.
+By tuning these parameters, the therapist or the control algorithm can select the robot's apparent mechanical resistance independently of its physical structure.
+
+The connection to ankle biomechanics is direct:
+\begin{itemize}
+    \item \textbf{Passive training mode:} $K_d$ is set high and $B_d$ is moderate — the robot guides the ankle along a prescribed trajectory, mimicking the feel of manual physiotherapy.
+    \item \textbf{Assistive training mode:} $K_d$ is reduced and $M_d$ is low — the robot follows the patient's voluntary motion with minimal resistance, encouraging active participation. This exploits the neuroplasticity principle that patient-cooperative training produces greater cortical reorganisation than purely passive movement.
+    \item \textbf{Resistive training mode:} $B_d$ is increased — the robot adds a velocity-proportional resistive torque that opposes the patient's movement, providing progressive strength training analogous to the push-off loading experienced in normal gait.
+\end{itemize}
+
+Adaptive admittance control extends this by varying $M_d$, $B_d$, $K_d$ in real time based on patient performance metrics — for example, reducing $K_d$ as the patient's active torque contribution increases \cite{Zhang2018, Jamwal2016}.
+This directly replicates the role of the ankle's own variable quasi-stiffness in normal gait, making the robot biomechanically compatible with the natural mechanics of the joint it is rehabilitating.
+
+The biomechanical parameters from Table~\ref{tab:ankle_kinetics} provide concrete bounds for the admittance design: the virtual stiffness $K_d$ must be bounded below by the minimum torque needed to passively move the ankle (approximately 0.2~Nm/$^{\circ}$ based on cadaveric measurements) and above by the peak torque the device must safely resist (1.6~Nm/kg $\times$ patient mass), while the virtual damping $B_d$ must be sufficient to attenuate oscillations within the ankle's natural bandwidth of approximately 3--5~Hz during gait.
+
+% ------------------------------------------------------------------
 \section{Motor Rehabilitation and Neuroplasticity}
-Motor recovery after injury or neurological impairment relies on neuroplasticity—the brain's ability to reorganize through repetitive, 
-goal-oriented movement. Rehabilitation robotics leverage this principle by enabling high-intensity, task-specific training. 
-Key motor learning principles include feedback, variability, and active participation, all of which enhance cortical reorganization and 
-functional recovery \cite{physiopedia2024,neuability2024}. The PRANK system integrates these principles through interactive tasks and 
-adaptive control.
+% ------------------------------------------------------------------
 
-\section{Human-Machine Interfaces in Rehabilitation}
-Effective rehabilitation requires intuitive and responsive interfaces between the user and the robotic system. 
-These interfaces must accommodate physical comfort, cognitive engagement, and safety. Advances in flexible electronics and soft 
-robotics have enabled more ergonomic designs that conform to the user's anatomy \cite{gao2021flexible}. Additionally, 
-virtual reality (VR) environments provide immersive feedback, increasing motivation and facilitating motor learning through 
-gamified rehabilitation tasks \cite{frontiers2021interfaces}.
+Motor recovery after injury or neurological impairment relies on neuroplasticity — the brain's ability to reorganize through repetitive, goal-oriented movement.
+Rehabilitation robotics leverage this principle by enabling high-intensity, task-specific training with precise, reproducible mechanics.
+Key motor learning principles include augmented feedback, movement variability, and active participation, all of which enhance cortical reorganisation and functional recovery \cite{physiopedia2024, neuability2024}.
+PRANK integrates these principles through interactive VR tasks that provide real-time visual and haptic feedback, and through an admittance control architecture that demands and rewards active patient effort.
 
+% ------------------------------------------------------------------
+\section{Human--Machine Interfaces in Rehabilitation}
+% ------------------------------------------------------------------
+
+Effective rehabilitation requires intuitive and responsive interfaces between the user and the robotic system.
+These interfaces must accommodate physical comfort, cognitive engagement, and safety.
+Advances in flexible electronics and soft robotics have enabled more ergonomic designs that conform to the user's anatomy \cite{gao2021flexible}.
+Virtual reality (VR) environments provide immersive feedback, increasing motivation and facilitating motor learning through gamified rehabilitation tasks \cite{frontiers2021interfaces}.
+Research shows that combining tactile and visual feedback improves ankle strength, flexibility, and balance beyond what passive trajectory-following achieves, and that personalising the game interface to the affected limb side sustains the patient's implicit sense of agency \cite{Medved2021}.
+
+% ------------------------------------------------------------------
 \section{Clinical Evaluation Metrics}
-Quantifying rehabilitation outcomes is essential for validating system effectiveness. Clinical metrics include range of motion, 
-gait symmetry, balance, and patient-reported outcomes. Instruments such as the Rehabilitation Measures Database offer standardized 
-tools for assessing ankle functionality and tracking progress over time \cite{sralab2024}. These metrics inform both the design of 
-therapeutic protocols and the evaluation of system performance.
+% ------------------------------------------------------------------
 
-
-
+Quantifying rehabilitation outcomes is essential for validating system effectiveness.
+Clinical metrics include range of motion, gait symmetry, balance, and patient-reported outcomes.
+Instruments such as the Rehabilitation Measures Database offer standardised tools for assessing ankle functionality and tracking progress over time \cite{sralab2024}.
+In the context of PRANK, primary quantitative outcomes are: (1) ankle ROM across all three axes, validated against an optoelectronic motion capture reference; (2) force tracking error and settling time of the admittance controller; and (3) patient-reported usability and engagement scores from the VR serious game.
+These metrics are directly linked to the three hypotheses of the project and inform the design of the pilot study protocol.

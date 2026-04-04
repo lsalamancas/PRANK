@@ -1,7 +1,85 @@
+% !TEX root = ../main.tex
 \chapter{DELIMITATION AND SCOPE}\label{delimitation_scope}
 \graphicspath{{images/}}
 
-This project encompasses the design, development, and initial technical validation of a parallel ankle rehabilitation robot (PARR) featuring an RRR configuration and admittance control. The system integrates real-time force feedback and a virtual reality-based serious game to promote engagement and adaptive therapy based on ankle range of motion (ROM). The scope includes mechanical design, electronic design, control system implementation, development of the VR environment, and a ROM evaluation strategy using an optoelectronic motion capture system as a reference standard.
+\section{Type of Research}
 
-However, the study is delimited to engineering and software development stages. It does not involve clinical trials with patients or assessment of long-term rehabilitation outcomes. Likewise, while the VR component is designed to enhance engagement, this work does not evaluate its psychological or motivational impact. Validation efforts are limited to simulations and technical comparisons with healthy subjects or artificial inputs to quantify kinematic performance and ROM estimation accuracy.
- 
+This project is classified as \textbf{experimental} research, since it involves the design, construction, and controlled testing of a physical prototype — the PRANK parallel ankle rehabilitation robot — under conditions defined by the investigator.
+It also has a \textbf{descriptive} component, as one of its core objectives is to characterise the kinematic measurement performance of the system by comparing robot-estimated ankle range of motion (ROM) against a validated optoelectronic motion capture reference under controlled conditions.
+The experimental phase will determine whether the system meets the performance thresholds stated in the project hypotheses (H1, H2, H3), while the descriptive phase will document the system's behaviour across its three rehabilitation modes.
+
+\section{Delimitation Conditions}
+
+\subsection*{Space}
+
+All design, fabrication, assembly, software development, and experimental testing activities will be carried out at the facilities of the \textbf{Universidad Militar Nueva Granada (UMNG)}, Bogotá, Colombia.
+Specifically, the mechatronics and robotics laboratories of the Faculty of Engineering will be used for mechanical assembly, electronic integration, and hardware-in-the-loop testing.
+The optoelectronic validation experiments will be conducted in a dedicated biomechanics or motion capture laboratory available at the same institution.
+
+\subsection*{Time}
+
+The project will be executed during \textbf{2026}, with a planned duration of seven (7) months.
+The schedule follows the Gantt chart presented in Chapter~\ref{schedule}, covering the phases of mechanical design and fabrication, electronic integration, control system implementation, MR interface development, and pilot validation.
+
+\subsection*{Universe}
+
+The experimental validation (H3) will be conducted with a sample of \textbf{healthy adult subjects}, who will participate in a pilot study to evaluate the robot's ROM measurement accuracy and the usability of the admittance control system.
+The use of healthy subjects is appropriate at this stage because the project's primary goal is technical validation of the system, not clinical assessment of rehabilitation outcomes.
+Participants with any prior ankle pathology, lower-limb neurological condition, or contraindication to seated robotic exercise will be excluded.
+The project does not involve clinical trials with patients, and therefore does not require clinical ethics approval beyond institutional research ethics review for non-clinical human-subjects testing.
+
+\subsection*{Scope}
+
+The project encompasses:
+\begin{itemize}
+    \item \textbf{Mechanical:} Design and fabrication of a three-degree-of-freedom parallel robotic structure with an RRR electric motor configuration, covering the therapeutic ankle ROM workspace stated in H1.
+    \item \textbf{Electronic and sensing:} Integration of brushless DC motors with encoders, a six-axis load cell for force/torque measurement, and the embedded real-time control platform.
+    \item \textbf{Control:} Implementation and experimental validation of an admittance-based control system supporting passive, assistive, and resistive rehabilitation modes (H2).
+    \item \textbf{Software:} Development of a mixed reality (MR) serious game in Unity that receives real-time data from the robot and adjusts difficulty based on ankle ROM and applied force.
+    \item \textbf{Validation:} A pilot study comparing robot-estimated ankle ROM against an optoelectronic motion capture reference, evaluating the metrics defined in H3.
+\end{itemize}
+
+The project does \textbf{not} include:
+\begin{itemize}
+    \item Clinical trials with neurological or orthopaedic patients.
+    \item Assessment of long-term rehabilitation outcomes or therapeutic efficacy.
+    \item Evaluation of the psychological or motivational effects of the MR game on patient adherence.
+    \item Commercialisation or regulatory approval activities.
+\end{itemize}
+
+\section{Research Variables}
+
+\subsection{Independent Variables}
+
+Independent variables are those controlled or manipulated by the investigator during the experimental protocol:
+
+\begin{itemize}
+    \item \textbf{Control mode:} The rehabilitation mode selected for each trial — passive, assistive, or resistive. This variable determines the role of the robot (guiding, following, or resisting patient motion) and the configuration of the admittance parameters.
+    \item \textbf{Admittance parameters ($K_d$, $B_d$, $M_d$):} The virtual stiffness, damping, and inertia matrices of the admittance controller (Equation~\ref{eq:admittance}). These are set by the operator at the beginning of each session and may be varied systematically across trials to characterise controller behaviour.
+    \item \textbf{Prescribed trajectory / ROM target:} The reference ankle trajectory defined for each rehabilitation exercise (e.g., sinusoidal dorsiflexion/plantarflexion at a specified amplitude and frequency). Different trajectory profiles constitute different experimental conditions.
+    \item \textbf{VR game difficulty level:} The amplitude and speed demands of the virtual task presented to the subject, which modulates the motor challenge independently of the robot's physical resistance.
+\end{itemize}
+
+\subsection{Dependent Variables}
+
+Dependent variables are those measured as outputs of the system in response to the independent variable conditions:
+
+\begin{itemize}
+    \item \textbf{Ankle range of motion (ROM):} The angular excursion of the ankle in dorsiflexion/plantarflexion, inversion/eversion, and internal/external rotation, estimated from the robot's encoders. This is the primary variable for H3, compared against the optoelectronic reference.
+    \item \textbf{Interaction force and torque:} The six-component wrench measured by the load cell at the robot--foot interface, in Newtons and Newton-metres. This variable is the input to the admittance controller and the primary observable for evaluating H2.
+    \item \textbf{Controller tracking error (RMSE):} The root mean square deviation between the prescribed reference trajectory and the measured ankle trajectory, expressed in degrees. Used to quantify control performance in passive and assistive modes.
+    \item \textbf{Controller settling time:} The time required for the system to reach steady-state response after a step change in reference position or admittance parameters, in milliseconds. Used to quantify controller responsiveness (H2).
+    \item \textbf{ROM measurement error vs. optoelectronic reference:} The difference between robot-estimated and optoelectronic-measured ROM, expressed as RMSE (degrees) and Pearson correlation coefficient. The primary metric for H3.
+\end{itemize}
+
+\section{Limitations}
+
+The following limitations are acknowledged and will be addressed in the interpretation of results:
+
+\begin{itemize}
+    \item \textbf{Healthy subjects only:} The pilot study uses neurologically intact adults. Differences in ankle stiffness, spasticity, and motor variability between healthy and patient populations may affect the generalisability of ROM accuracy and controller performance results to clinical settings.
+    \item \textbf{Laboratory conditions:} All tests are conducted under controlled laboratory conditions (fixed seating, supervised sessions, controlled lighting for optoelectronic capture). Performance in real-world or home-based settings may differ.
+    \item \textbf{Prototype stage:} The robot is a research prototype; results reflect the performance of this specific implementation and may not generalise to future iterations with different actuators, sensors, or structural materials.
+    \item \textbf{Short time horizon:} The seven-month duration precludes longitudinal assessment of motor learning, fatigue effects, or inter-session variability in the admittance controller's adaptive behaviour.
+    \item \textbf{VR validation limited to usability:} The VR serious game will be evaluated for usability and engagement, but its therapeutic efficacy as a rehabilitation tool is outside the scope of this project.
+\end{itemize}

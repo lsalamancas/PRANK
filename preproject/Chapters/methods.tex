@@ -1,51 +1,138 @@
+% !TEX root = ../main.tex
 \chapter{MATERIALS AND METHODS}\label{methods}
 \graphicspath{{images/}}
 
-This section describes the components and methodology used in the development of the PRANK ankle rehabilitation robot, 
-with reference to international standards that guide safety, performance, and software quality in rehabilitation robotics.
+This chapter describes the system architecture and development methodology of PRANK — a Parallel Robot for ANKle rehabilitation.
+The project is structured in five sequential stages that span mechanical design, electronic integration, control implementation, mixed-reality interface development, and experimental validation.
+This staged structure supports project scheduling and provides clear deliverables and entry/exit criteria at each phase.
+Development follows established engineering best practices for mechatronic systems and rehabilitation robotics, with safety and software quality considerations aligned with relevant international standards where applicable.
 
-\section{Mechanical Structure}
-The PRANK robot is designed with three degrees of freedom (DoF), enabling controlled movement in dorsiflexion/plantarflexion, inversion/eversion, and internal/external rotation. 
-The mechanical structure follows safety principles outlined in ISO 13482 and ISO/TS 15066, which define requirements for personal care and collaborative robots. 
-The frame is built using lightweight aluminum and 3D-printed joints to ensure modularity, ergonomic alignment, and safe physical interaction. 
-The foot interface includes adjustable straps and a contoured support to minimize risk during use.
+Figure~\ref{fig:PRANK_schematic} shows the physical schematic of the PRANK robot, and Figure~\ref{fig:PRANK_architecture} presents the overall system architecture, showing the integration between the mechanical platform, embedded hardware, control software, and the mixed-reality interface.
 
-\section{Actuation and Sensing}
-Each DoF is actuated by a brushless DC motor with integrated encoders, selected to meet performance criteria similar to those in ISO 9283. 
-Torque estimation is achieved through current sensing and mechanical modeling. 
-The system includes encoders for motion tracking and a 3D load cell for force feedback. 
-Electrical safety considerations are guided by ISO 60601-1, addressing insulation, leakage current, and electromagnetic compatibility.
-
-\section{Control Architecture}
-The control system supports multiple rehabilitation modes: passive, assistive, and resistive. 
-In assistive mode, the robot applies torque to guide the user’s movement along predefined trajectories. 
-In resistive mode, it generates opposing torque to challenge the user’s effort and promote muscle strengthening. 
-These modes are implemented using nonlinear control strategies and admitance-based control. 
-The controller runs on a real-time embedded platform, with communication handled via serial or CAN protocols. 
-Safety features include torque limits, emergency stop mechanisms, and compliance with ISO 10218-1 and ISO/TS 15066.
-
-\section{Virtual Reality Interface}
-A custom VR serious game developed in Unity provides interactive tasks that promote ankle mobility and coordination. 
-The game receives real-time data from the robot and delivers visual, sound and haptic feedback to the user. 
-Human-machine interaction principles from ISO 13482 and ISO/IEC 25010 are considered to ensure usability, engagement, and therapeutic relevance.
-
-\section{Software Environment}
-Software development follows lifecycle guidelines from ISO/IEC 62304 and ISO/IEC 12207, ensuring modularity, traceability, and maintainability. 
-Embedded control is implemented in C++, while high-level coordination and data logging use C\# and Unity Game Engine. 
-Control algorithms are validated in MATLAB/Simulink prior to deployment. Sensor data and user interaction metrics are logged for offline analysis and performance evaluation.
-
-\section{Experimental Protocol (Planned)}
-A pilot study will be conducted with healthy participants to evaluate system usability, comfort, and preliminary effectiveness. 
-The protocol will include tasks in all three control modes and collect metrics such as range of motion, task completion time, and user feedback.
-The ROM calculation will be verified using an optoelectronic tracking system. 
-
-\section{System Architecture}
-Figure \ref{fig:PRANK_schematic} presents the overall system architecture, detailing the integration between the embedded control 
-hardware and the software modules responsible for data processing, user interaction, and rehabilitation logic. 
-
-\begin{figure}
+\begin{figure}[htbp]
     \centering
-    \includegraphics[width=1\textwidth]{PRANK-schematic.pdf}
-    \caption{PRANK System schematic}
+    \includegraphics[width=\textwidth]{PRANK-schematic.pdf}
+    \caption{PRANK physical system schematic.}
     \label{fig:PRANK_schematic}
 \end{figure}
+
+% ---------------------------------------------------------------
+% PRANK System Architecture — image
+% ---------------------------------------------------------------
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{system_diagram.png}
+    \caption{PRANK system architecture: physical platform, dual-core embedded controller, and software layer with mixed reality interface.}
+    \label{fig:PRANK_architecture}
+\end{figure}
+
+% ---------------------------------------------------------------
+\section{Stage 1 — Mechanical Design and Fabrication}
+% ---------------------------------------------------------------
+
+The PRANK robot is a three-degree-of-freedom (DoF) parallel structure designed to produce controlled rotational motion at the ankle joint in three anatomical planes: dorsiflexion/plantarflexion, inversion/eversion, and internal/external rotation.
+The kinematic configuration follows an RRR (revolute--revolute--revolute) chain arrangement, in which three independent motor-driven arms converge on a common moving platform — the footplate — through spherical or universal joints.
+
+The mechanical structure is constructed from lightweight aluminium profiles and 3D-printed structural joints, combining rigidity with modularity and ease of component replacement.
+The footplate includes an adjustable strapping system and a contoured sole support to accommodate different foot sizes and ensure reliable mechanical coupling between the patient's foot and the robot.
+Rotation centre alignment with the anatomical ankle joint centre is a primary design constraint, implemented through geometric calibration of the kinematic chain during the design phase.
+
+The full 3D mechanical design is developed in \textbf{SolidWorks}, which is also used for structural simulation (FEA) to verify that the frame, joints, and footplate withstand the peak loads reported in the biomechanics literature (up to $\sim112$~Nm at the ankle during push-off equivalent loading).
+Kinematic workspace coverage — at minimum $\pm25^{\circ}$ dorsiflexion/plantarflexion, $\pm15^{\circ}$ inversion/eversion, and $\pm10^{\circ}$ internal/external rotation (H1) — is verified through SolidWorks Motion analysis prior to fabrication.
+
+\textbf{Stage deliverable:} Assembled and mechanically validated parallel robotic platform.
+
+% ---------------------------------------------------------------
+\section{Stage 2 — Electronic Integration and Sensing}
+% ---------------------------------------------------------------
+
+Each of the three kinematic chains is actuated by a \textbf{brushless DC motor} with an integrated incremental encoder, providing position feedback with sufficient resolution for ankle-level kinematics ($<0.1^{\circ}$ angular resolution at the footplate).
+Motor drivers communicate with the embedded controller via a CAN bus, providing a noise-robust, real-time communication channel suitable for multi-axis coordinated motion.
+
+Force and torque sensing at the robot--patient interface is performed by a \textbf{six-axis load cell} (also referred to as a 6-DoF force/torque sensor) mounted between the footplate and the last structural link.
+Unlike a 3D force sensor — which measures only the three linear force components ($F_x, F_y, F_z$) — a six-axis load cell additionally measures the three torque components ($M_x, M_y, M_z$), providing the full interaction wrench required by the admittance controller to detect rotational intent at the ankle.
+This distinction is critical: without the torque channels, the controller cannot distinguish whether the patient is attempting dorsiflexion from inversion, making a 6-axis sensor necessary despite its higher cost.
+Analog signals from the load cell are conditioned and digitised by a dedicated ADC front-end before transmission to the controller.
+
+The embedded processing platform is a dual-core \textbf{STM32} microcontroller.
+The two cores are assigned distinct, real-time tasks to avoid scheduling conflicts and ensure deterministic execution:
+\begin{itemize}
+    \item \textbf{Core 1 — Sensing and data acquisition:} Reads encoder positions, load cell measurements, and any auxiliary sensors at a fixed sampling rate; performs signal filtering and packaging; and passes processed data to Core 2 via shared memory with a hardware semaphore.
+    \item \textbf{Core 2 — Control and communications:} Executes the admittance control law, generates motor torque commands, manages safety monitors (torque limits, emergency stop), and handles serial communication with the Unity game engine on the host PC.
+\end{itemize}
+
+This dual-core partitioning ensures that sensing and control loops run at their required update rates independently, preventing communication overhead from degrading control performance.
+Firmware is developed in \textbf{C/C++} using the STM32 HAL and FreeRTOS for task scheduling.
+
+\textbf{Stage deliverable:} Fully wired and calibrated mechatronic platform with verified sensor readings and motor control.
+
+% ---------------------------------------------------------------
+\section{Stage 3 — Control System Implementation}
+% ---------------------------------------------------------------
+
+The control architecture implements three rehabilitation modes — passive, assistive, and resistive — all built on the admittance control framework described in the theoretical framework (Equation~\ref{eq:admittance}).
+
+In \textbf{passive mode}, the robot executes a predefined reference trajectory (sinusoidal or custom) with high virtual stiffness $K_d$, guiding the ankle through the target ROM regardless of patient effort.
+In \textbf{assistive mode}, virtual stiffness is reduced and the admittance law allows the patient's voluntary interaction forces to modify the prescribed trajectory, encouraging active participation.
+In \textbf{resistive mode}, a velocity-proportional virtual damping $B_d$ opposes the patient's motion, providing progressive mechanical resistance for strength training.
+
+The admittance control law and mode-switching logic are implemented directly in \textbf{C/C++} on the STM32 platform.
+Controller gains and admittance parameters are tuned experimentally through a systematic parameter sweep on the physical prototype, and performance is assessed against the criteria in H2: settling time $<500$~ms and force tracking error $<15\%$ of commanded torque.
+Offline data analysis and result plotting are performed in MATLAB.
+
+Safety mechanisms implemented in firmware include: per-axis torque saturation, workspace boundary enforcement, watchdog timer, and a hardware emergency-stop circuit.
+
+\textbf{Stage deliverable:} Implemented, tuned, and safety-validated admittance control system operating in all three rehabilitation modes.
+
+% ---------------------------------------------------------------
+\section{Stage 4 — Mixed Reality Interface Development}
+% ---------------------------------------------------------------
+
+The patient-facing interface is a \textbf{mixed reality (MR) serious game} developed in \textbf{Unity} with \textbf{C\#}.
+The game world is fully virtual — the patient is not shown their foot or the robot — and the ankle motion is mapped to the control of an in-game character or object, creating an intuitive and engaging rehabilitation experience.
+
+The system supports two display modalities:
+\begin{itemize}
+    \item \textbf{Virtual reality (VR) mode:} full immersive display via a head-mounted display (HMD), providing a completely virtual environment.
+    \item \textbf{Mixed reality (MR) mode:} virtual game elements are overlaid on the physical environment using a passthrough HMD, allowing the patient to remain aware of their surroundings while playing.
+\end{itemize}
+
+Game design follows an \textbf{arcade paradigm}: fast-paced, visually clear games inspired by classical titles where the ankle controls the game action directly.
+Three game archetypes are planned, each targeting a different movement dimensionality:
+\begin{itemize}
+    \item \textbf{1D games} (e.g., Flappy Bird--style): dorsiflexion/plantarflexion only controls altitude or height of an object. Used in early rehabilitation stages or when only one axis has sufficient motor control.
+    \item \textbf{2D games} (e.g., car driving, side-scrolling): two ankle axes (e.g., plantarflexion/dorsiflexion + inversion/eversion) control steering and speed simultaneously, requiring coordinated biaxial movement.
+    \item \textbf{3D games} (e.g., air hockey, ball rolling): all three ankle axes are mapped to full 3D object control, requiring the most complex and complete ankle motor activation.
+\end{itemize}
+
+Progression between 1D, 2D, and 3D modes is decided by the therapist based on the patient's ROM and force metrics logged across sessions.
+The game communicates with the STM32 Core 2 over a serial USB link, receiving real-time ankle joint angles at a rate sufficient for smooth visual feedback ($\geq60$~Hz).
+To reinforce motor learning, the interface implements \textbf{multimodal biofeedback} across three sensory channels:
+\begin{itemize}
+    \item \textbf{Visual alerts:} on-screen indicators (colour changes, flashes, score events) signal when the patient reaches a ROM target, exceeds a force threshold, or completes a game objective.
+    \item \textbf{Spatial audio:} directional sound cues tied to game events — success tones, collision effects, rhythm cues — reinforce correct movement patterns and provide timing information independent of visual attention.
+    \item \textbf{Vibrotactile feedback:} haptic actuator on the footplate or HMD provides a brief vibration pulse upon target achievement, offering a proprioceptive confirmation channel that remains effective even when the patient's visual focus is occupied by the game.
+\end{itemize}
+A therapist dashboard allows session configuration, mode selection, biofeedback intensity adjustment, and review of performance metrics (ROM achieved, task completion rate, applied force profile).
+
+\textbf{Stage deliverable:} Functional MR serious game with three arcade archetypes (1D/2D/3D), integrated with the robot hardware, and therapist dashboard operational.
+
+% ---------------------------------------------------------------
+\section{Stage 5 — System Integration and Experimental Validation}
+% ---------------------------------------------------------------
+
+The final stage integrates all subsystems and conducts the experimental protocol described in the project hypotheses.
+
+\textbf{H1 — Workspace validation:} The robot is commanded to its mechanical limits in each axis and the achieved angles are measured with the on-board encoders and confirmed visually. The target values ($\pm25^{\circ}$, $\pm15^{\circ}$, $\pm10^{\circ}$) must be reached without binding or motor saturation.
+
+\textbf{H2 — Controller validation:} A series of step-reference and sinusoidal tracking experiments are performed with a mechanical ankle phantom and subsequently with healthy subjects.
+Force tracking error and settling time are computed from the logged sensor data and compared against the H2 thresholds.
+
+\textbf{H3 — ROM validation:} A pilot study with healthy adult subjects is conducted simultaneously using the robot's encoder-based ROM estimation and a reference optoelectronic motion capture system.
+Both systems record ankle joint angles across passive ROM trials.
+Pearson correlation coefficient and RMSE between the two measurement systems are computed and compared against the H3 thresholds ($r > 0.95$, RMSE $< 5^{\circ}$).
+
+All experimental data are logged to file by Core 2 and the Unity dashboard for offline analysis in MATLAB.
+Results are reported as mean $\pm$ standard deviation across subjects and trials.
+
+\textbf{Stage deliverable:} Experimental dataset and statistical analysis report validating H1 and H3 (H2 is validated at the end of Stage 3).
