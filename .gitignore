@@ -14,6 +14,7 @@
 *SAVE-ERROR
 ~$*.xlsx
 *:Zone.Identifier
+preproject/papers/
 PRANK/preproject/build/**
 !PRANK/preproject/build/
 !PRANK/preproject/build/main.pdf
