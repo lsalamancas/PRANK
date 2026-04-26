@@ -11,25 +11,29 @@ This chapter outlines the technical requirements, material resources, and estima
 \rowcolor{Gray}
 \textbf{Category} & \textbf{Description} & \textbf{Estimated Cost (USD)} \\
 \hline
-3D Printing & PLA filament, high-resolution printing (frame and joint parts) & 180 \\
+3D Printing \& Prototyping & PLA/PETG filament, multiple design iterations for joints and footplate & 250 \\
 \hline
-Electronic Components & Microcontroller (STM32), force sensor, IMUs, wiring, connectors & 500 \\
+Aluminum Structure & Extruded aluminum profiles, machined brackets, anodised base plate & 300 \\
 \hline
-Motors & 3 × Brushless DC motors with encoders & 240 \\
+Electronic Components & STM32 dual-core board, 6-axis load cell, signal conditioning PCB, ADC modules, CAN transceivers, wiring and connectors & 950 \\
 \hline
-Motor Drivers & Compatible drivers with current control & 90 \\
+Motors & 3 $\times$ BLDC motors with integrated incremental encoders (suitable torque/speed for ankle ROM) & 600 \\
 \hline
-Mechanical parts & Bearings, couplings, screws, aluminum parts & 100 \\
+Motor Drivers & 3 $\times$ FOC motor drivers with CAN bus interface & 210 \\
 \hline
-VR Headset & Oculus/Meta Quest 2 (or equivalent) & 300 \\
+Mechanical Parts & Precision bearings, universal joints, couplings, ball-end joints, hardware & 300 \\
 \hline
-Software Licenses & Unity Pro/Unreal (if needed), MATLAB/Simulink (edu license) & 0--100 \\
+VR / MR Headset & Meta Quest 2 or equivalent passthrough HMD & 400 \\
 \hline
-Validation Tools & Access to optoelectronic motion capture lab  & 50 \\
+Software Licenses & Unity (free tier), MATLAB (university license), SolidWorks (university license) & 0--100 \\
 \hline
-Personal Labor & Estimation of 120 hours × \$10/hr (development + testing) & 1,200 \\
+Validation Tools & Optoelectronic motion capture lab session access, retroreflective markers & 150 \\
 \hline
-\textbf{Total Budget} & & \textbf{2,760} \\
+Personal Labor & 200 hours $\times$ \$15/hr (design, assembly, programming, testing) & 3,000 \\
+\hline
+Contingency (10\%) & Unexpected component failures, reprints, shipping & 627 \\
+\hline
+\textbf{Total Budget} & & \textbf{6,887} \\
 \hline
 \end{tabular}
 \end{table}

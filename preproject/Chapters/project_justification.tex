@@ -59,3 +59,118 @@ configuration and controlled through admittance strategies. It aims to offer a s
 reality serious game and a real-time feedback loop that adjusts difficulty based on force and range of motion (ROM), the system seeks to promote user-centred recovery while
 providing measurable, high-fidelity data. To further enhance motor learning and patient engagement, PRANK incorporates \textbf{multimodal biofeedback}: visual screen alerts signal performance thresholds and game events, spatial audio cues reinforce correct movement patterns, and vibrotactile feedback provides immediate haptic confirmation of target achievement. This combination of sensory channels has been shown to accelerate motor relearning in neurological rehabilitation \cite{Truijen2022}. Additionally, validating PRANK’s ROM measurement capabilities against an optoelectronic motion capture system will
 support its use as a reliable biomechanical assessment tool in future clinical settings.
+
+The present preproject constitutes the first of four planned research phases that together define a doctoral research programme aimed at bringing PRANK from laboratory prototype to a globally deployable rehabilitation platform, as illustrated in Figure~\ref{fig:roadmap}.
+
+\begin{figure}[htbp]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[
+    phbox/.style  = {rectangle, rounded corners=6pt,
+                     text width=3.9cm, minimum height=1.6cm,
+                     align=center, font=\normalsize\bfseries\sffamily,
+                     text=white, inner sep=8pt},
+    itbox/.style  = {rectangle, rounded corners=4pt,
+                     text width=3.7cm, align=left,
+                     font=\small\sffamily, fill=white,
+                     draw=#1, inner sep=6pt, text=black},
+    cbox/.style   = {rectangle, rounded corners=5pt,
+                     text width=3.9cm, align=center,
+                     font=\small\sffamily,
+                     fill=#1!10, draw=#1!60, inner sep=6pt},
+    arr/.style    = {-{Stealth[length=4mm,width=3mm]},
+                     line width=2pt, #1},
+    darr/.style   = {-{Stealth[length=3mm,width=2mm]},
+                     dashed, gray!60, line width=1pt},
+]
+
+%% ---- X centres: 0 / 5.4 / 10.8 / 16.2  (5.4 cm spacing) ----
+
+%% ======= VISION BANNER =======
+\node[rectangle, rounded corners=6pt, fill=gray!18, draw=gray!50,
+      text width=18cm, align=center, font=\small\sffamily, inner sep=8pt]
+      (vision) at (8.1, 3.0)
+    {\textbf{Long-term vision:} an accessible, family-integrated ankle rehabilitation robot\\
+     for home and clinic use — from Colombian university lab to the global market};
+
+%% ======= PHASE HEADERS =======
+\node[phbox, fill=teal!70!black]    (ph1) at (0,    0) {Phase 1\\[2pt]{\small Prototype \&}\\[-1pt]{\small Foundation}\\[2pt]{\footnotesize Master's · 7 months}};
+\node[phbox, fill=blue!55!black]    (ph2) at (5.4,  0) {Phase 2\\[2pt]{\small Clinical Validation}\\[-1pt]{\small \& Innovation}\\[2pt]{\footnotesize PhD · Year 1--2}};
+\node[phbox, fill=orange!75!black]  (ph3) at (10.8, 0) {Phase 3\\[2pt]{\small FES \& Smart}\\[-1pt]{\small Integration}\\[2pt]{\footnotesize PhD · Year 2--3}};
+\node[phbox, fill=red!60!black]     (ph4) at (16.2, 0) {Phase 4\\[2pt]{\small Market \&}\\[-1pt]{\small Global Impact}\\[2pt]{\footnotesize PhD · Year 3--4}};
+
+%% ======= PHASE ITEMS =======
+\node[itbox=teal!60!black] (p1) at (0,   -4.2)
+    {$\bullet$ SolidWorks design \& FEA\\[2pt]
+     $\bullet$ STM32 dual-core firmware\\[2pt]
+     $\bullet$ Admittance control (C/C++)\\[2pt]
+     $\bullet$ MR arcade serious games\\[2pt]
+     $\bullet$ ROM validation vs.\ MOCAP};
+
+\node[itbox=blue!55!black] (p2) at (5.4, -4.2)
+    {$\bullet$ Clinical trials (stroke patients)\\[2pt]
+     $\bullet$ Novel force sensor\\
+     \quad\footnotesize(spring / soft-material)\\[2pt]
+     $\bullet$ ML-adaptive game difficulty\\[2pt]
+     $\bullet$ Home-use version design\\[2pt]
+     $\bullet$ Family co-play module};
+
+\node[itbox=orange!75!black] (p3) at (10.8, -4.2)
+    {$\bullet$ FES — peroneal nerve stim.\\[2pt]
+     $\bullet$ EMG-gated closed-loop FES\\[2pt]
+     $\bullet$ Portable / ambulatory device\\[2pt]
+     $\bullet$ Cloud session analytics\\[2pt]
+     $\bullet$ Expanded multi-site trials};
+
+\node[itbox=red!60!black] (p4) at (16.2, -4.2)
+    {$\bullet$ INVIMA regulatory pathway\\[2pt]
+     $\bullet$ International certification\\[2pt]
+     $\bullet$ Technology transfer / spin-off\\[2pt]
+     $\bullet$ Clinic \& home deployment\\[2pt]
+     $\bullet$ National market entry};
+
+%% ======= ARROWS =======
+\draw[arr=teal!60!black]   (ph1.east) -- (ph2.west);
+\draw[arr=blue!55!black]   (ph2.east) -- (ph3.west);
+\draw[arr=orange!75!black] (ph3.east) -- (ph4.west);
+\draw[darr] (vision.south) -- ++(0,-0.8);
+
+%% ======= CROSS-CUTTING THEMES (row 1 — one per phase) =======
+\node[cbox=teal!60!black]   (c1) at (0,    -8.0)
+    {\textbf{Open-source Foundation}\\UMNG lab · public datasets\\reproducible research};
+\node[cbox=green!55!black]  (c2) at (5.4,  -8.0)
+    {\textbf{Family Engagement}\\Multiplayer serious games\\Caregiver progress dashboard};
+\node[cbox=blue!50!black]   (c3) at (10.8, -8.0)
+    {\textbf{Open Platform}\\Open-source firmware\\Shared clinical datasets};
+\node[cbox=gray!60!black]   (c4) at (16.2, -8.0)
+    {\textbf{Continuous Publication}\\IEEE · MDPI · Springer\\Conference dissemination};
+
+\draw[darr] (p1.south) -- (c1.north);
+\draw[darr] (p2.south) -- (c2.north);
+\draw[darr] (p3.south) -- (c3.north);
+\draw[darr] (p4.south) -- (c4.north);
+
+%% ======= INTERNATIONAL COLLABORATION (phases 2–4 spanning box) =======
+\node[rectangle, rounded corners=5pt,
+      text width=12.5cm, align=center,
+      font=\small\sffamily,
+      fill=violet!10, draw=violet!60, inner sep=7pt]
+      (intl) at (10.8, -9.8)
+    {\textbf{International Collaboration (Phases 2–4):}
+     UMNG (Colombia) · Brazil partner universities · EU partner universities};
+
+\draw[darr] (c2.south) -- (intl.north -| c2);
+\draw[darr] (c3.south) -- (intl.north -| c3);
+\draw[darr] (c4.south) -- (intl.north -| c4);
+
+%% ======= CURRENT PHASE HIGHLIGHT =======
+\draw[teal!60!black, line width=2pt, rounded corners=8pt]
+    (-2.3, -9.2) rectangle (2.3, 1.3);
+\node[font=\scriptsize\bfseries\sffamily, text=teal!60!black]
+    at (0, -9.5) {$\blacktriangle$ Current work};
+
+\end{tikzpicture}%
+}
+\caption{Long-term doctoral research roadmap for PRANK. Phase~1 (highlighted, current preproject) establishes the mechatronic foundation. Subsequent phases add clinical validation with novel sensing, FES neuromodulation integrated with EMG, and global market deployment. Cross-cutting themes of international collaboration, family engagement, open-source development, and continuous publication run throughout all phases.}
+\label{fig:roadmap}
+\end{figure}

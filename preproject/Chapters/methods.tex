@@ -129,6 +129,28 @@ The final stage integrates all subsystems and conducts the experimental protocol
 Force tracking error and settling time are computed from the logged sensor data and compared against the H2 thresholds.
 
 \textbf{H3 — ROM validation:} A pilot study with healthy adult subjects is conducted simultaneously using the robot's encoder-based ROM estimation and a reference optoelectronic motion capture system.
+The optoelectronic reference uses a \textbf{simplified 6-marker hindfoot–tibia protocol}:
+
+\begin{itemize}
+    \item \textbf{LMAL} — lateral malleolus
+    \item \textbf{MMAL} — medial malleolus
+    \item \textbf{CALC} — posterior calcaneus (Achilles insertion)
+    \item \textbf{MT1} — first metatarsal head (medial)
+    \item \textbf{MT5} — fifth metatarsal head (lateral)
+    \item \textbf{TIB} — tibial shaft wand (mid-shank)
+\end{itemize}
+
+The tibia segment is defined by LMAL, MMAL, and TIB; the foot segment by CALC, MT1, and MT5.
+Joint angles are computed as Cardan/Euler rotations of the foot segment relative to the tibia, yielding DF/PF, Inv/Ev, and Int/Ext rotation simultaneously.
+This protocol was selected over the Oxford Foot Model and the SHCG 19-marker model for its practical simplicity in a rehabilitation setting while still providing the three angular outputs required by H3 (see Theoretical Framework, Section~\ref{theoretical_framework}).
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{marker_set_ankle.png}
+    \caption{6-marker ankle protocol for H3 validation. Left: lateral view (TIB, LMAL, CALC, MT5). Right: medial view (TIB, MMAL, CALC, MT1). Blue lines define the tibia segment; orange lines define the foot segment.}
+    \label{fig:marker_protocol}
+\end{figure}
+
 Both systems record ankle joint angles across passive ROM trials.
 Pearson correlation coefficient and RMSE between the two measurement systems are computed and compared against the H3 thresholds ($r > 0.95$, RMSE $< 5^{\circ}$).
 

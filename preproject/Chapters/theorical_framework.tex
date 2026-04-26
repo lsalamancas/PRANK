@@ -134,6 +134,7 @@ The clinical and biomechanical literature reports the following reference ranges
 \label{tab:ankle_rom}
 \begin{tabular}{|p{0.35\textwidth}|p{0.25\textwidth}|p{0.25\textwidth}|}
 \hline
+\rowcolor{Gray}
 \textbf{Movement} & \textbf{Full passive ROM} & \textbf{Required for gait} \\
 \hline
 Dorsiflexion & $10^{\circ}$--$20^{\circ}$ & $\approx 15^{\circ}$ \\
@@ -198,6 +199,7 @@ Table~\ref{tab:ankle_kinetics} summarises the key kinetic parameters:
 \label{tab:ankle_kinetics}
 \begin{tabular}{|p{0.38\textwidth}|p{0.22\textwidth}|p{0.22\textwidth}|}
 \hline
+\rowcolor{Gray}
 \textbf{Parameter} & \textbf{Normalised} & \textbf{Absolute (70~kg)} \\
 \hline
 Peak plantarflexion torque (push-off) & 1.4--1.6~Nm/kg & 98--112~Nm \\
@@ -265,6 +267,36 @@ These interfaces must accommodate physical comfort, cognitive engagement, and sa
 Advances in flexible electronics and soft robotics have enabled more ergonomic designs that conform to the user's anatomy \cite{gao2021flexible}.
 Virtual reality (VR) environments provide immersive feedback, increasing motivation and facilitating motor learning through gamified rehabilitation tasks \cite{frontiers2021interfaces}.
 Research shows that combining tactile and visual feedback improves ankle strength, flexibility, and balance beyond what passive trajectory-following achieves, and that personalising the game interface to the affected limb side sustains the patient's implicit sense of agency \cite{Medved2021}.
+
+% ------------------------------------------------------------------
+\section{Motion Capture and Ankle Marker Sets}
+% ------------------------------------------------------------------
+
+Optoelectronic motion capture (MoCap) systems are the gold standard for measuring joint kinematics in clinical and research settings.
+These systems use multiple calibrated infrared cameras — typically 6 to 12 — to reconstruct the 3D trajectories of retroreflective markers placed on anatomical landmarks, achieving sub-millimetre spatial resolution and sampling rates of 100--250~Hz \cite{Medved2021}.
+Systems such as Vicon, Qualisys, and OptiTrack are widely used in gait laboratories for ankle ROM measurement and constitute the reference against which PRANK's internal kinematics will be validated in Hypothesis H3.
+
+The accuracy of an optoelectronic measurement depends critically on the \textbf{marker set} and the \textbf{biomechanical model} used to convert marker trajectories into joint angles.
+For the ankle joint complex, three families of marker sets are most relevant:
+
+\subsection{Conventional Single-Segment Foot Model}
+
+The simplest approach, used in standard whole-body protocols such as the Helen~Hayes and Plug-in~Gait models, tracks the foot with only two markers (typically on the heel and the second metatarsal head) and the shank with a wand marker.
+This yields a single foot segment rotating relative to the tibia, providing dorsiflexion/plantarflexion reliably, but conflating inversion/eversion and internal/external rotation with artefact from midfoot motion \cite{Winter2009}.
+Because PRANK targets all three rotational degrees of freedom, single-segment models are insufficient for validation.
+
+\subsection{Oxford Foot Model (OFM)}
+
+The Oxford Foot Model decomposes the foot into three segments — hindfoot, forefoot, and hallux — using approximately 13 markers \cite{Stebbins2006}.
+It provides independent kinematic outputs for the tibio-calcaneal (hindfoot), Chopart, and metatarso-phalangeal joints, making it the most widely adopted multi-segment foot model in clinical gait analysis.
+However, the OFM requires careful marker placement on small bony prominences (medial/lateral malleoli, navicular, sustentaculum tali, medial/lateral forefoot), making it demanding for routine use and sensitive to soft-tissue artefact on the hindfoot.
+
+\subsection{SHCG Nine-Segment Model (MacWilliams)}
+
+MacWilliams et al.\ developed a nine-segment foot model using 19 retroreflective markers to characterise kinematics and kinetics across eight joints of the foot and ankle in adolescent gait \cite{MacWilliams2003}.
+This model provides comprehensive data at the talocrural, subtalar, transverse-tarsal, tarsometatarsal, and metatarsophalangeal levels, and demonstrated that single-link models significantly overestimate ankle joint powers by attributing midfoot motion to the ankle.
+Despite its completeness, the 19-marker protocol is impractical for rehabilitation settings where speed of setup and patient tolerance are constraints.
+
 
 % ------------------------------------------------------------------
 \section{Clinical Evaluation Metrics}

@@ -5,7 +5,10 @@
       "command": "latexmk",
       "args": [
         "-pdf",
+        "-cd",
         "-outdir=build",
+        "-interaction=nonstopmode",
+        "-synctex=1",
         "%DOC%"
       ]
     }
