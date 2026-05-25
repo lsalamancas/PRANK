@@ -4,46 +4,45 @@
 
 \section{Type of Research}
 
-This project is classified as \textbf{experimental} research, since it involves the design, construction, and controlled testing of a physical prototype — the PRANK parallel ankle rehabilitation robot — under conditions defined by the investigator.
-It also has a \textbf{descriptive} component, as one of its core objectives is to characterise the kinematic measurement performance of the system by comparing robot-estimated ankle range of motion (ROM) against a validated optoelectronic motion capture reference under controlled conditions.
+This project is classified as \textbf{applied} research with an \textbf{experimental simulation} component, since it involves the design, modelling, and controlled computational simulation of a physical system — the PRANK parallel ankle rehabilitation robot — under conditions defined by the investigator.
+It also has a \textbf{descriptive} component, as one of its core objectives is to characterise the control performance of the admittance system through simulation-based experiments and hardware-in-the-loop testing.
 The experimental phase will determine whether the system meets the performance thresholds stated in the project hypotheses (H1, H2, H3), while the descriptive phase will document the system's behaviour across its three rehabilitation modes.
 
 \section{Delimitation Conditions}
 
 \subsection*{Space}
 
-All design, fabrication, assembly, software development, and experimental testing activities will be carried out at the facilities of the \textbf{Universidad Militar Nueva Granada (UMNG)}, Bogotá, Colombia.
-Specifically, the mechatronics and robotics laboratories of the Faculty of Engineering will be used for mechanical assembly, electronic integration, and hardware-in-the-loop testing.
-The optoelectronic validation experiments will be conducted in a dedicated biomechanics or motion capture laboratory available at the same institution.
+All design, software development, simulation, and hardware-in-the-loop testing activities will be carried out at the facilities of the \textbf{Universidad Militar Nueva Granada (UMNG)}, Bogotá, Colombia.
+Specifically, the mechatronics and robotics laboratories of the Faculty of Engineering will be used for CAD design, embedded firmware development, and HIL validation with the STM32 development board.
 
 \subsection*{Time}
 
 The project will be executed during \textbf{2026}, with a planned duration of seven (7) months.
-The schedule follows the Gantt chart presented in Chapter~\ref{schedule}, covering the phases of mechanical design and fabrication, electronic integration, control system implementation, MR interface development, and pilot validation.
+The schedule follows the Gantt chart presented in Chapter~\ref{schedule}, covering the phases of mechanical design and CAD modelling, electronic architecture specification, embedded control implementation, and hardware-in-the-loop validation.
 
 \subsection*{Universe}
 
-The experimental validation (H3) will be conducted with a sample of \textbf{healthy adult subjects}, who will participate in a pilot study to evaluate the robot's ROM measurement accuracy and the usability of the admittance control system.
-The use of healthy subjects is appropriate at this stage because the project's primary goal is technical validation of the system, not clinical assessment of rehabilitation outcomes.
-Participants with any prior ankle pathology, lower-limb neurological condition, or contraindication to seated robotic exercise will be excluded.
-The project does not involve clinical trials with patients, and therefore does not require clinical ethics approval beyond institutional research ethics review for non-clinical human-subjects testing.
+The validation experiments (H2 and H3) are conducted entirely in the computational simulation and hardware-in-the-loop environment; no human subjects are required in this phase.
+The simulation stimuli (joint reference trajectories and interaction force profiles) are derived from biomechanical data reported in the literature for healthy adult ankle motion.
+Human subjects experiments are planned for Phase~2, following physical fabrication and institutional ethics review.
 
 \subsection*{Scope}
 
 The project encompasses:
 \begin{itemize}
-    \item \textbf{Mechanical:} Design and fabrication of a three-degree-of-freedom parallel robotic structure with an RRR electric motor configuration, covering the therapeutic ankle ROM workspace stated in H1.
-    \item \textbf{Electronic and sensing:} Integration of brushless DC motors with encoders, a six-axis load cell for force/torque measurement, and the embedded real-time control platform.
-    \item \textbf{Control:} Implementation and experimental validation of an admittance-based control system supporting passive, assistive, and resistive rehabilitation modes (H2).
-    \item \textbf{Software:} Development of a mixed reality (MR) serious game in Unity that receives real-time data from the robot and adjusts difficulty based on ankle ROM and applied force.
-    \item \textbf{Validation:} A pilot study comparing robot-estimated ankle ROM against an optoelectronic motion capture reference, evaluating the metrics defined in H3.
+    \item \textbf{Mechanical design:} Design of a three-degree-of-freedom parallel robotic structure with an RRR electric motor configuration in SolidWorks, including FEA, kinematic workspace verification, and URDF/SDF export for simulation. Physical fabrication is deferred to Phase~2.
+    \item \textbf{Electronic architecture:} Specification of the complete electronics — brushless DC motors with encoders, six-axis load cell, motor drivers (CAN bus), and dual-core STM32 embedded platform — in the form of schematic, PCB layout, and bill of materials. Physical board assembly is deferred to Phase~2.
+    \item \textbf{Embedded control:} Implementation and hardware-in-the-loop validation of an admittance-based control system in C/C++ (FreeRTOS on STM32), supporting passive, assistive, and resistive rehabilitation modes (H2).
+    \item \textbf{Computational simulation:} ROS~2/Gazebo simulation environment using the URDF model as the virtual plant, providing virtual sensor readings to the STM32 HIL board and receiving motor commands to close the physics loop (H3).
 \end{itemize}
 
-The project does \textbf{not} include:
+The project does \textbf{not} include in this phase:
 \begin{itemize}
-    \item Clinical trials with neurological or orthopaedic patients.
-    \item Assessment of long-term rehabilitation outcomes or therapeutic efficacy.
-    \item Evaluation of the psychological or motivational effects of the MR game on patient adherence.
+    \item Physical fabrication or assembly of the robot or custom electronics.
+    \item Mixed reality or serious game interface development (planned for Phase~3).
+    \item Clinical trials or human subjects experiments.
+    \item ROM validation against an optoelectronic motion capture system (planned for Phase~2).
+    \item Assessment of therapeutic efficacy or rehabilitation outcomes.
     \item Commercialisation or regulatory approval activities.
 \end{itemize}
 
@@ -51,25 +50,26 @@ The project does \textbf{not} include:
 
 \subsection{Independent Variables}
 
-Independent variables are those controlled or manipulated by the investigator during the experimental protocol:
+Independent variables are those controlled or manipulated by the investigator during the simulation and HIL experiments:
 
 \begin{itemize}
-    \item \textbf{Control mode:} The rehabilitation mode selected for each trial — passive, assistive, or resistive. This variable determines the role of the robot (guiding, following, or resisting patient motion) and the configuration of the admittance parameters.
-    \item \textbf{Admittance parameters ($K_d$, $B_d$, $M_d$):} The virtual stiffness, damping, and inertia matrices of the admittance controller (Equation~\ref{eq:admittance}). These are set by the operator at the beginning of each session and may be varied systematically across trials to characterise controller behaviour.
-    \item \textbf{Prescribed trajectory / ROM target:} The reference ankle trajectory defined for each rehabilitation exercise (e.g., sinusoidal dorsiflexion/plantarflexion at a specified amplitude and frequency). Different trajectory profiles constitute different experimental conditions.
-    \item \textbf{VR game difficulty level:} The amplitude and speed demands of the virtual task presented to the subject, which modulates the motor challenge independently of the robot's physical resistance.
+    \item \textbf{Control mode:} The rehabilitation mode selected for each trial — passive, assistive, or resistive. This variable determines the admittance parameter configuration and the role of the simulated patient interaction forces.
+    \item \textbf{Admittance parameters ($K_d$, $B_d$, $M_d$):} The virtual stiffness, damping, and inertia matrices of the admittance controller (Equation~\ref{eq:admittance}). These are varied systematically to characterise controller behaviour and tune performance.
+    \item \textbf{Prescribed trajectory / ROM target:} The reference ankle trajectory defined for each simulation experiment (e.g., sinusoidal dorsiflexion/plantarflexion at a specified amplitude and frequency).
+    \item \textbf{Simulation mode:} Whether the experiment runs in pure-software simulation (ROS~2/Gazebo only) or HIL mode (STM32 firmware + ROS~2/Gazebo plant), used to quantify embedded implementation fidelity (H3).
 \end{itemize}
 
 \subsection{Dependent Variables}
 
-Dependent variables are those measured as outputs of the system in response to the independent variable conditions:
+Dependent variables are those measured as outputs of the simulation or HIL system:
 
 \begin{itemize}
-    \item \textbf{Ankle range of motion (ROM):} The angular excursion of the ankle in dorsiflexion/plantarflexion, inversion/eversion, and internal/external rotation, estimated from the robot's encoders. This is the primary variable for H3, compared against the optoelectronic reference.
-    \item \textbf{Interaction force and torque:} The six-component wrench measured by the load cell at the robot--foot interface, in Newtons and Newton-metres. This variable is the input to the admittance controller and the primary observable for evaluating H2.
-    \item \textbf{Controller tracking error (RMSE):} The root mean square deviation between the prescribed reference trajectory and the measured ankle trajectory, expressed in degrees. Used to quantify control performance in passive and assistive modes.
-    \item \textbf{Controller settling time:} The time required for the system to reach steady-state response after a step change in reference position or admittance parameters, in milliseconds. Used to quantify controller responsiveness (H2).
-    \item \textbf{ROM measurement error vs. optoelectronic reference:} The difference between robot-estimated and optoelectronic-measured ROM, expressed as RMSE (degrees) and Pearson correlation coefficient. The primary metric for H3.
+    \item \textbf{Ankle range of motion (ROM):} The angular excursion of the simulated ankle in dorsiflexion/plantarflexion, inversion/eversion, and internal/external rotation. Primary variable for H1 workspace verification.
+    \item \textbf{Interaction force and torque:} The six-component wrench injected into the simulation as the virtual patient effort input. Input to the admittance controller and primary observable for evaluating H2.
+    \item \textbf{Controller tracking error (RMSE):} Root mean square deviation between prescribed reference trajectory and simulated joint trajectory, in degrees. Used to quantify control performance (H2).
+    \item \textbf{Controller settling time:} Time required for the system to reach steady-state after a step reference change, in milliseconds (H2).
+    \item \textbf{HIL trajectory deviation:} Root mean square deviation between HIL and pure-software simulation trajectories under identical inputs, in degrees. Primary metric for H3.
+    \item \textbf{Communication latency:} USB serial round-trip time between the ROS~2 host and STM32, in milliseconds. Confirms real-time operation readiness (H3).
 \end{itemize}
 
 \section{Limitations}
@@ -77,9 +77,9 @@ Dependent variables are those measured as outputs of the system in response to t
 The following limitations are acknowledged and will be addressed in the interpretation of results:
 
 \begin{itemize}
-    \item \textbf{Healthy subjects only:} The pilot study uses neurologically intact adults. Differences in ankle stiffness, spasticity, and motor variability between healthy and patient populations may affect the generalisability of ROM accuracy and controller performance results to clinical settings.
-    \item \textbf{Laboratory conditions:} All tests are conducted under controlled laboratory conditions (fixed seating, supervised sessions, controlled lighting for optoelectronic capture). Performance in real-world or home-based settings may differ.
-    \item \textbf{Prototype stage:} The robot is a research prototype; results reflect the performance of this specific implementation and may not generalise to future iterations with different actuators, sensors, or structural materials.
-    \item \textbf{Short time horizon:} The seven-month duration precludes longitudinal assessment of motor learning, fatigue effects, or inter-session variability in the admittance controller's adaptive behaviour.
-    \item \textbf{VR validation limited to usability:} The VR serious game will be evaluated for usability and engagement, but its therapeutic efficacy as a rehabilitation tool is outside the scope of this project.
+    \item \textbf{Simulation fidelity:} The Gazebo physics model approximates the robot's dynamics based on the SolidWorks CAD parameters. Unmodelled effects — joint friction, flexibility, sensor noise — will be characterised and bounded but may affect generalisability to the physical prototype.
+    \item \textbf{No physical hardware validation:} All controller performance results are obtained in simulation and HIL. Differences between virtual and physical behaviour (actuator nonlinearities, real cable routing, thermal effects) will only be quantified after Phase~2 fabrication.
+    \item \textbf{Simulated patient forces:} Patient interaction forces are generated from literature-derived biomechanical profiles rather than real muscle activity, which may not capture the full variability of clinical populations.
+    \item \textbf{Short time horizon:} The seven-month duration precludes longitudinal assessment or iterative design refinement beyond the initial simulation campaign.
+    \item \textbf{HIL communication throughput:} USB serial bandwidth sets an upper bound on HIL loop rate; sufficiency for real-time control will be verified experimentally as part of H3.
 \end{itemize}

@@ -1,0 +1,89 @@
+{
+  "board": {
+    "design_settings": {
+      "defaults": {
+        "copper_line_width": 0.25,
+        "copper_text_size_h": 1.5,
+        "copper_text_size_v": 1.5,
+        "copper_text_thickness": 0.3
+      },
+      "rules": {
+        "min_clearance": 0.15,
+        "min_copper_edge_clearance": 0.3,
+        "min_hole_clearance": 0.25,
+        "min_hole_to_hole": 0.25,
+        "min_through_hole_diameter": 0.3,
+        "min_track_width": 0.15,
+        "min_via_annular_width": 0.15,
+        "min_via_diameter": 0.6,
+        "use_height_for_length_calcs": true
+      },
+      "track_widths": [ 0.15, 0.25, 0.35, 0.5, 0.6, 1.0, 1.5 ],
+      "via_dimensions": [
+        { "diameter": 0.6,  "drill": 0.3 },
+        { "diameter": 0.8,  "drill": 0.4 }
+      ]
+    }
+  },
+  "net_settings": {
+    "classes": [
+      {
+        "clearance": 0.15,
+        "name": "Default",
+        "track_width": 0.25,
+        "via_diameter": 0.6,
+        "via_drill": 0.3,
+        "wire_width": 6
+      },
+      {
+        "clearance": 0.5,
+        "name": "PWR_MOTOR",
+        "track_width": 0.6,
+        "via_diameter": 0.8,
+        "via_drill": 0.4,
+        "wire_width": 6
+      },
+      {
+        "clearance": 0.2,
+        "name": "PWR_LOGIC",
+        "track_width": 0.35,
+        "via_diameter": 0.6,
+        "via_drill": 0.3,
+        "wire_width": 6
+      },
+      {
+        "clearance": 0.15,
+        "name": "GND",
+        "track_width": 0.5,
+        "via_diameter": 0.6,
+        "via_drill": 0.3,
+        "wire_width": 24
+      }
+    ],
+    "netclass_patterns": [
+      { "netclass": "PWR_MOTOR", "pattern": "VM*"     },
+      { "netclass": "PWR_MOTOR", "pattern": "MOTOR*"  },
+      { "netclass": "PWR_LOGIC", "pattern": "+3.3V"   },
+      { "netclass": "PWR_LOGIC", "pattern": "+5V"     },
+      { "netclass": "GND",       "pattern": "GND"     }
+    ]
+  },
+  "schematic": {
+    "drawing": {
+      "default_bus_thickness": 12,
+      "default_junction_size": 40,
+      "default_line_thickness": 6,
+      "default_text_size": 50,
+      "default_wire_thickness": 6
+    }
+  },
+  "text_variables": {
+    "COMPANY":   "PRANK Team",
+    "DESIGNER":  "",
+    "REVISION":  "A",
+    "PROJECT":   "Robot Paralelo de Rehabilitación de Tobillo",
+    "STANDARD":  "IPC-A-600 Class 3 | IEC 60601-1 | FDA 21 CFR 820.30",
+    "FABRICATOR":"PCBWay / JLCPCB",
+    "STACKUP":   "4L FR4 1.6mm HASL Pb-free"
+  }
+}

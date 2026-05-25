@@ -18,4 +18,5 @@ preproject/papers/
 PRANK/preproject/build/**
 !PRANK/preproject/build/
 !PRANK/preproject/build/main.pdf
+./state_art.xlsx
 

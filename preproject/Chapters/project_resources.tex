@@ -1,39 +1,31 @@
 % !TEX root = ../main.tex
 \chapter{PROJECT RESOURCES}\label{projects_resources}
-\graphicspath{{images/}}
-This chapter outlines the technical requirements, material resources, and estimated costs associated with the development of the PRANK system (Parallel Robot for ANKle rehabilitation). It includes a detailed breakdown of mechanical components, electronic subsystems, software tools, and validation instruments necessary to construct and implement the rehabilitation platform. Additionally, the chapter provides an initial estimation of development time and budget, supporting the project's feasibility and helping guide logistical and financial planning. These projections will serve as a reference for resource allocation during the execution phase of the project.
 
-\begin{table}[H]
+This chapter outlines the technical requirements and estimated costs for PRANK Phase~1, focused on design and computational simulation. Since no physical fabrication is carried out in this phase, the budget reflects software tools, development hardware for hardware-in-the-loop testing, and engineering work hours.
+
+\begin{table}[htbp]
 \centering
-\caption{Preliminary Resource and Cost Estimation for PRANK}
-\begin{tabular}{|p{4cm}|p{5.5cm}|p{2.5cm}|}
+\caption{Resource and Cost Estimation for PRANK Phase~1 (Design \& Simulation)}
+\begin{tabular}{|p{3.8cm}|p{5.8cm}|p{2.5cm}|}
 \hline
 \rowcolor{Gray}
-\textbf{Category} & \textbf{Description} & \textbf{Estimated Cost (USD)} \\
+\textbf{Category} & \textbf{Description} & \textbf{Cost (USD)} \\
 \hline
-3D Printing \& Prototyping & PLA/PETG filament, multiple design iterations for joints and footplate & 250 \\
+STM32 Dev Board & STM32H7/F7 dual-core kit for HIL firmware validation & 60 \\
 \hline
-Aluminum Structure & Extruded aluminum profiles, machined brackets, anodised base plate & 300 \\
+USB Serial Interface & USB-to-UART/CAN adapter for ROS~2 HIL bridge & 20 \\
 \hline
-Electronic Components & STM32 dual-core board, 6-axis load cell, signal conditioning PCB, ADC modules, CAN transceivers, wiring and connectors & 950 \\
+Electronic Design Tools & KiCad (free) — schematic and PCB layout & 0 \\
 \hline
-Motors & 3 $\times$ BLDC motors with integrated incremental encoders (suitable torque/speed for ankle ROM) & 600 \\
+Software Licenses & SolidWorks, MATLAB (university); ROS~2, Gazebo, Ubuntu (free) & 100 \\
 \hline
-Motor Drivers & 3 $\times$ FOC motor drivers with CAN bus interface & 210 \\
+Miscellaneous & Cables, adapters, lab consumables & 30 \\
 \hline
-Mechanical Parts & Precision bearings, universal joints, couplings, ball-end joints, hardware & 300 \\
+Engineering Hours & 300 h $\times$ \$15/hr — CAD design, electronics spec, firmware, HIL validation & 4,500 \\
 \hline
-VR / MR Headset & Meta Quest 2 or equivalent passthrough HMD & 400 \\
+Contingency (10\%) & Unexpected software issues, additional hardware & 471 \\
 \hline
-Software Licenses & Unity (free tier), MATLAB (university license), SolidWorks (university license) & 0--100 \\
-\hline
-Validation Tools & Optoelectronic motion capture lab session access, retroreflective markers & 150 \\
-\hline
-Personal Labor & 200 hours $\times$ \$15/hr (design, assembly, programming, testing) & 3,000 \\
-\hline
-Contingency (10\%) & Unexpected component failures, reprints, shipping & 627 \\
-\hline
-\textbf{Total Budget} & & \textbf{6,887} \\
+\textbf{Total} & & \textbf{5,181} \\
 \hline
 \end{tabular}
 \end{table}

@@ -1,0 +1,29 @@
+# nguyen-v originals
+*-backups
+#auto_saved_files#
+*.xml
+*.lib
+*.lck
+*.bak
+*.kicad_sch-bak
+fp-info-cache
+
+# KiCAD 8 additions
+*.kicad_pcb-bak
+*.kicad_prl
+*.kicad_pro.lock
+
+# OS
+.DS_Store
+Thumbs.db
+*.Zone.Identifier
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Manufacturing outputs — regenerate from source
+Manufacturing/Fabrication/Gerbers/*.gbr
+Manufacturing/Fabrication/Gerbers/*.gbl
+Manufacturing/Fabrication/Gerbers/*.gtl
+Manufacturing/Fabrication/Gerbers/*.drl

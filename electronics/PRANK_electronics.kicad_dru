@@ -1,0 +1,61 @@
+(version 1)
+
+# PRANK Electronics — Design Rules
+# 4-layer FR4 1.6mm | IPC-A-600 Class 3 | IEC 60601-1 | IPC-2221
+# Adapted from nguyen-v KDT_Hierarchical (PCBWay 6-layer)
+
+(rule "Min clearance - signal"
+    (constraint clearance (min 0.15mm))
+    (condition "A.NetClass == 'Default' && B.NetClass == 'Default'")
+)
+
+(rule "Min clearance - motor power"
+    (constraint clearance (min 0.5mm))
+    (condition "A.NetClass == 'PWR_MOTOR' || B.NetClass == 'PWR_MOTOR'")
+)
+
+(rule "Min trace width - signal"
+    (constraint track_width (min 0.15mm))
+    (condition "A.NetClass == 'Default'")
+)
+
+(rule "Min trace width - logic power"
+    (constraint track_width (min 0.35mm))
+    (condition "A.NetClass == 'PWR_LOGIC'")
+)
+
+(rule "Min trace width - motor"
+    (constraint track_width (min 0.6mm))
+    (condition "A.NetClass == 'PWR_MOTOR'")
+)
+
+(rule "Via - standard"
+    (constraint via_diameter (min 0.6mm))
+    (constraint hole_size (min 0.3mm))
+)
+
+(rule "Via - thermal (DRV8833 pad)"
+    (constraint via_diameter (min 0.5mm))
+    (constraint hole_size (min 0.25mm))
+)
+
+(rule "Annular ring"
+    (constraint annular_width (min 0.15mm))
+)
+
+(rule "Hole to hole clearance"
+    (constraint hole_to_hole (min 0.25mm))
+)
+
+(rule "Edge clearance"
+    (constraint edge_clearance (min 0.3mm))
+)
+
+(rule "Silkscreen text"
+    (constraint text_thickness (min 0.15mm))
+    (constraint text_height (min 0.8mm))
+)
+
+(rule "Courtyard clearance"
+    (constraint courtyard_clearance (min 0.25mm))
+)

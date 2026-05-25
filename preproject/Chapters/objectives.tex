@@ -3,20 +3,25 @@
 
 \section{General}
 
-Develop and validate a three-degree-of-freedom parallel ankle rehabilitation robot 
-(PRANK) with an RRR electric motor configuration, implementing admittance-based 
-control and a mixed reality serious game to deliver adaptive, patient-responsive 
-therapy, and demonstrating the system's ROM measurement accuracy through comparison 
-with an optoelectronic motion capture reference.
+Design and simulate a three-degree-of-freedom parallel ankle rehabilitation robot (PRANK)
+with an RRR electric motor configuration, developing its mechanical CAD model, electronic
+architecture design, and admittance-based control system, and validating control
+performance through a computational simulation environment with hardware-in-the-loop
+testing on an STM32 development platform.
 
 \section{Specific Objectives}
 \begin{itemize}
-    \item Design, fabricate, and assemble a three-degree-of-freedom parallel robotic structure actuated by an RRR electric motor configuration, 
-    integrating force and motion sensing to enable safe and controlled ankle rehabilitation movements.
-    \item Develop an admittance-based control system with adaptive resistance modes—passive, assistive, and resistive—that adjusts therapy 
-    difficulty in real time based on ankle ROM and user-applied force, complemented by a mixed reality serious game that provides interactive feedback and promotes patient engagement.
-    \item Validate the system's ROM measurement accuracy through a pilot study with healthy subjects, comparing robot-estimated ankle kinematics
-     against a reference optoelectronic motion capture system to demonstrate feasibility for clinical biomechanical assessment.
+    \item Design a three-degree-of-freedom parallel robotic structure actuated by an RRR
+    electric motor configuration, developing a complete 3D CAD model in SolidWorks
+    suitable for structural FEA analysis, kinematic workspace verification, and
+    importation into the computational simulation environment.
+
+    \item Define the electronic architecture of PRANK — including motor drivers, six-axis
+    force/torque sensing, and dual-core STM32 embedded controller — producing a complete
+    design specification and PCB layout without physical implementation in this phase.
+
+    \item Implement an admittance-based control system with passive, assistive, and
+    resistive rehabilitation modes, simulate the full robot--patient interaction in a
+    computational environment, and validate controller performance through hardware-in-the-loop
+    testing using a physical STM32 development board as the embedded control target.
 \end{itemize}
-     
-    

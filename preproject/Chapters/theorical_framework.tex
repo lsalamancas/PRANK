@@ -26,7 +26,7 @@ The main spatial parameters are shown in Figure~\ref{step_stride} and described 
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=1\textwidth]{step_stride.png}
+    \includegraphics[width=0.75\textwidth]{step_stride.png}
     \caption[Gait spatial parameters]{Gait spatial parameters. Source: edited by author from \cite{Baker2013}.}
     \label{step_stride}
 \end{figure}
@@ -53,7 +53,7 @@ The stance phase ends at toe-off, which is simultaneously the onset of swing, as
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=1\textwidth]{gait_phases.png}
+    \includegraphics[width=0.75\textwidth]{gait_phases.png}
     \caption[One side gait phases]{One side gait phases. Source: edited by author from \cite{Baker2013}.}
     \label{gait_phases}
 \end{figure}
@@ -63,7 +63,7 @@ Single support and swing are long phases, so each is further subdivided into \te
 
 \begin{figure}[b]
     \centering
-    \includegraphics[width=1\textwidth]{gait_phases_ds.png}
+    \includegraphics[width=0.75\textwidth]{gait_phases_ds.png}
     \caption[Both sides gait phases]{Both sides gait phases. Source: edited by author from \cite{Baker2013}.}
     \label{gait_phases_ds}
 \end{figure}
@@ -97,7 +97,7 @@ Stability is provided by three ligament groups \cite{Brockett2016, Winter2009}:
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.85\textwidth]{ankle_ligaments.png}
-    \caption{Ligament anatomy of the ankle joint complex. Source: author.}
+    \caption[Ankle ligament anatomy]{Ligament anatomy of the ankle joint complex. Source: author.}
     \label{fig:ankle_ligaments}
 \end{figure}
 
@@ -152,8 +152,8 @@ Internal / External rotation & $\pm 5^{\circ}$--$15^{\circ}$ & Coupled to subtal
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.8\textwidth]{ankle_angles.png}
-    \caption{Reference planes and angular degrees of freedom of the ankle joint complex. Source: author.}
+    \includegraphics[width=0.55\textwidth]{ankle_angles.png}
+    \caption[Ankle angular degrees of freedom]{Reference planes and angular degrees of freedom of the ankle joint complex. Source: author.}
     \label{fig:ankle_angles}
 \end{figure}
 
@@ -175,8 +175,8 @@ The ankle follows a characteristic kinematic pattern across the gait cycle \cite
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=\textwidth]{kinematics_kinetics_ankle.png}
-    \caption{Ankle joint kinematics and kinetics during the gait cycle: angular displacement, moment, and power profiles. Source: author.}
+    \includegraphics[width=0.78\textwidth]{kinematics_kinetics_ankle.png}
+    \caption[Ankle kinematics and kinetics during gait]{Ankle joint kinematics and kinetics during the gait cycle: angular displacement, moment, and power profiles. Source: author.}
     \label{fig:kinematics_kinetics_ankle}
 \end{figure}
 
@@ -269,33 +269,37 @@ Virtual reality (VR) environments provide immersive feedback, increasing motivat
 Research shows that combining tactile and visual feedback improves ankle strength, flexibility, and balance beyond what passive trajectory-following achieves, and that personalising the game interface to the affected limb side sustains the patient's implicit sense of agency \cite{Medved2021}.
 
 % ------------------------------------------------------------------
-\section{Motion Capture and Ankle Marker Sets}
+% NOTE: Motion capture and marker sets section retained for reference.
+% ROM validation vs. optoelectronic MoCap is NOT part of the current
+% project scope (Phase 1). Planned for Phase 2 (clinical validation).
+%
+% \section{Motion Capture and Ankle Marker Sets}
+%
+% Optoelectronic motion capture (MoCap) systems are the gold standard for measuring joint kinematics in clinical and research settings.
+% These systems use multiple calibrated infrared cameras — typically 6 to 12 — to reconstruct the 3D trajectories of retroreflective markers placed on anatomical landmarks, achieving sub-millimetre spatial resolution and sampling rates of 100--250~Hz \cite{Medved2021}.
+% Systems such as Vicon, Qualisys, and OptiTrack are widely used in gait laboratories for ankle ROM measurement and constitute the reference against which PRANK's internal kinematics will be validated in a future phase.
+%
+% The accuracy of an optoelectronic measurement depends critically on the \textbf{marker set} and the \textbf{biomechanical model} used to convert marker trajectories into joint angles.
+% For the ankle joint complex, three families of marker sets are most relevant:
+%
+% \subsection{Conventional Single-Segment Foot Model}
+%
+% The simplest approach, used in standard whole-body protocols such as the Helen~Hayes and Plug-in~Gait models, tracks the foot with only two markers (typically on the heel and the second metatarsal head) and the shank with a wand marker.
+% This yields a single foot segment rotating relative to the tibia, providing dorsiflexion/plantarflexion reliably, but conflating inversion/eversion and internal/external rotation with artefact from midfoot motion \cite{Winter2009}.
+% Because PRANK targets all three rotational degrees of freedom, single-segment models are insufficient for validation.
+%
+% \subsection{Oxford Foot Model (OFM)}
+%
+% The Oxford Foot Model decomposes the foot into three segments — hindfoot, forefoot, and hallux — using approximately 13 markers \cite{Stebbins2006}.
+% It provides independent kinematic outputs for the tibio-calcaneal (hindfoot), Chopart, and metatarso-phalangeal joints, making it the most widely adopted multi-segment foot model in clinical gait analysis.
+% However, the OFM requires careful marker placement on small bony prominences (medial/lateral malleoli, navicular, sustentaculum tali, medial/lateral forefoot), making it demanding for routine use and sensitive to soft-tissue artefact on the hindfoot.
+%
+% \subsection{SHCG Nine-Segment Model (MacWilliams)}
+%
+% MacWilliams et al.\ developed a nine-segment foot model using 19 retroreflective markers to characterise kinematics and kinetics across eight joints of the foot and ankle in adolescent gait \cite{MacWilliams2003}.
+% This model provides comprehensive data at the talocrural, subtalar, transverse-tarsal, tarsometatarsal, and metatarsophalangeal levels, and demonstrated that single-link models significantly overestimate ankle joint powers by attributing midfoot motion to the ankle.
+% Despite its completeness, the 19-marker protocol is impractical for rehabilitation settings where speed of setup and patient tolerance are constraints.
 % ------------------------------------------------------------------
-
-Optoelectronic motion capture (MoCap) systems are the gold standard for measuring joint kinematics in clinical and research settings.
-These systems use multiple calibrated infrared cameras — typically 6 to 12 — to reconstruct the 3D trajectories of retroreflective markers placed on anatomical landmarks, achieving sub-millimetre spatial resolution and sampling rates of 100--250~Hz \cite{Medved2021}.
-Systems such as Vicon, Qualisys, and OptiTrack are widely used in gait laboratories for ankle ROM measurement and constitute the reference against which PRANK's internal kinematics will be validated in Hypothesis H3.
-
-The accuracy of an optoelectronic measurement depends critically on the \textbf{marker set} and the \textbf{biomechanical model} used to convert marker trajectories into joint angles.
-For the ankle joint complex, three families of marker sets are most relevant:
-
-\subsection{Conventional Single-Segment Foot Model}
-
-The simplest approach, used in standard whole-body protocols such as the Helen~Hayes and Plug-in~Gait models, tracks the foot with only two markers (typically on the heel and the second metatarsal head) and the shank with a wand marker.
-This yields a single foot segment rotating relative to the tibia, providing dorsiflexion/plantarflexion reliably, but conflating inversion/eversion and internal/external rotation with artefact from midfoot motion \cite{Winter2009}.
-Because PRANK targets all three rotational degrees of freedom, single-segment models are insufficient for validation.
-
-\subsection{Oxford Foot Model (OFM)}
-
-The Oxford Foot Model decomposes the foot into three segments — hindfoot, forefoot, and hallux — using approximately 13 markers \cite{Stebbins2006}.
-It provides independent kinematic outputs for the tibio-calcaneal (hindfoot), Chopart, and metatarso-phalangeal joints, making it the most widely adopted multi-segment foot model in clinical gait analysis.
-However, the OFM requires careful marker placement on small bony prominences (medial/lateral malleoli, navicular, sustentaculum tali, medial/lateral forefoot), making it demanding for routine use and sensitive to soft-tissue artefact on the hindfoot.
-
-\subsection{SHCG Nine-Segment Model (MacWilliams)}
-
-MacWilliams et al.\ developed a nine-segment foot model using 19 retroreflective markers to characterise kinematics and kinetics across eight joints of the foot and ankle in adolescent gait \cite{MacWilliams2003}.
-This model provides comprehensive data at the talocrural, subtalar, transverse-tarsal, tarsometatarsal, and metatarsophalangeal levels, and demonstrated that single-link models significantly overestimate ankle joint powers by attributing midfoot motion to the ankle.
-Despite its completeness, the 19-marker protocol is impractical for rehabilitation settings where speed of setup and patient tolerance are constraints.
 
 
 % ------------------------------------------------------------------
@@ -305,5 +309,5 @@ Despite its completeness, the 19-marker protocol is impractical for rehabilitati
 Quantifying rehabilitation outcomes is essential for validating system effectiveness.
 Clinical metrics include range of motion, gait symmetry, balance, and patient-reported outcomes.
 Instruments such as the Rehabilitation Measures Database offer standardised tools for assessing ankle functionality and tracking progress over time \cite{sralab2024}.
-In the context of PRANK, primary quantitative outcomes are: (1) ankle ROM across all three axes, validated against an optoelectronic motion capture reference; (2) force tracking error and settling time of the admittance controller; and (3) patient-reported usability and engagement scores from the VR serious game.
+In the context of PRANK Phase~1, primary quantitative outcomes are: (1) ankle ROM workspace coverage across all three axes verified in the Gazebo simulation environment; (2) force tracking error and settling time of the admittance controller validated through ROS~2/Gazebo hardware-in-the-loop experiments; and (3) simulation fidelity metrics comparing the virtual model against the analytical kinematic and dynamic model.
 These metrics are directly linked to the three hypotheses of the project and inform the design of the pilot study protocol.

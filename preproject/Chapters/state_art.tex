@@ -17,18 +17,26 @@ Normal ranges of motion span approximately $20$--$30^{\circ}$ dorsiflexion, $40$
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.85\textwidth]{image1.png}
-    \caption{Effect of foot drop on spatiotemporal, kinematic, and kinetic parameters during gait. Adapted from \cite{Wiszomirska2017}.}
+    \includegraphics[width=0.62\textwidth]{FDvsNormalGait.png}
+    \caption[Foot drop effect on gait parameters \cite{Wiszomirska2017}]{Effect of foot drop on spatiotemporal, kinematic, and kinetic parameters during gait. Adapted from \cite{Wiszomirska2017}.}
     \label{fig:sa_footdrop}
 \end{figure}
 
 Among the conditions that compromise ankle function, foot drop is one of the most debilitating.
 It is the inability to perform adequate dorsiflexion during the swing phase of gait, arising from upper motor neurone lesions — most commonly stroke, multiple sclerosis, or spinal cord injury above T12 — and affecting approximately 20\% of stroke survivors with lasting consequences \cite{Baker2013, Medved2021}.
-The resulting compensatory strategies — circumduction, hip-hitching, and steppage gait — are energetically costly and fall-promoting, as illustrated by the kinematic and kinetic deviations documented in Figure~\ref{fig:sa_footdrop}.
+The resulting compensatory strategies — circumduction, hip-hitching, and steppage gait — are energetically costly and fall-promoting, as illustrated by the kinematic and kinetic deviations documented in Figure~\ref{fig:sa_footdrop} \cite{Wiszomirska2017}.
 Conventional management relies on ankle-foot orthoses (AFOs) and functional electrical stimulation (FES), both of which are primarily orthotic rather than rehabilitative.
 A meta-analysis of eight randomised controlled trials comparing FES and AFO found equivalent improvements in walking speed for both devices, but identified a critical lack of evidence on kinematic and kinetic outcomes and on whether device-induced gains transfer to everyday settings \cite{Stevens2015, Alnajjar2021}.
 This gap motivates the development of active robotic systems capable of delivering repeatable, quantitatively measurable, and adaptive therapy.
 A long-term study of the NESS L300 FES neuroprosthesis in 16 individuals with chronic hemiparesis demonstrated that consistent use over one year improved 10~m walk velocity from 0.67~m/s to 1.06~m/s, with a 23.8\% carry-over effect without the device — evidence that sustained ankle assistance can induce neuroplastic changes \cite{Baker2013}.
+A representative example of this approach is the hybrid FES-robotic system proposed by Kobravi et al., which combines functional electrical stimulation of the peroneal nerve with a robotic assist to restore dorsiflexion in chronic stroke patients, reporting improvements in Fugl-Meyer Lower Extremity (FMA-LE) scores \cite{Kobravi2020} (Figure~\ref{fig:sa_fes}).
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.62\textwidth]{image1.png}
+    \caption[Hybrid FES-robotic system for foot drop \cite{Kobravi2020}]{Hybrid FES-robotic system for foot drop rehabilitation after stroke and clinical outcome metrics (FMA-LE). Adapted from \cite{Kobravi2020}.}
+    \label{fig:sa_fes}
+\end{figure}
 
 % ---------------------------------------------------------------
 % IMAGE 2: Jamwal Soft Parallel Robot (SPR) — first parallel ankle rehabilitation robot
@@ -38,8 +46,8 @@ A long-term study of the NESS L300 FES neuroprosthesis in 16 individuals with ch
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.75\textwidth]{Muscle_actuators.png}
-    \caption{Soft parallel robot (SPR) driven by pneumatic air muscles — the first parallel ankle rehabilitation robot. Adapted from \cite{Jamwal2009}.}
+    \includegraphics[width=0.58\textwidth]{Muscle_actuators.png}
+    \caption[Soft parallel ankle robot (SPR) \cite{Jamwal2009}]{Soft parallel robot (SPR) driven by pneumatic air muscles. Adapted from \cite{Jamwal2009}.}
     \label{fig:sa_spr}
 \end{figure}
 
@@ -66,8 +74,8 @@ Spherical parallel mechanisms based on 3-RRS chains have also been explored as a
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=\textwidth]{topologies_ankle_robots.png}
-    \caption{Representative parallel ankle rehabilitation robot topologies. Adapted from \cite{Miao2018}.}
+    \includegraphics[width=0.85\textwidth]{topologies_ankle_robots.png}
+    \caption[Parallel ankle robot topologies \cite{Miao2018}]{Representative parallel ankle rehabilitation robot topologies. Adapted from \cite{Miao2018}.}
     \label{fig:sa_topologies}
 \end{figure}
 
@@ -85,8 +93,8 @@ A 2025 review of state-of-the-art ankle rehabilitation robotic devices compared 
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=\textwidth]{Parr_examples.png}
-    \caption{Classification of parallel ankle rehabilitation robots by topology, actuation, and degrees of freedom. Adapted from \cite{Li2020Mechanical}.}
+    \includegraphics[width=0.65\textwidth]{Parr_examples.png}
+    \caption[Classification of parallel ankle robots \cite{Li2020Mechanical}]{Classification of parallel ankle rehabilitation robots by topology, actuation, and degrees of freedom. Adapted from \cite{Li2020Mechanical}.}
     \label{fig:sa_taxonomy}
 \end{figure}
 
@@ -117,12 +125,12 @@ In the same year, the AMBLE exoskeleton demonstrated through a nine-week clinica
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.9\textwidth]{Admitance_control.png}
-    \caption{Admittance control architecture for ankle rehabilitation robots: force/torque input from the patient is mapped to a motion command through a virtual impedance model. Adapted from \cite{Zhang2018}.}
+    \caption[Admittance control architecture \cite{Zhang2018}]{Admittance control architecture for ankle rehabilitation robots: force/torque input from the patient is mapped to a motion command through a virtual impedance model. Adapted from \cite{Zhang2018}.}
     \label{fig:sa_admittance}
 \end{figure}
 
 Clinical evidence for robot-assisted ankle therapy, while still growing, increasingly supports its integration into standard rehabilitation protocols.
-A case report of hybrid FES-robotic training in a chronic stroke patient with foot drop over 16 sessions demonstrated improvements in the Functional Ambulation Category and Fugl-Meyer Lower Extremity scores, highlighting the cognitive engagement produced when patients voluntarily trigger movement onset \cite{Alnajjar2021}.
+A case report of hybrid FES-robotic training in a chronic stroke patient with foot drop over 16 sessions demonstrated improvements in the Functional Ambulation Category and Fugl-Meyer Lower Extremity scores, highlighting the cognitive engagement produced when patients voluntarily trigger movement onset \cite{Kobravi2020}.
 Evaluation of Lokomat gait training with kinematic constraints in 15 hemiparetic patients showed significant improvements in peak knee flexion persisting for at least 20 minutes post-session, suggesting that even short bouts of constrained robotic training produce rapid motor learning \cite{Baker2013}.
 Studies comparing robotic therapy against AFO and FES interventions confirm that robot-assisted systems can match or exceed conventional outcomes in gait restoration and muscle activation \cite{Stevens2015, Alnajjar2021}.
 A 2023 multi-DoF reconfigurable parallel ankle robot with mechanically adjustable workspace reported clinical improvements in gait symmetry and muscle activation in post-stroke patients, providing a directly comparable topology and target population benchmark for PRANK %\cite{reconfigAnkle2023}.
@@ -138,8 +146,8 @@ The OpenCap system, validated for lower-extremity kinematics during dynamic task
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.9\textwidth]{vr_rehabilitation_robot.png}
-    \caption{Augmented reality and serious gaming integrated with a robotic lower-limb rehabilitation platform. Adapted from \cite{Vaida2024}.}
+    \includegraphics[width=0.62\textwidth]{vr_rehabilitation_robot.png}
+    \caption[AR and serious gaming for lower-limb rehabilitation \cite{Vaida2024}]{Augmented reality and serious gaming integrated with a robotic lower-limb rehabilitation platform. Adapted from \cite{Vaida2024}.}
     \label{fig:sa_vr_robot}
 \end{figure}
 
