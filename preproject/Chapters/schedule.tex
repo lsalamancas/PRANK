@@ -12,11 +12,11 @@ The schedule is organised as follows:
     3D design in SolidWorks, structural FEA, kinematic workspace verification via SolidWorks Motion, and URDF/SDF export for simulation import.
 
     \item \textbf{Stage 2 — Electronic Architecture Design (Months 2--3):}
-    Component selection (BLDC motors, encoders, motor drivers, six-axis load cell, STM32 board), schematic capture, PCB layout, bill of materials, and dual-core firmware architecture specification (FreeRTOS, CAN bus, ADC).
-    The STM32 development board is configured and the firmware skeleton deployed during this stage.
+    Component selection (BLDC motors, encoders, motor drivers, six-axis load cell, microcontroller board), schematic capture, PCB layout, bill of materials, and dual-core firmware architecture specification (FreeRTOS, CAN bus, ADC).
+    The microcontroller development board is configured and the firmware skeleton deployed during this stage.
 
     \item \textbf{Stage 3 — Embedded Control Implementation (Months 3--5):}
-    C/C++ implementation of the admittance control law on the STM32 (passive/assistive/resistive modes), FreeRTOS task partitioning, safety monitors, and USB serial communication with the ROS~2 simulation host.
+    C/C++ implementation of the admittance control law on the microcontroller (passive/assistive/resistive modes), FreeRTOS task partitioning, safety monitors, and USB serial communication with the ROS~2 simulation host.
     The ROS~2/Gazebo simulation environment is configured with the URDF model and the HIL bridge node developed in parallel.
 
     \item \textbf{Stage 4 — HIL Validation and Performance Evaluation (Months 5--7):}
@@ -25,7 +25,7 @@ The schedule is organised as follows:
 \end{itemize}
 
 Continuous \textbf{documentation} of design decisions, experimental results, and the final preproject report runs across all seven months.
-The milestone \textit{HIL Loop Ready} is placed at Month~5, marking the point at which the STM32 firmware and the ROS~2/Gazebo simulation are fully integrated and the validation experiments can begin.
+The milestone \textit{HIL Loop Ready} is placed at Month~5, marking the point at which the microcontroller firmware and the ROS~2/Gazebo simulation are fully integrated and the validation experiments can begin.
 
 \begin{figure}[htbp]
 \resizebox{\textwidth}{!}{%
@@ -55,7 +55,7 @@ The milestone \textit{HIL Loop Ready} is placed at Month~5, marking the point at
 \ganttgroup{2. Electronics Design}{2}{3} \\
 \ganttbar[name=comp,  bar/.append style={fill=teal!45}]{Component selection \& BOM}{2}{2} \\
 \ganttbar[name=pcb,   bar/.append style={fill=teal!60}]{Schematic \& PCB layout}{2}{3} \\
-\ganttbar[name=fwarch,bar/.append style={fill=teal!70}]{STM32 firmware skeleton}{3}{3} \\
+\ganttbar[name=fwarch,bar/.append style={fill=teal!70}]{Microcontroller firmware skeleton}{3}{3} \\
 
 \ganttgroup{3. Embedded Control}{3}{5} \\
 \ganttbar[name=fw,    bar/.append style={fill=green!50}]{Admittance control (C/C++)}{3}{5} \\

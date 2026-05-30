@@ -4,7 +4,7 @@
 
 This chapter describes the system architecture and development methodology of PRANK — a Parallel Robot for ANKle rehabilitation.
 The project is structured in four sequential stages spanning mechanical design, electronic architecture specification, embedded control implementation, and hardware-in-the-loop (HIL) simulation validation.
-In the HIL configuration, the STM32 development board runs the production admittance control firmware and interacts in real time with a ROS~2/Gazebo simulation that provides virtual sensor readings (encoders, force/torque) and actuates the simulated robot based on the firmware commands — replacing the physical motors and sensors that will be integrated in Phase~2.
+In the HIL configuration, the microcontroller development board runs the production admittance control firmware and interacts in real time with a ROS~2/Gazebo simulation that provides virtual sensor readings (encoders, force/torque) and actuates the simulated robot based on the firmware commands — replacing the physical motors and sensors that will be integrated in Phase~2.
 This staged structure supports project scheduling and provides clear deliverables and entry/exit criteria at each phase.
 
 Figure~\ref{fig:PRANK_architecture} presents the overall system architecture, showing the integration between the mechanical platform, embedded hardware, and the computational simulation layer.
@@ -15,7 +15,7 @@ Figure~\ref{fig:PRANK_architecture} presents the overall system architecture, sh
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.88\textwidth]{system_diagram.png}
-    \caption[PRANK system architecture]{PRANK system architecture: mechanical platform, dual-core STM32 embedded controller, and software layer with mixed reality interface.}
+    \caption[PRANK system architecture]{PRANK system architecture: mechanical platform, dual-core microcontroller embedded controller, and software layer with mixed reality interface.}
     \label{fig:PRANK_architecture}
 \end{figure}
 
@@ -46,22 +46,22 @@ Motor drivers communicate with the embedded controller via a CAN bus, providing 
 Force and torque sensing at the robot--patient interface is performed by a \textbf{six-axis load cell} mounted between the footplate and the last structural link, providing the full interaction wrench ($F_x, F_y, F_z, M_x, M_y, M_z$) required by the admittance controller to detect rotational intent at the ankle.
 Analog signals from the load cell are conditioned and digitised by a dedicated ADC front-end before transmission to the controller.
 
-The embedded processing platform is a dual-core \textbf{STM32} microcontroller:
+The embedded processing platform is a dual-core \textbf{microcontroller}:
 \begin{itemize}
     \item \textbf{Core 1 — Sensing and data acquisition:} Reads encoder positions, load cell measurements, and auxiliary sensors at a fixed sampling rate; performs signal filtering and packaging; passes processed data to Core~2 via shared memory with hardware semaphore.
     \item \textbf{Core 2 — Control and communications:} Executes the admittance control law, generates motor torque commands, manages safety monitors, and handles serial communication with the ROS~2 simulation host.
 \end{itemize}
 
 In this phase, the electronic design is fully specified — including schematic, PCB layout, and bill of materials — but \textbf{physical board fabrication and assembly are deferred to Phase~2}.
-A commercially available STM32 development board is used in Stage~4 for HIL validation.
+A commercially available microcontroller development board is used in Stage~4 for HIL validation.
 
-\textbf{Stage deliverable:} Complete electronic design package (schematic, PCB layout, BOM) and STM32 firmware architecture ready for HIL deployment.
+\textbf{Stage deliverable:} Complete electronic design package (schematic, PCB layout, BOM) and microcontroller firmware architecture ready for HIL deployment.
 
 % ---------------------------------------------------------------
 \section{Stage 3 — Embedded Control Implementation}
 % ---------------------------------------------------------------
 
-The admittance control law and mode-switching logic are implemented in \textbf{C/C++} directly on the STM32 platform under \textbf{FreeRTOS}.
+The admittance control law and mode-switching logic are implemented in \textbf{C/C++} directly on the microcontroller platform under \textbf{FreeRTOS}.
 The control architecture implements three rehabilitation modes — passive, assistive, and resistive — all built on the admittance framework described in the theoretical framework (Equation~\ref{eq:admittance}):
 
 \begin{itemize}
@@ -72,12 +72,12 @@ The control architecture implements three rehabilitation modes — passive, assi
 
 Safety mechanisms implemented in firmware include: per-axis torque saturation, workspace boundary enforcement, watchdog timer, and a software emergency-stop interface.
 
-In the HIL setup, the STM32 firmware receives simulated sensor data from the ROS~2/Gazebo plant (joint angles from virtual encoders and interaction forces from the simulated load cell) over a USB serial link, computes the admittance control output, and returns motor commands that are applied back to the Gazebo simulation.
+In the HIL setup, the microcontroller firmware receives simulated sensor data from the ROS~2/Gazebo plant (joint angles from virtual encoders and interaction forces from the simulated load cell) over a USB serial link, computes the admittance control output, and returns motor commands that are applied back to the Gazebo simulation.
 From the firmware's perspective, the simulation is indistinguishable from real hardware, exercising the full embedded control loop including interrupt timing, FreeRTOS task scheduling, and CAN-bus driver logic.
 
 Figure~\ref{fig:sim_environment} illustrates the HIL simulation architecture.
 
-\textbf{Stage deliverable:} Embedded admittance control firmware running on STM32 development board, integrated with ROS~2/Gazebo HIL loop.
+\textbf{Stage deliverable:} Embedded admittance control firmware running on microcontroller development board, integrated with ROS~2/Gazebo HIL loop.
 
 % ---------------------------------------------------------------
 % HIL Simulation Environment Diagram
@@ -107,11 +107,11 @@ Figure~\ref{fig:sim_environment} illustrates the HIL simulation architecture.
 \node[font=\small\bfseries\sffamily, text=blue!70!black] at (-0.5, 2.15)
     {Ubuntu Host \textemdash{} ROS~2 / Gazebo (Virtual Plant)};
 
-%% STM32 box:  x: 5.6 .. 11.0   y: -2.7 .. 2.4
+%% Microcontroller box:  x: 5.6 .. 11.0   y: -2.7 .. 2.4
 \draw[rounded corners=8pt, draw=teal!65, fill=teal!7, line width=1.2pt]
     (5.6, -2.7) rectangle (11.0, 2.4);
 \node[font=\small\bfseries\sffamily, text=teal!70!black] at (8.3, 2.15)
-    {Hardware \textemdash{} STM32 Dev Board};
+    {Hardware \textemdash{} Microcontroller Dev Board};
 
 %% ============================================================
 %% SolidWorks (left, outside host box)
@@ -151,7 +151,7 @@ Figure~\ref{fig:sim_environment} illustrates the HIL simulation architecture.
 \draw[arr=green!50, dashed] (gazebo.south) -- ++(0,-0.45) -| (matlab.north);
 
 %% ============================================================
-%% STM32 stack  (x = 8.3)
+%% Microcontroller stack  (x = 8.3)
 \node[block, fill=teal!65!black, text=white] (core2) at (8.3, 1.4)
     {Core~2\\Admittance Control};
 \node[block, fill=teal!45!black, text=white] (core1) at (8.3, 0.2)
@@ -174,7 +174,7 @@ Figure~\ref{fig:sim_environment} illustrates the HIL simulation architecture.
 
 \end{tikzpicture}%
 }
-\caption[HIL simulation architecture for PRANK Phase~1]{Hardware-in-the-loop architecture for PRANK Phase~1. The Ubuntu/ROS~2 host runs Gazebo as the virtual plant, simulating encoder and load cell outputs that are exchanged with the physical STM32 development board via USB serial. The STM32 executes the production admittance control firmware (FreeRTOS, C/C++) and returns motor commands that close the physics loop in Gazebo. The PRANK URDF/SDF model is exported from SolidWorks.}
+\caption[HIL simulation architecture for PRANK Phase~1]{Hardware-in-the-loop architecture for PRANK Phase~1. The Ubuntu/ROS~2 host runs Gazebo as the virtual plant, simulating encoder and load cell outputs that are exchanged with the physical microcontroller development board via USB serial. The microcontroller executes the production admittance control firmware (FreeRTOS, C/C++) and returns motor commands that close the physics loop in Gazebo. The PRANK URDF/SDF model is exported from SolidWorks.}
 \label{fig:sim_environment}
 \end{figure}
 
@@ -186,7 +186,7 @@ The final stage validates the full HIL loop and evaluates the admittance control
 
 \textbf{H1 — Workspace verification:} The kinematic model is commanded to its boundary poses in each axis within the SolidWorks Motion and Gazebo simulation environments, and achieved angles are compared against the H1 thresholds ($\pm25^{\circ}$, $\pm15^{\circ}$, $\pm10^{\circ}$).
 
-\textbf{H2 — Controller performance:} Step-reference and sinusoidal tracking experiments are executed through the HIL loop with the STM32 running the production firmware.
+\textbf{H2 — Controller performance:} Step-reference and sinusoidal tracking experiments are executed through the HIL loop with the microcontroller running the production firmware.
 Force tracking error and settling time are computed from ROS~2 bag data and compared against the H2 thresholds (settling time $<500$~ms, error $<15\%$).
 
 \textbf{H3 — HIL fidelity:} Joint trajectories produced by the HIL configuration are compared to those from a pure-software reference simulation under identical input sequences.
@@ -222,6 +222,6 @@ Results are reported as mean $\pm$ standard deviation across trials.
 % PHASE 3 (MR Serious Game Interface):
 %   - Unity/C# arcade game development (1D/2D/3D archetypes)
 %   - Multimodal biofeedback (visual alerts, spatial audio, vibrotactile)
-%   - STM32 Core 2 serial link to Unity at >= 60 Hz
+%   - Microcontroller Core 2 serial link to Unity at >= 60 Hz
 %   - Therapist dashboard
 % ---------------------------------------------------------------

@@ -13,7 +13,7 @@ The experimental phase will determine whether the system meets the performance t
 \subsection*{Space}
 
 All design, software development, simulation, and hardware-in-the-loop testing activities will be carried out at the facilities of the \textbf{Universidad Militar Nueva Granada (UMNG)}, Bogotá, Colombia.
-Specifically, the mechatronics and robotics laboratories of the Faculty of Engineering will be used for CAD design, embedded firmware development, and HIL validation with the STM32 development board.
+Specifically, the mechatronics and robotics laboratories of the Faculty of Engineering will be used for CAD design, embedded firmware development, and HIL validation with the microcontroller development board.
 
 \subsection*{Time}
 
@@ -31,9 +31,9 @@ Human subjects experiments are planned for Phase~2, following physical fabricati
 The project encompasses:
 \begin{itemize}
     \item \textbf{Mechanical design:} Design of a three-degree-of-freedom parallel robotic structure with an RRR electric motor configuration in SolidWorks, including FEA, kinematic workspace verification, and URDF/SDF export for simulation. Physical fabrication is deferred to Phase~2.
-    \item \textbf{Electronic architecture:} Specification of the complete electronics — brushless DC motors with encoders, six-axis load cell, motor drivers (CAN bus), and dual-core STM32 embedded platform — in the form of schematic, PCB layout, and bill of materials. Physical board assembly is deferred to Phase~2.
-    \item \textbf{Embedded control:} Implementation and hardware-in-the-loop validation of an admittance-based control system in C/C++ (FreeRTOS on STM32), supporting passive, assistive, and resistive rehabilitation modes (H2).
-    \item \textbf{Computational simulation:} ROS~2/Gazebo simulation environment using the URDF model as the virtual plant, providing virtual sensor readings to the STM32 HIL board and receiving motor commands to close the physics loop (H3).
+    \item \textbf{Electronic architecture:} Specification of the complete electronics — brushless DC motors with encoders, six-axis load cell, motor drivers (CAN bus), and dual-core microcontroller embedded platform — in the form of schematic, PCB layout, and bill of materials. Physical board assembly is deferred to Phase~2.
+    \item \textbf{Embedded control:} Implementation and hardware-in-the-loop validation of an admittance-based control system in C/C++ (FreeRTOS on microcontroller), supporting passive, assistive, and resistive rehabilitation modes (H2).
+    \item \textbf{Computational simulation:} ROS~2/Gazebo simulation environment using the URDF model as the virtual plant, providing virtual sensor readings to the microcontroller HIL board and receiving motor commands to close the physics loop (H3).
 \end{itemize}
 
 The project does \textbf{not} include in this phase:
@@ -56,7 +56,7 @@ Independent variables are those controlled or manipulated by the investigator du
     \item \textbf{Control mode:} The rehabilitation mode selected for each trial — passive, assistive, or resistive. This variable determines the admittance parameter configuration and the role of the simulated patient interaction forces.
     \item \textbf{Admittance parameters ($K_d$, $B_d$, $M_d$):} The virtual stiffness, damping, and inertia matrices of the admittance controller (Equation~\ref{eq:admittance}). These are varied systematically to characterise controller behaviour and tune performance.
     \item \textbf{Prescribed trajectory / ROM target:} The reference ankle trajectory defined for each simulation experiment (e.g., sinusoidal dorsiflexion/plantarflexion at a specified amplitude and frequency).
-    \item \textbf{Simulation mode:} Whether the experiment runs in pure-software simulation (ROS~2/Gazebo only) or HIL mode (STM32 firmware + ROS~2/Gazebo plant), used to quantify embedded implementation fidelity (H3).
+    \item \textbf{Simulation mode:} Whether the experiment runs in pure-software simulation (ROS~2/Gazebo only) or HIL mode (microcontroller firmware + ROS~2/Gazebo plant), used to quantify embedded implementation fidelity (H3).
 \end{itemize}
 
 \subsection{Dependent Variables}
@@ -69,7 +69,7 @@ Dependent variables are those measured as outputs of the simulation or HIL syste
     \item \textbf{Controller tracking error (RMSE):} Root mean square deviation between prescribed reference trajectory and simulated joint trajectory, in degrees. Used to quantify control performance (H2).
     \item \textbf{Controller settling time:} Time required for the system to reach steady-state after a step reference change, in milliseconds (H2).
     \item \textbf{HIL trajectory deviation:} Root mean square deviation between HIL and pure-software simulation trajectories under identical inputs, in degrees. Primary metric for H3.
-    \item \textbf{Communication latency:} USB serial round-trip time between the ROS~2 host and STM32, in milliseconds. Confirms real-time operation readiness (H3).
+    \item \textbf{Communication latency:} USB serial round-trip time between the ROS~2 host and microcontroller, in milliseconds. Confirms real-time operation readiness (H3).
 \end{itemize}
 
 \section{Limitations}
